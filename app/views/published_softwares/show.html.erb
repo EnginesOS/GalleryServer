@@ -1,0 +1,19 @@
+
+<table>
+	<% if   @published_software.image_url !=nil  &&@published_software.image_url.length >1 %>
+	<tr><td rowspan =6><img src=<%= @published_software.image_url %>></td></tr>
+	<%end%>
+ <tr>
+  <td><%= @published_software.short_name %></td> </tr><tr>
+  <td><%= @published_software.full_name %></td></tr><tr>
+  <td><%= @published_software.description %></td></tr><tr>
+  <td><a href=<%= @published_software.home_page %>><%= @published_software.home_page %></a></td></tr><tr>
+ 
+    <td><%= @published_software.repository%></td>
+    
+ </tr>
+</table>
+
+<%= link_to 'Published Software', published_softwares_path %>
+
+   

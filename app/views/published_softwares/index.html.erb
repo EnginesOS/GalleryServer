@@ -1,0 +1,24 @@
+<h1>Listing Langagues</h1>
+
+<table>
+ <tr>
+  <td>
+   <th>Short Name</th>
+   <th>Full Name</th>
+   <th>Comment</th>
+ </tr>
+ <% @published_softwares.each do |published_software| %>
+ <tr>
+  <td><%= published_software.short_name %></td>
+   <td><%= published_software.full_name %></td>
+  <td><%= link_to 'Show', published_software_path(published_software)   %></td>	
+  <td><%= link_to 'Edit', [:edit, published_software]   %></td>
+   <td><%= link_to 'Remove', [  published_software],
+                    method: :delete, data: { confirm: 'Are you sure?' } %></td>
+                    
+ </tr>
+ <% end %>
+</table>
+
+<%= link_to 'Publish New Software', new_published_software_path %><br>
+<%= link_to 'All Details', detailslist_published_softwares_path %>
