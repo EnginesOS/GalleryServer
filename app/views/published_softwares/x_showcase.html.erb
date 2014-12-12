@@ -1,0 +1,43 @@
+
+
+<div class="row top-gap">
+  <%  @published_softwares.sort_by{|b| b["full_name"] }.each do |published_software|  %>
+    <div class="col-md-12 engine-install-row">
+      <div class="col-md-3">
+        <div class="software-icon-holder">
+          <% if published_software.icon.exists? %>
+            <img src=<%= published_software.icon.exists? %> class="software-icon">
+          <% end %>
+        </div>
+      </div>
+      <div class="col-md-9">
+        <div class="published-software-text">
+          <% if published_software.title.present? %>
+            <span class="published-software-title"><%= published_software.title %><br></span>
+          <% end %>
+          <% if published_software.detail.present? %>
+            <%= published_software.detail %><br>
+          <% end %>
+
+          <div class='well'>
+            <% if published_software.icon_url_from_repository.present? %>
+              <img src=<%= published_software.icon_url_from_repository %>>
+            <%end%>
+            <% if published_software.name_from_repository.present? %>
+              <%= published_software.name_from_repository %><br>
+            <% end %>
+            <% if published_software.description_from_repository.present? %>
+              <%= published_software.description_from_repository %><br>
+            <% end %>
+            <% if published_software.website_from_repository.present? %>
+              <a href=<%= published_software.website_from_repository %>><i class="fa fa-globe"></i> <%= published_software.website_from_repository %></a><br>
+            <% end %>
+          </div>
+
+          <%= render partial: 'published_software_actions', published_software: published_software %>
+
+        </div>
+      </div>
+    </div>
+  <%end%>
+</div>

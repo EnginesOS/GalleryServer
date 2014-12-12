@@ -1,7 +1,15 @@
 source 'https://rubygems.org'
 
-gem 'mysql2'
+# gem 'mysql2'
 #gem 'thin'
+
+gem 'git'
+gem 'sqlite3'
+gem 'devise'
+gem 'bootstrap3-rails'
+gem 'font-awesome-rails'
+gem 'paperclip'
+
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.1.1'

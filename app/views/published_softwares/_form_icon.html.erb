@@ -1,0 +1,9 @@
+<%= form_for @published_software do |f| %> 
+
+  <p class="top-gap">
+    <%= f.file_field :icon %>
+  </p>
+
+  <%= render partial: 'shared/gadgets/form_buttons', locals: { f: f } %>
+
+<% end %>

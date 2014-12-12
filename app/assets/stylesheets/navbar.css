@@ -1,0 +1,20 @@
+.navbar {
+  font-size: 20px;
+}
+
+.navbar-brand {
+  font-size: 16px;
+}
+
+.navbar-icon {
+  height: 20px;
+  margin-top: -3px;
+}
+
+.navbar .dropdown-menu {
+  font-size: inherit;
+}
+
+/*.flash-notice-area {
+  margin-top: 50px;
+}*/
