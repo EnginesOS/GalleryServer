@@ -22,7 +22,9 @@ class PublishedSoftware < ActiveRecord::Base
   end
 
   def update_icon_from_url_in_respository
-    self.icon = icon_from_url icon_url_from_repository
+    if icon_url_from_repository.present?
+      self.icon = icon_from_url icon_url_from_repository
+    end
   end
 
   def self.search(search)

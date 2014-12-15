@@ -82,9 +82,16 @@ class PublishedSoftwaresController < ApplicationController
 
   def refresh_icon_from_blueprint
     @published_software = PublishedSoftware.find(params[:id])
-    @published_software.update_icon_from_url_in_respository
-    @published_software.save
-    redirect_to published_software_path(params[:id]), notice: 'Icon has been reloaded from blueprint.'
+    if @published_software.icon_url_from_repository.blank?
+      redirect_to published_software_path(params[:id]), alert: 'Icon was not reloaded. The blueprint does not hold an icon.'
+    else
+      @published_software.update_icon_from_url_in_respository
+      if @published_software.save
+        redirect_to published_software_path(params[:id]), notice: 'Icon has been reloaded from blueprint.'
+      else
+        redirect_to published_software_path(params[:id]), alert: 'Icon was not reloaded from blueprint.'
+      end
+    end
   end
 
 private
