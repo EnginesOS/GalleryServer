@@ -10,6 +10,7 @@ gem 'bootstrap3-rails'
 gem 'font-awesome-rails'
 gem 'paperclip'
 gem 'mysql2'
+gem 'rake'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.1.1'
