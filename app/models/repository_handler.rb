@@ -1,7 +1,7 @@
 class RepositoryHandler
 
   require 'git'
-  require "/opt/engines/lib/ruby/SysConfig.rb"
+  # require "/opt/engines/lib/ruby/SysConfig.rb"
 
   attr_accessor :repository_url
 
@@ -15,7 +15,7 @@ p '$$$ Clone/load blueprint from repository'
     segments = buildname.split('.')
     buildname = segments[0]
     clone_repo(repository_url,buildname)
-    blueprint_filename =  SysConfig.DeploymentDir.to_s + "/" + buildname.to_s + "/blueprint.json"
+    blueprint_filename =  "/tmp/" + buildname.to_s + "/blueprint.json"
     blueprint_file = File.open(blueprint_filename,"r")
     blueprint_json_str = blueprint_file.read
     blueprint_file.close 
@@ -25,14 +25,14 @@ p '$$$ Clone/load blueprint from repository'
 
   def clone_repo(repo, buildname)
     backup_lastbuild repo
-    Git.clone(repo, buildname, path: SysConfig.DeploymentDir)
+    Git.clone(repo, buildname, path: "/tmp/")
   end
 
   def backup_lastbuild repo
     buildname = File.basename(repo)
     segments = buildname.split('.')   
     buildname = segments[0]
-    dir = SysConfig.DeploymentDir.to_s + "/" + buildname.to_s
+    dir = "/tmp/" + buildname.to_s
     if Dir.exists?(dir)
       backup = dir + ".backup"
       if Dir.exists?(backup)
