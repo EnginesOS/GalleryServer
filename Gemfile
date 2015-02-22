@@ -13,7 +13,7 @@ gem 'paperclip'
 
 gem 'acts_as_commentable_with_threading'
 
-gem 'sqlite3'
+# gem 'sqlite3'
 gem 'mysql2'
 gem 'rake'
 
