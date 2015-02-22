@@ -1,29 +1,46 @@
 .published-software-row {
   padding-top: 20px;
   border-top: 1px solid #eee;
-  margin-top: 10px;
   padding-bottom: 10px;
 }
 
-.published-software-text {
+.published-software-row:hover {
+  background-color: #f9f9f9;
+  cursor: pointer;
+}
+
+.published-software-panel.panel {
+  margin-bottom: 0px;
+}
+
+.published-software-holder {
+  margin-left: 10px;
+  margin-bottom: 10px;
+}
+
+.published-software-description {
   font-size: 18px;
 }
 
-.gallery-info .published-software-title {
-  font-size: 36px;
+.published-software-details {
+  margin-left: 10px;
+  display: inline-block;
 }
 
 .published-software-title {
-  font-size: 24px;
+  font-size: 28px;
 }
 
 .published-software-icon-holder {
   display: inline-block;
   vertical-align: top;
+  text-align: center;
+  width: 200px;
 }
 
 .published-software-icon {
   max-height: 64px;
+  max-width: 200px;
   border-radius: 5px;
   vertical-align: top;
 }
@@ -34,9 +51,11 @@
 }
 
 .blueprint-details-dropdown-body {
-  padding: 10px;
+  padding: 15px;
+  margin: 0px;
   margin-top: 10px;
-  background-color: #bdf;
+  background-color: #d9edf7;
+  color: #31708f;
   border-radius: 5px;
   box-shadow: 0 6px 12px rgba(0, 0, 0, .175);
 }

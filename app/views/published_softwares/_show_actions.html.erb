@@ -1,13 +1,6 @@
 <div class="input-group btn-group btn-group-lg">
-  <%= link_to (content_tag(:i, "", class: "fa fa-arrow-left") + ' Gallery'), published_softwares_path, class: "btn btn-default trigger-response-modal" %>
-  <%= link_to (content_tag(:i, "", class: "fa fa-edit") + ' Edit properties'), edit_published_software_path(id: published_software.id), class: "btn btn-default trigger-response-modal" %>
-  <%= link_to (content_tag(:i, "", class: "fa fa-refresh") + ' Refresh blueprint info'), refresh_blueprint_info_published_software_path(id: published_software.id), class: "btn btn-default trigger-response-modal" %>
-  <%= link_to (content_tag(:i, "", class: "fa fa-trash-o") + ' Delete'), published_software, method: :delete, data: { confirm: 'Are you sure that you want to remove this software?' }, class: 'btn btn-default' %>
-  <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-expanded="true">
-    <%= content_tag(:i, "", class: "fa fa-picture-o") + ' Update icon' %> <i class='fa fa-caret-down'></i>
-  </button>
-  <ul class="dropdown-menu dropdown-menu-right" role="menu">
-    <li><%= link_to 'From file', edit_blueprint_info_icon_path(id: published_software.id), class: "dropdown-item-lg trigger-response-modal" %></li>
-    <li><%= link_to 'From blueprint', refresh_published_software_icon_from_blueprint_info_path(id: published_software.id), class: "dropdown-item-lg trigger-response-modal" %></li>
-  </ul>
+  <%= link_to (content_tag(:i, "", class: "fa fa-arrow-left") + ' Back'), published_softwares_path, class: "btn btn-warning trigger-response-modal" %>
+  <a class="toggle-blueprint-button btn btn-default btn-lg">
+    <i class='fa fa-info'></i> Blueprint <i class='toggle-blueprint-button-down-caret fa fa-caret-down'></i><i class='toggle-blueprint-button-up-caret fa fa-caret-up'></i>
+  </a>
 </div>

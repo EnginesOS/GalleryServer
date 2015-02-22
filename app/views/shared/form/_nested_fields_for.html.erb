@@ -1,0 +1,28 @@
+<%  association ||= nil
+    attributes ||= nil
+    label ||= association.to_s.humanize
+    legend ||= label
+    f ||= nil
+    partial ||= nil
+    nest_in = f.object.class.name.singularize.to_sym
+
+  if f.nil? || association.nil? %>
+
+    Error: requires f and association
+
+<% else %>
+
+  <% if legend %>
+    <%= render 'shared/form/legend', text: legend %>
+  <% end %>
+
+  <%= f.fields_for association do |ff| %>
+
+    <%= render 'shared/form/nested_fields', f: ff, nest_in: nest_in, association: association, attributes: attributes, label: label %>
+
+    <div class="col-sm-8 col-sm-offset-2 clearfix">
+      <%= link_to_add_association (content_tag(:i, nil, class: "fa fa-plus") + " Add"), f, association, class: "btn btn-primary btn-lg pull-right", partial: 'shared/form/nested_fields', render_options: { locals: {nest_in: nest_in, association: association, attributes: attributes, label: label }} %>
+    </div>
+
+  <% end %>
+<% end %>

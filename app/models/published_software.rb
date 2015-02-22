@@ -5,6 +5,8 @@ class PublishedSoftware < ActiveRecord::Base
   validates_attachment_content_type :icon, :content_type => /\Aimage\/.*\Z/
   before_validation { icon.clear if delete_icon == '1' }
 
+  acts_as_commentable
+
   def to_s
     title
   end

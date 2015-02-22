@@ -1,0 +1,12 @@
+<div class="input-group btn-group btn-group-lg">
+  <%= link_to (content_tag(:i, "", class: "fa fa-edit") + ' Edit properties'), edit_published_software_path(id: published_software.id), class: "btn btn-default trigger-response-modal" %>
+  <%= link_to (content_tag(:i, "", class: "fa fa-refresh") + ' Refresh blueprint'), refresh_blueprint_info_published_software_path(id: published_software.id), class: "btn btn-default trigger-response-modal" %>
+  <%= link_to (content_tag(:i, "", class: "fa fa-trash-o") + ' Delete'), published_software, method: :delete, data: { confirm: 'Are you sure that you want to remove this software?' }, class: 'btn btn-default' %>
+  <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-expanded="true">
+    <%= content_tag(:i, "", class: "fa fa-picture-o") + ' Update icon' %> <i class='fa fa-caret-down'></i>
+  </button>
+  <ul class="dropdown-menu dropdown-menu-right" role="menu">
+    <li><%= link_to 'From file', edit_blueprint_info_icon_path(id: published_software.id), class: "dropdown-item-lg trigger-response-modal" %></li>
+    <li><%= link_to 'From blueprint', refresh_published_software_icon_from_blueprint_info_path(id: published_software.id), class: "dropdown-item-lg trigger-response-modal" %></li>
+  </ul>
+</div>

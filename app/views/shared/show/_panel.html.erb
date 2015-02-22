@@ -1,0 +1,45 @@
+<%  record_object ||= nil
+    model_name = record_object.class.to_s
+    label ||= model_name.to_s.underscore.humanize
+    # new_record_object_path ||= [:new, model_name.underscore]
+    attributes ||= record_object.attributes.keys %>
+
+<div class="top-gap">
+  <div class="panel panel-default">
+    <div class="panel-body">
+
+      <div class="col-sm-12">
+        <%= render partial: 'shared/show/record_info', locals: {record_object: record_object} %>
+
+        <div class="pull-right">
+          <%= (link_to content_tag(:i , nil, class: 'fa fa-arrow-right') + ' Show', record_object, class: 'btn btn-lg trigger-response-modal', title: 'Open record') if params['action'] == 'index' %>
+          <%= link_to content_tag(:i , nil, class: 'fa fa-edit') + ' Edit', [:edit, record_object], class: 'btn btn-lg trigger-response-modal', title: 'Edit record' %>
+          <%= link_to content_tag(:i , nil, class: 'fa fa-trash') + ' Delete', record_object, method: :delete, class: 'btn btn-lg', data: { confirm: 'Are you sure that you want to delete this ' + label.to_s + '?', confirm_title: 'Confirm delete' }, title: 'Delete' %>
+        </div>
+      </div>
+
+      <%  attributes.each do |attribute|
+            
+            if attribute.kind_of?(Array)
+              label = attribute[1]
+              attribute = attribute[0]
+            else
+              label = attribute.to_s.humanize
+            end
+
+            next if ( attribute == 'id' ||
+                      attribute == 'created_at' ||
+                      attribute == 'updated_at' )
+
+            value = SharedViews.resolve_value_for record_object, attribute
+%>
+            <%= render partial: 'shared/show/inline_labelled_text', locals: {label: label, text: value} %>
+
+      <% end %>
+
+    </div>
+  </div>
+</div>
+
+
+

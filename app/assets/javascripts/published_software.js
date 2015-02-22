@@ -1,14 +1,10 @@
 $(document).ready(function () {
-    $('.hide-detail-button').hide();
     $('.blueprint-details-dropdown-body').hide();
-    $('.show-detail-button').click(function () {
-      $(this).parent().find('.show-detail-button').hide();
-      $(this).parent().find('.hide-detail-button').show();
-      $(this).parent().find('.blueprint-details-dropdown-body').show();
+    $(this).find('.toggle-blueprint-button-up-caret').hide();
+    $('.toggle-blueprint-button').click(function () {
+      $(this).find('.toggle-blueprint-button-down-caret').toggle();
+      $(this).find('.toggle-blueprint-button-up-caret').toggle();
+      $(this).parent().parent().parent().find('.blueprint-details-dropdown-body').slideToggle();
     });
-    $('.hide-detail-button').click(function () {
-      $(this).parent().find('.hide-detail-button').hide();
-      $(this).parent().find('.show-detail-button').show();
-      $(this).parent().find('.blueprint-details-dropdown-body').hide();
-    });
+
 });

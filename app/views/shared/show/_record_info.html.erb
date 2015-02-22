@@ -1,0 +1,22 @@
+<%  align = ( align.present? && align.to_sym == :right ) ? 'pull-right' : ''
+    button_size ||= :large
+
+    if button_size.to_sym == :large
+      link_html_class = "btn btn-lg"
+    elsif button_size.to_sym == :small
+      link_html_class = "btn btn-sm"
+    else
+      link_html_class = "btn"
+    end
+%>
+
+<div class="btn-group">
+  <a class="<%= link_html_class %> dropdown-toggle" title="Record info" type="button" data-toggle="dropdown">
+    <i class="fa fa-info"></i>
+  </a>
+  <ul class="dropdown-menu <%= align %>" role="menu">
+    <%= render partial: 'shared/show/labelled_text', locals: {object: record_object, label: 'ID', field: :id, offset: 0, width: 12, buffer: 0, row_class: 'record-data-dropdown-row' } %>
+    <%= render partial: 'shared/show/labelled_text', locals: {object: record_object, value: distance_of_time_in_words_to_now(record_object.created_at) + ' ago', label: 'Created', field: :created_at, offset: 0, row_class: 'record-data-dropdown-row' } %>
+    <%= render partial: 'shared/show/labelled_text', locals: {object: record_object, value: distance_of_time_in_words_to_now(record_object.updated_at) + ' ago', label: 'Updated', field: :updated_at, offset: 0, row_class: 'record-data-dropdown-row' } %>
+  </ul>
+</div>

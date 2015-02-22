@@ -1,0 +1,20 @@
+<%  field ||= :inspect
+    text ||= false
+    object ||= nil
+    value ||= text || (object.send(field) if object.present?) || ''
+    label ||= field.to_s.humanize.capitalize
+    offset ||= 4
+    width ||= (12 - offset.to_i)
+    row_class ||= nil
+ %>
+
+<div class="row <%= row_class %>">
+  <div class="col-sm-offset-<%= offset %> col-sm-<%= width %> clearfix">
+    <label class="control-label no-text-wrap show-labelled-text-label">
+      <%= label %>&nbsp;
+    </label>
+    <div class="show-labelled-text-value">
+      <%= value %>&nbsp;
+    </div>
+  </div>
+</div>

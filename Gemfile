@@ -4,11 +4,16 @@ source 'https://rubygems.org'
 #gem 'thin'
 
 gem 'git'
-gem 'sqlite3'
+
+
 gem 'devise'
 gem 'bootstrap3-rails'
-gem 'font-awesome-rails'
+gem 'font-awesome-rails', '4.3.0'
 gem 'paperclip'
+
+gem 'acts_as_commentable_with_threading'
+
+gem 'sqlite3'
 gem 'mysql2'
 gem 'rake'
 

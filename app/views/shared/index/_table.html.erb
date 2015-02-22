@@ -1,0 +1,61 @@
+<%  items ||= []
+    model_name = items.model_name.to_s
+    label ||= model_name.humanize
+    new_item_path ||= [:new, model_name.underscore]
+    attributes ||= items.model.column_names %>
+
+<table class="table table-condensed top-gap">
+  <tr>
+    <%  attributes.each do |attribute| 
+          if attribute.kind_of?(Array) 
+            label = attribute[1]
+            attribute = attribute[0] 
+          else 
+            label = attribute.to_s.humanize 
+          end
+
+          next if ( attribute == 'id' ||
+                    attribute == 'created_at' ||
+                    attribute == 'updated_at' ) %>
+      
+      <th><%= label %></th>
+
+    <% end %>
+
+<% if false %>
+    <th style="width: 30px;"></th>
+    <th style="width: 30px;"></th>
+    <th style="width: 30px;"></th>
+<% end %>
+
+  </tr>
+
+  <% items.each do |item| %>
+    <tr class='clickable-table-row' href='<%= url_for item %>'>
+      <% attributes.each do |attribute| %>
+        <% if attribute.kind_of?(Array) %>
+          <% attribute = attribute[0] %>
+        <% end %>
+
+        <%  next if ( attribute == 'id' ||
+              attribute == 'created_at' ||
+              attribute == 'updated_at' ) %>
+
+        <td style="vertical-align: middle;">
+           <%= SharedViews.resolve_value_for item, attribute %>
+        </td>
+      <% end %>
+
+<% if false %>
+      <td>
+        <%= render partial: 'shared/show/record_info', locals: {item: item, align: :right, button_size: :large} %>
+      </td>
+      <td><%= link_to content_tag(:i , nil, class: 'fa fa-edit'), [:edit, item], class: 'btn btn-lg' %></td>
+      <td>
+        <%= link_to content_tag(:i , nil, class: 'fa fa-trash'), item, method: :delete, data: { confirm: 'Are you sure that you want to destroy this ' + label + '?' , title: 'Delete' }, class: 'btn btn-lg' %>
+      </td>
+<% end %>
+
+    </tr>
+  <% end %>
+</table>

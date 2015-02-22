@@ -1,0 +1,21 @@
+<div class="col-sm-12 text-center">
+  <%= image_tag("engines_logo.png", class: "home-page-logo-holder") %>
+</div>
+
+<div class="col-sm-12 top-gap">
+  <div class="jumbotron">
+    <h2>Engines makes it easy to run servers</h2>
+    <p>
+      Host web applications for personal and business use.
+    </p>
+    <% if current_user.nil? %>
+      <p>
+        <%= link_to((content_tag(:i, '', class: 'fa fa-user-plus').html_safe + " Not registered? Sign up here..."), user_registration_path, class: "btn btn-lg btn-primary") %>
+      </p>
+    <% end %>
+  </div>
+</div>
+
+<div class="col-sm-12 top-gap text-center">
+  <%= link_to(content_tag(:i, '', class: 'fa fa-th-list') + " Software library", published_softwares_path, class: "btn btn-lg btn-default", id: "home-page-software-library-button") %>
+</div>

@@ -1,0 +1,17 @@
+<%  record_object ||= nil
+    if record_object
+      record_class_name = record_object.class.to_s.underscore
+      label ||= record_class_name.humanize
+      offset ||= offset
+      width ||= width
+      buffer ||= buffer
+      new_record_path ||= [:new, record_class_name]
+      attributes ||= nil
+%>
+
+  <%= form_for record_object do |f| %>
+    <%= render partial: 'shared/form/default_fields', locals: {f: f, attributes: attributes, label: label, offset: offset, width: width, buffer: buffer} %>
+    <%= render 'shared/form/cancel_and_submit_buttons', f: f, cancel_path: record_object  %>
+  <% end %>
+
+<% end %>

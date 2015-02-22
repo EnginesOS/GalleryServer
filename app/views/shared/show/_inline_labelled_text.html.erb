@@ -1,0 +1,19 @@
+<%  field ||= :inspect
+    text ||= false
+    object ||= nil
+    value ||= text || (object.send(field) if object.present?) || ''
+    label ||= field.to_s.humanize.capitalize
+ %>
+
+<div class="row">
+  <div class="col-sm-4">
+    <label class="control-label no-text-wrap pull-right pull-left-on-collapse show-labelled-text-label">
+      <%= label %>
+    </label>
+  </div>
+  <div class="col-sm-8">
+    <div class="default-show-value show-labelled-text-value">
+      <%= value %> &nbsp;
+    </div>
+  </div>
+</div>

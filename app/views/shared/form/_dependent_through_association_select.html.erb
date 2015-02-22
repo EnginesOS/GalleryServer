@@ -1,0 +1,27 @@
+<% through_field = through.to_s + '_id'
+  through_field_html_id = f.object.class.to_s.underscore + '_' + through_field
+  through_model = through.to_s.camelcase.constantize
+  dependent_field = name.to_s + '_id'
+  dependent_model = name.to_s.camelcase.constantize
+
+  through_label ||= through.to_s.humanize
+
+  through_collection = through_model.all.collect {|l| [ l.name, l.id ] } %>
+
+<%= render partial: 'shared/form/select', locals: {name: through_field, label: through_label, collection: through_collection, f: f } %>
+
+<% through_model.all.each do |object| 
+
+  label = object.name + ' ' + name.to_s
+  collection = dependent_model.where(through_field => object.id.to_s).collect {|l| [ l.name, l.id ] }
+  dependent = [through_field_html_id, object.id.to_s] %>
+
+  <%= render partial: 'shared/form/select', locals: {name: dependent_field, label: label, collection: collection, f: f, dependent: dependent } %>
+
+<% end %>
+
+
+
+
+
+

@@ -1,6 +1,6 @@
 class PublishedSoftwaresController < ApplicationController
 
-  before_action :authenticate_admin!, only: [:new, :creaste, :edit, :update, :destroy]
+  before_action :authenticate_admin!, only: [:create, :edit, :update, :destroy]
 
   def new
     @published_software = PublishedSoftware.new
@@ -31,6 +31,10 @@ class PublishedSoftwaresController < ApplicationController
     respond_to do |format|
       format.json { render json: @published_software }
       format.html {}
+    end
+    @comments = @published_software.root_comments
+    if current_user
+      @comment = Comment.build_from( @published_software, current_user.id, nil )
     end
   end
 

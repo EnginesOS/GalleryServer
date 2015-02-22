@@ -1,0 +1,17 @@
+<%  record_object ||= nil
+    model_name = record_object.class.to_s
+    cancel_path = [model_name.pluralize.underscore]
+    attributes ||= nil
+    page_title ||= model_name.underscore.humanize
+    fa ||= false
+    as ||= :panel %>
+
+<div class="col-sm-12">
+
+  <h2><% if fa %><%= content_tag(:i , nil, class: "fa fa-#{fa}") + ' ' %><% end %><%= page_title %></h2>
+
+  <%= link_to content_tag(:i, "", class: "fa fa-arrow-left") + ' Back', cancel_path, class: "btn btn-warning btn-lg trigger-response-modal" %>
+
+  <%= render partial: "shared/show/#{as}", locals: {record_object: record_object, attributes: attributes} %>
+
+</div>

@@ -1,0 +1,69 @@
+<%  record ||= f.object
+    offset ||= 2
+    width ||= 8
+    buffer ||= 2
+    record_class = record.class
+    record_class_name = record_class.to_s
+    label ||= record_class_name.underscore.humanize
+    new_record_path ||= [:new, record_class_name.underscore]
+    nest_in ||= false
+
+    has_many_associations ||= record_class.reflect_on_all_associations(:has_many).map(&:name)
+    has_one_associations ||= record_class.reflect_on_all_associations(:has_one).map(&:name)
+    belongs_to_associations ||= record_class.reflect_on_all_associations(:belongs_to).map(&:name)
+    belongs_to_fields = belongs_to_associations.map{|association| (association.to_s + '_id').to_sym}
+
+    attributes ||= (record_class.column_names.map(&:to_sym) - [:id, :created_at, :updated_at]).
+      reject do |attribute| 
+        nest_in && attribute == (nest_in.to_s.underscore + '_id').to_sym ||
+        attribute.to_s.last(12) == '_consumer_id' ||
+        attribute.to_s.last(14) == '_consumer_type'
+      end.
+      map do |attribute|
+        belongs_to_fields.include?(attribute) ? attribute.to_s.chomp('_id').to_sym : attribute
+      end
+
+     %>
+
+<%  attributes.each do |attribute|
+    
+    if attribute.kind_of?(Array)
+      label = attribute[1]
+      attribute = attribute[0]
+    else
+      label = attribute.to_s.humanize
+    end
+
+    if record_class.reflect_on_association(attribute) %>
+
+      <%= render partial: 'shared/form/association_select', locals: {f: f, name: attribute, label: label, offset: offset, width: width, buffer: buffer, nest_in: nest_in } %>
+ <% else
+      attribute_object = record_class.columns_hash[attribute.to_s]
+      if attribute_object
+        attribute_type = attribute_object.type
+      else
+        attribute_object = 'WTF!'
+      end
+
+      field_type = case attribute_type
+        when :boolean
+          'checkbox'
+        when :date
+          'date_field'
+        when :datetime
+          'datetime_field'
+        when [:decimal, :float, :integer, :binary].include?(attribute_type)
+          'number_field'
+        when :time || :timestamp
+          'time_field'
+        when :text
+          'text_area'
+        else
+          'text_field'
+        end
+
+%>
+
+    <%= render partial: "shared/form/#{field_type}", locals: {f: f, name: attribute, label: label, offset: offset, width: width, buffer: buffer, nest_in: nest_in } %>
+<%  end
+end %>

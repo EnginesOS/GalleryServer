@@ -1,0 +1,10 @@
+<%  offset ||= 0
+    width ||= 12
+    buffer ||= 0
+    label ||= nil
+    attributes ||= nil
+    nest_in ||= false
+%>
+
+<%= render partial: 'shared/form/default_fields', locals: {f: f, attributes: attributes, label: label, offset: offset, width: width, buffer: buffer, nest_in: nest_in} %>
+

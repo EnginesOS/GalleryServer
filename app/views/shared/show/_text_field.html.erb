@@ -1,0 +1,21 @@
+<%  field ||= :inspect
+    value ||= object.send(field)
+    label ||= field.to_s.humanize.capitalize
+    offset ||= 2
+    width ||= 8
+    buffer ||= 2 %>
+
+<div class="col-sm-<%= width %> col-sm-offset-<%= offset %>">
+  <div class="form-group">
+    <label class="control-label">
+      <%= label %>
+    </label>
+    <div class="well well-sm">
+      <%= value %>
+    </div>
+  </div>
+</div>
+
+<div class="col-sm-<%= buffer %>">
+  &nbsp;
+</div>

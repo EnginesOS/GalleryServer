@@ -1,0 +1,49 @@
+<%  association ||= nil
+    attributes ||= nil
+    label ||= association.to_s.humanize
+    partial ||= nil
+    nest_in ||= false
+
+    if partial
+      partial_with_path = partial
+    else 
+      parent_partial = association.to_s.singularize + '_fields'
+      parent_class_name = f.object.class.to_s.underscore
+      parent_partial_file = "#{parent_class_name}/_#{parent_partial}.html.erb"
+      parent_partial_with_path = "#{parent_class_name}/#{parent_partial}"
+
+      association_partial = association.to_s.singularize + '_fields'
+      association_class_name = f.object.class.to_s.underscore
+      association_partial_file = "#{association_class_name}/_#{association_partial}.html.erb"
+      association_partial_with_path = "#{association_class_name}/#{association_partial}"
+
+      default_partial_with_path = 'shared/form/default_nested_fields'
+
+      if File.exists?(Rails.root.join("app", "views", parent_partial_file))
+        partial_with_path = parent_partial_with_path
+      elsif File.exists?(Rails.root.join("app", "views", association_partial_file))  
+        partial_with_path = association_partial_with_path
+      else
+        partial_with_path = default_partial_with_path
+      end
+%>
+
+<div class="col-sm-8 col-sm-offset-2 nested-fields">
+  <div class="panel panel-default">
+    <div class="panel-heading clearfix">
+      <div class="btn-group pull-right">
+        <a href="#" type="button" class="btn btn-lg dropdown-toggle" title="Delete" data-toggle="dropdown">
+          <%= content_tag(:i , nil, class: 'fa fa-trash') %><span class="caret"></span>
+        </a>
+        <ul class="dropdown-menu" role="menu">
+          <li><%= link_to_remove_association "Delete #{label.singularize}", f, title: "Delete #{label.singularize}", class: "btn-lg" %></li>
+        </ul>
+      </div>
+    </div>
+    <div class="panel-body">
+        <%= render partial_with_path, f: f, nest_in: nest_in, attributes: attributes %>
+    </div>
+  </div>
+</div>
+
+<% end %>

@@ -1,7 +1,7 @@
-<!-- <div class="col-md-12">
-  <h1><%= content_tag(:i, '', class: 'fa fa-th-list') %> Software</h1>
+<div class="col-sm-12">
+  <h1><%= content_tag(:i, '', class: 'fa fa-th-list') %> Software library</h1>
 </div>
- -->
+
  
 <div class="top-gap">
   <div class="col-sm-6 index-view-action">
@@ -24,9 +24,9 @@
   </div> 
 </div> 
 
-<div class="published-softwares-list">
+<div class="published-softwares-list top-gap">
   <% @published_softwares.sort_by{|b| b["full_name"] }.each do |published_software| %>
-    <div class="published-software-row">
+    <div class="published-software-row" onclick="location.href='<%= published_software_path(published_software) %>';">
       <% if admin_signed_in? %>
         <%= render 'index_actions', published_software: published_software %>
       <% end %>

@@ -1,12 +1,15 @@
-<div class="col-md-12">
-<!--   <h1><%= @published_software.to_s %></h1>
- -->
+<div class="col-sm-12">
   <% if admin_signed_in? %>
     <div class="top-gap">
-      <%= render 'show_actions', published_software: @published_software %>
+      <%= render 'published_softwares/admin_show_actions', published_software: @published_software %>
     </div>
   <% end %>
   <div class="top-gap">
-    <%= render 'presenter', published_software: @published_software %>
+    <%= render 'published_softwares/show_actions', published_software: @published_software %>
   </div>
+  <div class="top-gap">
+    <%= render 'published_softwares/presenter', published_software: @published_software %>
+  </div>
+  <%= render 'published_softwares/blueprint', published_software: @published_software %>
+  <%= render 'published_softwares/reviews', published_software: @published_software %>
 </div>
