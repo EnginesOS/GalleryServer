@@ -1,19 +1,12 @@
-
-<table>
-	<% if   @published_software.image_url !=nil  &&@published_software.image_url.length >1 %>
-	<tr><td rowspan =6><img src=<%= @published_software.image_url %>></td></tr>
-	<%end%>
- <tr>
-  <td><%= @published_software.short_name %></td> </tr><tr>
-  <td><%= @published_software.full_name %></td></tr><tr>
-  <td><%= @published_software.description %></td></tr><tr>
-  <td><a href=<%= @published_software.home_page %>><%= @published_software.home_page %></a></td></tr><tr>
- 
-    <td><%= @published_software.repository%></td>
-    
- </tr>
-</table>
-
-<%= link_to 'Published Software', published_softwares_path %>
-
-   
+<div class="col-md-12">
+<!--   <h1><%= @published_software.to_s %></h1>
+ -->
+  <% if admin_signed_in? %>
+    <div class="top-gap">
+      <%= render 'show_actions', published_software: @published_software %>
+    </div>
+  <% end %>
+  <div class="top-gap">
+    <%= render 'presenter', published_software: @published_software %>
+  </div>
+</div>

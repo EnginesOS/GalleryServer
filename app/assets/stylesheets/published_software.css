@@ -1,0 +1,47 @@
+.published-software-row {
+  padding-top: 20px;
+  border-top: 1px solid #eee;
+  margin-top: 10px;
+  padding-bottom: 10px;
+}
+
+.published-software-text {
+  font-size: 18px;
+}
+
+.gallery-info .published-software-title {
+  font-size: 36px;
+}
+
+.published-software-title {
+  font-size: 24px;
+}
+
+.published-software-icon-holder {
+  display: inline-block;
+  vertical-align: top;
+}
+
+.published-software-icon {
+  max-height: 64px;
+  border-radius: 5px;
+  vertical-align: top;
+}
+
+.blueprint-info-body {
+  display: inline-block;
+  vertical-align: top;
+}
+
+.blueprint-details-dropdown-body {
+  padding: 10px;
+  margin-top: 10px;
+  background-color: #bdf;
+  border-radius: 5px;
+  box-shadow: 0 6px 12px rgba(0, 0, 0, .175);
+}
+
+.index-view-action {
+  margin-top: 10px;
+}
+

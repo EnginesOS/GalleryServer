@@ -1,0 +1,55 @@
+<div class="gallery-info">
+  <% if published_software.icon.exists? %>
+    <div class="published-software-icon-holder">
+      <img src=<%= published_software.icon.url %> class="published-software-icon">
+    </div>
+  <% end %>
+  <% if published_software.title.present? %>
+    <div class="published-software-title">
+      <%= published_software.title %>
+    </div>
+  <% end %>
+  <% if published_software.detail.present? %>
+    <div class="published-software-text">
+      <%= published_software.detail %>
+    </div>
+  <% end %>
+</div>
+
+
+<div class="blueprint-details-dropdown">
+
+  <a class="show-detail-button btn btn-default btn-lg">
+    <i class='fa fa-info'></i> Blueprint <i class='fa fa-caret-down'></i>
+  </a>
+  <a class="hide-detail-button btn btn-default btn-lg">
+    <i class='fa fa-info'></i>  Blueprint <i class='fa fa-caret-up'></i>
+  </a>
+
+  <div class='blueprint-details-dropdown-body'>
+    <% if published_software.icon_url_from_repository.present? %>
+      <div class="published-software-icon-holder">
+        <img src=<%= published_software.icon_url_from_repository %> class="published-software-icon">
+      </div>
+    <%end%>
+    <div class="blueprint-info-body">
+      <% if published_software.name_from_repository.present? %>
+        <div class="published-software-title">
+          <%= published_software.name_from_repository %>
+        </div>
+      <% end %>
+      <% if published_software.description_from_repository.present? %>
+        <div class="published-software-text">
+          <%= published_software.description_from_repository %>
+        </div>
+      <% end %>
+      <% if published_software.website_from_repository.present? %>
+        <div class="published-software-text">
+          <a href=<%= published_software.website_from_repository %>><i class="fa fa-globe"></i> <%= published_software.website_from_repository %></a>
+        </div>
+      <% end %>
+    </div>
+
+  </div>
+</div>
+

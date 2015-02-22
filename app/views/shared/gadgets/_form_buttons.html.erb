@@ -1,0 +1,14 @@
+<div class="form-group top-gap">
+    <div class="btn-group pull-left"> 
+      <a href="<%= f.object.new_record? ? eval(f.object.class.model_name.plural + '_path') : eval(f.object.class.model_name.to_s.underscore + '_path(@' + f.object.class.model_name.to_s.underscore + ')') %>" class="btn btn-lg btn-warning trigger-response-modal" role="button">
+        <i class="fa fa-times"></i>
+        Cancel
+    </a>    
+    </div>
+    <div class="btn-group pull-right">
+        <button type="submit" class="btn btn-lg btn-primary trigger-response-modal">
+          <i class="fa fa-check"></i>
+          <%= (f.object.new_record? ? 'Create' : 'Update') + ' ' + f.object.class.model_name.human.downcase %>
+        </button>
+    </div>
+</div>
