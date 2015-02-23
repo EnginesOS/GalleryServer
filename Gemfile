@@ -13,9 +13,16 @@ gem 'paperclip'
 
 gem 'acts_as_commentable_with_threading'
 
-# gem 'sqlite3'
-gem 'mysql2'
+group :development do
+  gem 'sqlite3'
+end
+
+group :production do
+  gem 'mysql2'
+end
+
 gem 'rake'
+
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.1.1'
