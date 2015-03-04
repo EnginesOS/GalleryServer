@@ -1,18 +1,5 @@
 <%= form_for @published_software do |f| %> 
-
-  <p>
-    <%= f.label :title %>
-    <%= f.text_field :title, class: 'form-control form-control-lg'  %>
-  </p>
-  <p>
-    <%= f.label :detail %>
-    <%= f.text_area :detail, class: 'form-control form-control-lg'  %>
-  </p>
-  <p>
-    <%= f.label :repository_url, 'Repository URL' %>
-    <%= f.text_field :repository_url, class: 'form-control form-control-lg' %>
-  </p>
-
-  <%= render partial: 'shared/gadgets/form_buttons', locals: { f: f } %>
-
+  <%= render 'shared/form/errors', f: f %>
+  <%= render 'shared/form/default_fields', f: f, attributes: [:title, :detail, :repository_url] %>
+  <%= render 'shared/form/cancel_and_submit_buttons', f: f  %>
 <% end %>

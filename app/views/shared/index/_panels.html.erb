@@ -3,10 +3,16 @@
     label ||= model_name.humanize
     new_item_path ||= [:new, model_name.underscore]
     attributes ||= nil
-    page_title ||= label.pluralize
-    fa ||= false %>
+    page_title ||= label.pluralize %>
 
-<div class="top-gap">
+<div class="col-sm-12 top-gap">
+
+  <% if items.empty? %>
+    <div>
+      None
+    </div>
+  <% end %>
+
   <% items.each do |item| %>
 
     <%= render partial: "shared/show/panel", locals: {record_object: item, attributes: attributes} %>

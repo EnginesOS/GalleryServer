@@ -1,0 +1,10 @@
+<%  case value
+      when TrueClass %>
+        <i class="fa fa-check"></i>
+<%    when FalseClass %>
+        <i class="fa fa-times"></i>
+<%    when ActiveSupport::TimeWithZone %>
+        <%= distance_of_time_in_words_to_now(value) + ' ago' %>
+<%    else %>
+        <%= value %>
+<%  end %>

@@ -1,8 +1,8 @@
 .home-page-logo-holder {
-  width: 75%;
-  max-width: 750px; 
+  width: 50%;
+  max-width: 500px; 
 }
 
-#home-page-software-library-button {
+#home-page-software-gallery-button {
   font-size: 30px;
 }

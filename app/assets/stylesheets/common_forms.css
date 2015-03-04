@@ -1,15 +1,31 @@
-.form-control.form-control-lg {
+.form-field-hint {
+  padding-left: 10px;
+  font-size: 90%;
+}
+
+.form-field-errors {
+  padding-left: 10px;
+  color: #f00;
+  font-style: italic;
+  font-size: 90%;
+}
+
+
+.selectize-input {
+  height: 44px;
   font-size: 18px;
   padding: 10px 16px;
-  line-height: 1.33;
-  border-radius: 6px;
-  height: 45px;
 }
 
-textarea.form-control.form-control-lg {
-  height: 100px;
+.selectize-input .item{
+  padding-top: 2px;
 }
 
+.selectize-dropdown-content {
+  line-height: 44px;
+  font-size: 18px;
+  padding: 10px 16px;
+}
 
 .form-image-control {
   margin-bottom: 10px;
@@ -34,32 +50,25 @@ textarea.form-control.form-control-lg {
   border-radius: 5px;
 }
 
-.radio_button_collection_item{
-  display: block;
-  margin-bottom: 5px;
+.field_with_errors label {
+  color: #F00;
 }
 
-.radio_button_collection_item label{
-/*  font-weight: normal;
+.field_with_errors input {
+  border-color: #F00;
+}
+
+.field_with_errors textarea {
+  border-color: #F00;
+}
+
+.error-well {
+  background-color: #FEE;
+  border-color: #F00;
+}
+
+.form-text-lg {
   font-size: 18px;
-  color: #555;
-*/
-  vertical-align: top;
-  padding-left: 5px;
-}
-
-input[type="radio"], input[type="checkbox"] {
-  vertical-align: top;
-  margin-top: 0px;
-}
-
-input[type="radio"] {
-  width:1.5em;
-  height:1.5em;
-}
-
-input[type="checkbox"] {
-  width:1.2em;
-  height:1.2em;
-}
+  font-weight: normal;
+};
 

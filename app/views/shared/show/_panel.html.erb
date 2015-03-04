@@ -1,45 +1,56 @@
 <%  record_object ||= nil
+    nest_in ||= nil
+    show_all_associations ||= false
     model_name = record_object.class.to_s
     label ||= model_name.to_s.underscore.humanize
     # new_record_object_path ||= [:new, model_name.underscore]
-    attributes ||= record_object.attributes.keys %>
+    attributes ||= record_object.class.column_names.
+                      reject do |attribute|
+                        ['id', 'created_at', 'updated_at'].include?(attribute)
+                      end.
+                      reject do |attribute|
+                        attribute.ends_with?('_consumer_type')
+                      end.
+                      map do |attribute|
+                        attribute.sub(/_id\z/, '')
+                      end
+    if show_all_associations
+      attributes += record_object.class.reflect_on_all_associations(:has_many).map(&:name) + 
+                      record_object.class.reflect_on_all_associations(:has_one).map(&:name)
+    end
+    association_label_method ||= :to_label %>
 
-<div class="top-gap">
-  <div class="panel panel-default">
-    <div class="panel-body">
+<div class="panel panel-info top-gap">
+  <div class="panel-heading clearfix">
+    <div class="col-sm-12">
+      <%= render partial: 'shared/show/record_info', locals: {record_object: record_object} %>
 
-      <div class="col-sm-12">
-        <%= render partial: 'shared/show/record_info', locals: {record_object: record_object} %>
-
-        <div class="pull-right">
-          <%= (link_to content_tag(:i , nil, class: 'fa fa-arrow-right') + ' Show', record_object, class: 'btn btn-lg trigger-response-modal', title: 'Open record') if params['action'] == 'index' %>
-          <%= link_to content_tag(:i , nil, class: 'fa fa-edit') + ' Edit', [:edit, record_object], class: 'btn btn-lg trigger-response-modal', title: 'Edit record' %>
-          <%= link_to content_tag(:i , nil, class: 'fa fa-trash') + ' Delete', record_object, method: :delete, class: 'btn btn-lg', data: { confirm: 'Are you sure that you want to delete this ' + label.to_s + '?', confirm_title: 'Confirm delete' }, title: 'Delete' %>
-        </div>
+      <div class="pull-right">
+        <%= (link_to content_tag(:i , nil, class: 'fa fa-arrow-right') + ' Show', record_object, class: 'btn btn-lg trigger-response-modal', title: 'Open record') if params['action'] == 'index' %>
+        <%= link_to content_tag(:i , nil, class: 'fa fa-edit') + ' Edit', [:edit, record_object], class: 'btn btn-lg trigger-response-modal', title: 'Edit record' %>
+        <%= link_to content_tag(:i , nil, class: 'fa fa-trash') + ' Delete', record_object, method: :delete, class: 'btn btn-lg', data: { confirm: 'Are you sure that you want to delete this ' + label.to_s + '?', confirm_title: 'Confirm delete' }, title: 'Delete' %>
       </div>
-
-      <%  attributes.each do |attribute|
-            
-            if attribute.kind_of?(Array)
-              label = attribute[1]
-              attribute = attribute[0]
+    </div>
+  </div>
+  <div class="panel-body">
+    <%  attributes.each do |attribute|
+          if attribute.kind_of?(Array)
+            label = attribute[1]
+            attribute = attribute[0]
+          else
+            if record_object.class.reflect_on_all_associations.select{|association| association.options[:polymorphic]}.map(&:name).include? attribute.to_sym
+                label = record_object.send(attribute.to_s + '_type').humanize
             else
               label = attribute.to_s.humanize
             end
+          end
+    %>
 
-            next if ( attribute == 'id' ||
-                      attribute == 'created_at' ||
-                      attribute == 'updated_at' )
-
-            value = SharedViews.resolve_value_for record_object, attribute
-%>
-            <%= render partial: 'shared/show/inline_labelled_text', locals: {label: label, text: value} %>
-
-      <% end %>
-
+    <div class="row">
+      <%= render 'shared/show/inline_labelled_text', label: label, object: record_object, field: attribute, nest_in: nest_in, association_label_method: association_label_method %>
     </div>
+
+    <% end %>
+
   </div>
 </div>
-
-
-

@@ -18,11 +18,12 @@
 
   <%= f.fields_for association do |ff| %>
 
-    <%= render 'shared/form/nested_fields', f: ff, nest_in: nest_in, association: association, attributes: attributes, label: label %>
-
-    <div class="col-sm-8 col-sm-offset-2 clearfix">
-      <%= link_to_add_association (content_tag(:i, nil, class: "fa fa-plus") + " Add"), f, association, class: "btn btn-primary btn-lg pull-right", partial: 'shared/form/nested_fields', render_options: { locals: {nest_in: nest_in, association: association, attributes: attributes, label: label }} %>
-    </div>
+   <%= render 'shared/form/nested_fields', f: ff, nest_in: nest_in, association: association, attributes: attributes, label: label %>
 
   <% end %>
+
+  <div class="col-sm-8 col-sm-offset-2 clearfix">
+    <%= link_to_add_association (content_tag(:i, nil, class: "fa fa-plus") + " Add " + label.singularize), f, association, class: "btn btn-default btn-lg add-nested-fields-button pull-right", partial: 'shared/form/nested_fields', render_options: { locals: {nest_in: nest_in, association: association, attributes: attributes, label: label }} %>
+  </div>
+
 <% end %>

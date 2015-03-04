@@ -1,5 +1,6 @@
 .navbar {
   font-size: 20px;
+  margin-bottom: 0px;
 }
 
 .navbar-brand {
@@ -15,6 +16,14 @@
   font-size: inherit;
 }
 
-/*.flash-notice-area {
+.navbar-buffer {
   margin-top: 50px;
-}*/
+}
+
+.navbar-default .navbar-nav > li > a.dropdown-toggle {
+  background-color: #f8f8f8;
+}
+
+.navbar-default .navbar-nav > li > a.dropdown-toggle:hover {
+  background-color: #f8f8f8;
+}

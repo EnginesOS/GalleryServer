@@ -11,7 +11,7 @@ $(document).ready(function(){
           $(this).parent().addClass("top-gap");
       });
       $(".devise-view a").each( function(){
-          $(this).addClass("btn btn-default top-gap trigger-response-modal");
+          $(this).addClass("btn btn-default btn-sm top-gap trigger-response-modal");
       });
       $()
 

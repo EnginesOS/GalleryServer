@@ -6,14 +6,14 @@
 
   through_label ||= through.to_s.humanize
 
-  through_collection = through_model.all.collect {|l| [ l.name, l.id ] } %>
+  through_collection = through_model.all.collect {|l| [ (l.respond_to?(:to_label) ? l.to_label : l.to_s), l.id ] } %>
 
 <%= render partial: 'shared/form/select', locals: {name: through_field, label: through_label, collection: through_collection, f: f } %>
 
 <% through_model.all.each do |object| 
 
-  label = object.name + ' ' + name.to_s
-  collection = dependent_model.where(through_field => object.id.to_s).collect {|l| [ l.name, l.id ] }
+  label = object.to_label + ' ' + name.to_s
+  collection = dependent_model.where(through_field => object.id.to_s).collect {|l| [ (l.respond_to?(:to_label) ? l.to_label : l.to_s), l.id ] }
   dependent = [through_field_html_id, object.id.to_s] %>
 
   <%= render partial: 'shared/form/select', locals: {name: dependent_field, label: label, collection: collection, f: f, dependent: dependent } %>

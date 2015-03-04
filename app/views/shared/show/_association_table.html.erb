@@ -1,0 +1,32 @@
+<%  items ||= record_object.send( association )
+    nest_routes ||= false
+    nest_in ||= record_object.class.name.underscore.to_sym
+    fa ||= false
+    attributes ||= nil
+    show_add_button = true if show_add_button.nil?
+
+    # show_in ||= nil
+    id_field_name = (record_object.class.name.underscore + "_id").to_sym
+
+    label ||= association.to_s.humanize
+
+    new_item_path ||= url_for ( if nest_routes
+                                  [ :new, record_object, association.to_s.singularize ]
+                                else
+                                  [ :new, association.to_s.singularize, id_field_name => record_object.id ]
+                                end )
+%>
+
+<div class="col-sm-12">
+  <div id="<%= association %>" class="panel panel-info">
+    <div class="panel-body">
+      <div class="col-sm-12">
+        <h3><% if fa %><%= content_tag(:i , nil, class: "fa fa-#{fa}") + ' ' %><% end %><%= label %></h3>
+        <% if show_add_button %>
+          <%= link_to (content_tag(:i, nil, class: 'fa fa-plus').html_safe + " Add"), new_item_path, class: "btn btn-primary trigger-response-modal" %>
+        <% end %>
+      </div>
+      <%= render 'shared/index/table', items: items, nest_routes: nest_routes, nest_in: nest_in, attributes: attributes %>
+    </div>
+  </div>
+</div>

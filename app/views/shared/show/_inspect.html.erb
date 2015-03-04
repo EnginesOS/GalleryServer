@@ -1,0 +1,14 @@
+<%  # record_object as ActiveRecord object
+    # json_method as string or sym
+    # fa as string or sym
+
+    inspect_method ||= :as_json
+%>
+
+<div class="top-gap">
+  <div class="panel panel-info">
+    <div class="panel-body">
+      <%= (ap record_object.send(inspect_method), plain: true, index: false).html_safe %>
+    </div>
+  </div>
+</div>

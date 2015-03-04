@@ -14,11 +14,6 @@
     belongs_to_fields = belongs_to_associations.map{|association| (association.to_s + '_id').to_sym}
 
     attributes ||= (record_class.column_names.map(&:to_sym) - [:id, :created_at, :updated_at]).
-      reject do |attribute| 
-        nest_in && attribute == (nest_in.to_s.underscore + '_id').to_sym ||
-        attribute.to_s.last(12) == '_consumer_id' ||
-        attribute.to_s.last(14) == '_consumer_type'
-      end.
       map do |attribute|
         belongs_to_fields.include?(attribute) ? attribute.to_s.chomp('_id').to_sym : attribute
       end
@@ -27,43 +22,70 @@
 
 <%  attributes.each do |attribute|
     
-    if attribute.kind_of?(Array)
-      label = attribute[1]
-      attribute = attribute[0]
-    else
-      label = attribute.to_s.humanize
-    end
-
-    if record_class.reflect_on_association(attribute) %>
-
-      <%= render partial: 'shared/form/association_select', locals: {f: f, name: attribute, label: label, offset: offset, width: width, buffer: buffer, nest_in: nest_in } %>
- <% else
-      attribute_object = record_class.columns_hash[attribute.to_s]
-      if attribute_object
-        attribute_type = attribute_object.type
+      if attribute.kind_of?(Array)
+        label = attribute[1]
+        attribute = attribute[0]
       else
-        attribute_object = 'WTF!'
+        label = attribute.to_s.humanize
       end
 
-      field_type = case attribute_type
-        when :boolean
-          'checkbox'
-        when :date
-          'date_field'
-        when :datetime
-          'datetime_field'
-        when [:decimal, :float, :integer, :binary].include?(attribute_type)
-          'number_field'
-        when :time || :timestamp
-          'time_field'
-        when :text
-          'text_area'
+      if record_class.reflect_on_association(attribute)
+
+        if record_class.reflect_on_association(attribute).options[:polymorphic] %>
+
+          <%= render "shared/form/hidden_field", f: f, name: (attribute.to_s + '_id') %>
+          <%= render "shared/form/hidden_field", f: f, name: (attribute.to_s + '_type') %>
+
+    <%  elsif nest_in.to_s == attribute.to_s %>
+
+          <%= render "shared/form/hidden_field", f: f, name: (attribute.to_s + '_id') %>
+
+    <%  else %>
+
+          <% if attribute.to_s.camelcase.constantize.count < 0 %>
+            <%= render 'shared/form/association_radio_buttons', f: f, name: attribute, label: label, offset: offset, width: width, buffer: buffer, nest_in: nest_in %>
+          <% else %>
+            <%= render 'shared/form/association_select', f: f, name: attribute, label: label, offset: offset, width: width, buffer: buffer, nest_in: nest_in %>
+          <% end %>
+          
+   <%   end
+
+      else
+        attribute_detail = record_class.columns_hash[attribute.to_s]
+        if attribute_detail
+          if attribute == (nest_in.to_s.underscore + '_id').to_sym ||
+             attribute.to_s.ends_with?('_consumer_type' )
+            attribute_type = :hidden
+          else
+            attribute_type = attribute_detail.type
+          end
         else
-          'text_field'
+          attribute_detail = 'WTF!'
+        end
+
+        field_type = case attribute_type
+          when :boolean
+            'checkbox'
+          when :date
+            'date_field'
+          when :datetime
+            'datetime_field'
+          when [:decimal, :float, :integer, :binary].include?(attribute_type)
+            'number_field'
+          when :time || :timestamp
+            'time_field'
+          when :text
+            'text_area'
+          when :hidden
+            'hidden_field'
+          else
+            'text_field'
         end
 
 %>
 
     <%= render partial: "shared/form/#{field_type}", locals: {f: f, name: attribute, label: label, offset: offset, width: width, buffer: buffer, nest_in: nest_in } %>
-<%  end
-end %>
+
+<%    end
+    end
+%>

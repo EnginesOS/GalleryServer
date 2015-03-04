@@ -1,61 +1,93 @@
 <%  items ||= []
-    model_name = items.model_name.to_s
+    nest_routes ||= false
+    nest_in ||= nest_routes ? record_object : nil
+    model_class = items.first.class
+    model_name = model_class.model_name.to_s
     label ||= model_name.humanize
     new_item_path ||= [:new, model_name.underscore]
-    attributes ||= items.model.column_names %>
+    attributes ||=  if model_class.method_defined?(:to_label)
+                      [:to_label]
+                    else
+                      items.model.column_names.
+                      map{ |attribute| attribute.sub(/_id\z/, '') }.
+                      reject{ |attribute| ['id', 'created_at', 'updated_at'].include?(attribute) }.
+                      reject{ |attribute| attribute == nest_in.to_s}
+                    end
 
-<table class="table table-condensed top-gap">
-  <tr>
-    <%  attributes.each do |attribute| 
-          if attribute.kind_of?(Array) 
-            label = attribute[1]
-            attribute = attribute[0] 
-          else 
-            label = attribute.to_s.humanize 
-          end
+    show_index_actions = File.exists?(Rails.root.join("app", "views", model_name.pluralize.underscore, "_index_item_actions.html.erb"))
 
-          next if ( attribute == 'id' ||
-                    attribute == 'created_at' ||
-                    attribute == 'updated_at' ) %>
-      
-      <th><%= label %></th>
+%>
 
-    <% end %>
+<div class="col-sm-12">
+  <table class="table table-condensed top-gap">
+    <tr>
+      <%  attributes.each do |attribute| 
+            if attribute.kind_of?(Array) 
+              label = attribute[1]
+              attribute = attribute[0] 
+            else 
+              label = attribute.to_s.humanize 
+            end
+      %>
+        
+        <th>
+          <% if attribute.to_sym == :to_label %>
+            &nbsp
+          <% else %>
+            <%= label %>
+          <% end %>
+        </th>
 
-<% if false %>
-    <th style="width: 30px;"></th>
-    <th style="width: 30px;"></th>
-    <th style="width: 30px;"></th>
-<% end %>
-
-  </tr>
-
-  <% items.each do |item| %>
-    <tr class='clickable-table-row' href='<%= url_for item %>'>
-      <% attributes.each do |attribute| %>
-        <% if attribute.kind_of?(Array) %>
-          <% attribute = attribute[0] %>
-        <% end %>
-
-        <%  next if ( attribute == 'id' ||
-              attribute == 'created_at' ||
-              attribute == 'updated_at' ) %>
-
-        <td style="vertical-align: middle;">
-           <%= SharedViews.resolve_value_for item, attribute %>
-        </td>
       <% end %>
 
-<% if false %>
-      <td>
-        <%= render partial: 'shared/show/record_info', locals: {item: item, align: :right, button_size: :large} %>
-      </td>
-      <td><%= link_to content_tag(:i , nil, class: 'fa fa-edit'), [:edit, item], class: 'btn btn-lg' %></td>
-      <td>
-        <%= link_to content_tag(:i , nil, class: 'fa fa-trash'), item, method: :delete, data: { confirm: 'Are you sure that you want to destroy this ' + label + '?' , title: 'Delete' }, class: 'btn btn-lg' %>
-      </td>
-<% end %>
+      <% if show_index_actions %>
+          <th></th>
+      <% end %>
 
     </tr>
+
+    <% if items.empty? %>
+      <tr>
+        <td colspan="1000">
+          <i>none</i>
+        </td>
+      </tr>
+    <% end %>
+
+    <%  items.each do |item|
+
+          url_for_item = url_for (nest_routes ? [nest_in, item] : item) %>
+
+          <tr id="<%= item.class.name.underscore + '_' + item.id.to_s %>" class='clickable-table-row' href='<%= url_for_item %>'>
+            <% attributes.each do |attribute| %>
+              <% if attribute.kind_of?(Array) %>
+                <% attribute = attribute[0] %>
+              <% end %>
+
+              <td style="vertical-align: middle;">
+                <% value = SharedViews.resolve_value_for item, attribute #, label_method: :to_label %>
+                <%= SharedViews.value_as_html value %>
+              </td>
+            <% end %>
+            <% if show_index_actions %>
+              <td>
+                <%= render "#{model_name.pluralize.underscore}/index_item_actions", item: item %>
+              </td>
+            <% end %>
+          </tr>
+
+    <%  end %>
+
+  </table>
+</div>
+
+
+  <% if false %>
+        <td>
+          <%= render partial: 'shared/show/record_info', locals: {record_object: item, align: :right, button_size: :large} %>
+        </td>
+        <td><%= link_to content_tag(:i , nil, class: 'fa fa-edit'), [:edit, item], class: 'btn btn-lg' %></td>
+        <td>
+          <%= link_to content_tag(:i , nil, class: 'fa fa-trash'), item, method: :delete, data: { confirm: 'Are you sure that you want to destroy this ' + label + '?' , title: 'Delete' }, class: 'btn btn-lg' %>
+        </td>
   <% end %>
-</table>

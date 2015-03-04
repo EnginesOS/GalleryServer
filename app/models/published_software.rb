@@ -7,7 +7,10 @@ class PublishedSoftware < ActiveRecord::Base
 
   acts_as_commentable
 
-  def to_s
+  validates :title, :presence => true
+  validates :repository_url, :presence => true
+
+  def to_label
     title
   end
 
@@ -17,10 +20,15 @@ class PublishedSoftware < ActiveRecord::Base
 
   def load_repository_data
     blueprint = repository_handler.load_blueprint_from_repository
-    self.website_from_repository = blueprint['software']['home_page']
-    self.name_from_repository = blueprint['software']['name']
-    self.description_from_repository = blueprint['software']['description']
-    self.icon_url_from_repository = blueprint['software']['icon_url']
+    if blueprint
+      self.website_from_repository = blueprint['software']['home_page']
+      self.name_from_repository = blueprint['software']['name']
+      self.description_from_repository = blueprint['software']['description']
+      self.icon_url_from_repository = blueprint['software']['icon_url']
+      return true
+    end
+  rescue
+    return false
   end
 
   def update_icon_from_url_in_respository

@@ -10,7 +10,7 @@ class RepositoryHandler
   end
 
   def load_blueprint_from_repository
-p '$$$ Clone/load blueprint from repository'    
+p '== Clone/load blueprint from repository'    
     buildname = File.basename(repository_url)
     segments = buildname.split('.')
     buildname = segments[0]
@@ -21,11 +21,15 @@ p '$$$ Clone/load blueprint from repository'
     blueprint_file.close 
     bluePrint = JSON.parse(blueprint_json_str)
     return bluePrint
+  rescue
+    return false
   end
 
   def clone_repo(repo, buildname)
     backup_lastbuild repo
     Git.clone(repo, buildname, path: "/tmp/")
+  rescue
+    return false
   end
 
   def backup_lastbuild repo

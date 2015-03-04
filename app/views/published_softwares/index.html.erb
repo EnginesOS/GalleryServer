@@ -1,5 +1,5 @@
 <div class="col-sm-12">
-  <h1><%= content_tag(:i, '', class: 'fa fa-th-list') %> Software library</h1>
+  <h1><%= content_tag(:i, '', class: 'fa fa-th-list') %> Software</h1>
 </div>
 
  
@@ -9,7 +9,7 @@
       <div class="input-group input-group-lg">
         <div class="input-group-addon"><i class=" fa fa-search"></i></div>
           <%= text_field_tag :search, params[:search], placeholder: "Search", class: 'form-control', autofocus: true %>
-          <a href="<%= published_softwares_path %>" class="input-group-addon btn"><i class=" fa fa-list"></i> Show all</a>
+          <a href="<%= published_softwares_path %>" class="input-group-addon btn" title="Show all"><i class=" fa fa-list"></i> Show all</a>
         </div>
       </div>
     <% end %>
@@ -18,7 +18,7 @@
   <div class="col-sm-6 index-view-action">
     <div class="btn-group pull-right"> 
       <% if admin_signed_in? %>
-        <%= link_to (content_tag(:i, '', class: 'fa fa-plus') + ' Publish software'), new_published_software_path, class: 'btn btn-lg btn-primary trigger-response-modal' %>
+        <%= link_to (content_tag(:i, '', class: 'fa fa-plus') + ' Add software'), new_published_software_path, class: 'btn btn-lg btn-primary trigger-response-modal', title: 'Add software' %>
       <% end %>
     </div>
   </div> 
@@ -26,7 +26,7 @@
 
 <div class="published-softwares-list top-gap">
   <% @published_softwares.sort_by{|b| b["full_name"] }.each do |published_software| %>
-    <div class="published-software-row" onclick="location.href='<%= published_software_path(published_software) %>';">
+    <div class="published-software-row" onclick="location.href='<%= published_software_path(published_software) %>';" title="<%= published_software.title %>">
       <% if admin_signed_in? %>
         <%= render 'index_actions', published_software: published_software %>
       <% end %>

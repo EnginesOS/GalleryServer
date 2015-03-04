@@ -4,14 +4,12 @@
     offset ||= 2
     width ||= 8
     buffer ||= 2
-    nest_in ||= false
+    # nest_in ||= nil
 
     label ||= name.to_s.humanize
 
-    collection = association_model.all.collect {|l| [ l.name, l.id ] }
+    collection = association_model.all.collect {|l| [ (l.respond_to?(:to_label) ? l.to_label : l.to_s), l.id ] }
 
     %>
 
-<%= render partial: 'shared/form/select', locals: {name: association_field, label: label, collection: collection, f: f, offset: offset, width: width, buffer: buffer, nest_in: nest_in } %>
-
-
+<%= render partial: 'shared/form/select', locals: {name: association_field, label: label, collection: collection, f: f, offset: offset, width: width, buffer: buffer } %>

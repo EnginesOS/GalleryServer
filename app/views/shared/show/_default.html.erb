@@ -1,17 +1,30 @@
 <%  record_object ||= nil
-    model_name = record_object.class.to_s
-    cancel_path = [model_name.pluralize.underscore]
+    model_name = record_object.class.to_s.underscore
+    back_path ||= url_for([model_name.pluralize])
     attributes ||= nil
-    page_title ||= model_name.underscore.humanize
+    page_title ||= model_name.humanize + (record_object.respond_to?(:to_label) ? ': ' + record_object.to_label.to_s : '')
     fa ||= false
-    as ||= :panel %>
+    as ||= :panel
+    inspect_method ||= nil %>
 
-<div class="col-sm-12">
+<div class="show">
 
-  <h2><% if fa %><%= content_tag(:i , nil, class: "fa fa-#{fa}") + ' ' %><% end %><%= page_title %></h2>
+  <div class="col-sm-12 show clearfix">
 
-  <%= link_to content_tag(:i, "", class: "fa fa-arrow-left") + ' Back', cancel_path, class: "btn btn-warning btn-lg trigger-response-modal" %>
+    <h2><% if fa %><%= content_tag(:i , nil, class: "fa fa-#{fa}") + ' ' %><% end %><%= page_title %></h2>
 
-  <%= render partial: "shared/show/#{as}", locals: {record_object: record_object, attributes: attributes} %>
+    <%= link_to content_tag(:i, "", class: "fa fa-arrow-left") + ' Back', back_path, class: "btn btn-warning btn-lg trigger-response-modal" %>
+
+    <% if File.exists?(Rails.root.join("app", "views", model_name.pluralize, "_show_actions.html.erb")) %>
+      <%= render "#{model_name.pluralize}/show_actions" %>
+    <% end %>
+
+  </div>
+
+  <div class="col-sm-12 show clearfix">
+
+    <%= render partial: "shared/show/#{as}", locals: {record_object: record_object, attributes: attributes, inspect_method: inspect_method} %>
+
+  </div>
 
 </div>

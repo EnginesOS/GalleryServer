@@ -1,4 +1,4 @@
-<% cancel_path ||= f.object.new_record? ? eval(f.object.class.model_name.plural + '_path') : eval(f.object.class.model_name.to_s.underscore + '_path(@' + f.object.class.model_name.to_s.underscore + ')')
+<% cancel_path ||= f.object.new_record? ? eval(f.object.class.model_name.plural.underscore + '_path') : eval(f.object.class.model_name.to_s.underscore + '_path(@' + f.object.class.model_name.to_s.underscore + ')')
   submit_label ||= (f.object.new_record? ? 'Create' : 'Update')
   submitted_message ||= "Submitting..."
   cancelled_message ||= "Cancelling..." %>

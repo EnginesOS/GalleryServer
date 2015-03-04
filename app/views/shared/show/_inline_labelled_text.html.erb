@@ -1,19 +1,20 @@
 <%  field ||= :inspect
     text ||= false
     object ||= nil
-    value ||= text || (object.send(field) if object.present?) || ''
+    association_label_method ||= nil
+    value ||= text || (object.present? ? (SharedViews.resolve_value_for object, field, label_method: association_label_method) : '?')
     label ||= field.to_s.humanize.capitalize
+    offset ||= 4
+    width ||= (12 - offset.to_i)
  %>
 
-<div class="row">
-  <div class="col-sm-4">
-    <label class="control-label no-text-wrap pull-right pull-left-on-collapse show-labelled-text-label">
-      <%= label %>
-    </label>
-  </div>
-  <div class="col-sm-8">
-    <div class="default-show-value show-labelled-text-value">
-      <%= value %> &nbsp;
-    </div>
+<div class="col-sm-<%= offset %> clearfix">
+  <label class="control-label no-text-wrap pull-right pull-left-on-collapse show-labelled-text-label">
+    <%= label %>
+  </label>
+</div>
+<div class="col-sm-<%= width %>">
+  <div class="show-labelled-text-value">
+    <%= SharedViews.value_as_html value %> &nbsp;
   </div>
 </div>

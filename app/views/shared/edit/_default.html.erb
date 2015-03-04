@@ -1,5 +1,6 @@
 <%  record_object ||= nil
     attributes ||= nil
+    nest_in ||= nil
     record_class_name = record_object.class.to_s.underscore
     page_title ||= "Edit #{record_class_name.humanize}"
     fa ||= 'circle-o' %>
@@ -9,5 +10,5 @@
 <% if File.exists?(Rails.root.join("app", "views", record_class_name.pluralize, "_form.html.erb")) %>
   <%= render "#{record_class_name.pluralize}/form" %>
 <% else %>
-  <%= render "shared/form/default", record_object: record_object, attributes: attributes %>
+  <%= render "shared/form/default", record_object: record_object, attributes: attributes, nest_in: nest_in %>
 <% end %>
