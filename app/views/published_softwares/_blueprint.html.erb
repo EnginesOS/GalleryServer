@@ -1,17 +1,8 @@
-<div class='blueprint-details-dropdown-body'>
-  <div class="blueprint-info-body">
-    <% if published_software.name_from_repository.present? %>
-      <div class="published-software-title">
-        <%= published_software.name_from_repository %>
-      </div>
-    <% end %>
-    <div class="published-software-text">
-      <% if published_software.description_from_repository.present? %>
-        <%= published_software.description_from_repository %>
-      <% end %>
-      <% if published_software.website_from_repository.present? %>
-        <a href=<%= published_software.website_from_repository %>><i class="fa fa-globe"></i> <%= published_software.website_from_repository %></a>
-      <% end %>
-    </div>
+<div id="blueprint-panel" class="top-gap panel panel-info">
+  <div class="panel-heading">
+    <i class="fa fa-file-text"></i> Blueprint
+  </div>
+  <div class="panel-body" style="max-height: 400px;overflow-y: scroll;">
+    <%= (ap JSON.parse(published_software.blueprint), plain: true, index: false).html_safe %>
   </div>
 </div>

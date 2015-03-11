@@ -20,17 +20,17 @@
           <% end %>
 
           <div class='well'>
-            <% if published_software.icon_url_from_repository.present? %>
-              <img src=<%= published_software.icon_url_from_repository %>>
+            <% if published_software.icon_url_from_blueprint.present? %>
+              <img src=<%= published_software.icon_url_from_blueprint %>>
             <%end%>
-            <% if published_software.name_from_repository.present? %>
-              <%= published_software.name_from_repository %><br>
+            <% if published_software.default_engine_name_from_blueprint.present? %>
+              <%= published_software.default_engine_name_from_blueprint %><br>
             <% end %>
-            <% if published_software.description_from_repository.present? %>
-              <%= published_software.description_from_repository %><br>
+            <% if published_software.description_from_blueprint.present? %>
+              <%= published_software.description_from_blueprint %><br>
             <% end %>
-            <% if published_software.website_from_repository.present? %>
-              <a href=<%= published_software.website_from_repository %>><i class="fa fa-globe"></i> <%= published_software.website_from_repository %></a><br>
+            <% if published_software.website_from_blueprint.present? %>
+              <a href=<%= published_software.website_from_blueprint %>><i class="fa fa-globe"></i> <%= published_software.website_from_blueprint %></a><br>
             <% end %>
           </div>
 

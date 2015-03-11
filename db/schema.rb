@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150215012627) do
+ActiveRecord::Schema.define(version: 20150310021751) do
 
   create_table "admins", force: true do |t|
     t.string   "email",                  default: "", null: false
@@ -53,16 +53,19 @@ ActiveRecord::Schema.define(version: 20150215012627) do
     t.string   "title"
     t.text     "detail"
     t.string   "repository_url"
-    t.string   "website_from_repository"
-    t.string   "name_from_repository"
-    t.text     "description_from_repository"
-    t.string   "icon_url_from_repository"
+    t.string   "website_from_blueprint"
+    t.string   "default_engine_name_from_blueprint"
+    t.text     "description_from_blueprint"
+    t.string   "icon_url_from_blueprint"
     t.string   "icon_file_name"
     t.string   "icon_content_type"
     t.integer  "icon_file_size"
     t.datetime "icon_updated_at"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.text     "blueprint"
+    t.string   "full_title_from_blueprint"
+    t.string   "short_title_from_blueprint"
   end
 
   create_table "tags", force: true do |t|

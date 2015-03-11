@@ -21,10 +21,13 @@ class PublishedSoftware < ActiveRecord::Base
   def load_repository_data
     blueprint = repository_handler.load_blueprint_from_repository
     if blueprint
-      self.website_from_repository = blueprint['software']['home_page']
-      self.name_from_repository = blueprint['software']['name']
-      self.description_from_repository = blueprint['software']['description']
-      self.icon_url_from_repository = blueprint['software']['icon_url']
+      self.blueprint = blueprint.to_json.to_s
+      self.website_from_blueprint = blueprint['software']['home_page']
+      self.default_engine_name_from_blueprint = blueprint['software']['name']
+      self.full_title_from_blueprint = blueprint['software']['full_title']
+      self.short_title_from_blueprint = blueprint['software']['short_title']
+      self.description_from_blueprint = blueprint['software']['description']
+      self.icon_url_from_blueprint = blueprint['software']['icon_url']
       return true
     end
   rescue
@@ -32,8 +35,8 @@ class PublishedSoftware < ActiveRecord::Base
   end
 
   def update_icon_from_url_in_respository
-    if icon_url_from_repository.present?
-      self.icon = icon_from_url icon_url_from_repository
+    if icon_url_from_blueprint.present?
+      self.icon = icon_from_url icon_url_from_blueprint
     end
   end
 
@@ -43,6 +46,22 @@ class PublishedSoftware < ActiveRecord::Base
     else
       where(nil)
     end
+  end
+
+  def icon_url_from_gallery host_with_port
+    if icon.present?
+      'http://' + host_with_port + self.icon.url
+    else
+      'a'
+    end
+  rescue
+    'b' + host_with_port.to_s
+  end
+
+  def as_json(options = {host_with_port: ''})
+    default_json = super
+    default_json['icon_url_from_gallery'] = icon_url_from_gallery options[:host_with_port]
+    default_json
   end
 
 private

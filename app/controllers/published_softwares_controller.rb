@@ -27,7 +27,7 @@ class PublishedSoftwaresController < ApplicationController
   def show
     @published_software = PublishedSoftware.find(params[:id])
     respond_to do |format|
-      format.json { render json: @published_software }
+      format.json { render json: @published_software, host_with_port: request.host_with_port }
       format.html {}
     end
     @comments = @published_software.root_comments
@@ -37,9 +37,9 @@ class PublishedSoftwaresController < ApplicationController
   end
 
   def index
-    @published_softwares = PublishedSoftware.search(params[:search])
+   @published_softwares = PublishedSoftware.search(params[:search])
     respond_to do |format|
-      format.json { render json: @published_softwares }
+      format.json { render json: @published_softwares, host_with_port: request.host_with_port }
       format.html { render :index }
     end
   end
@@ -84,7 +84,7 @@ class PublishedSoftwaresController < ApplicationController
 
   def refresh_icon_from_blueprint
     @published_software = PublishedSoftware.find(params[:id])
-    if @published_software.icon_url_from_repository.blank?
+    if @published_software.icon_url_from_blueprint.blank?
       redirect_to published_software_path(params[:id]), alert: 'Icon was not reloaded. The blueprint does not hold an icon.'
     else
       @published_software.update_icon_from_url_in_respository

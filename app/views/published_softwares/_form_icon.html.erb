@@ -1,9 +1,9 @@
 <%= form_for @published_software do |f| %> 
 
-  <p class="top-gap">
+  <div class='col-sm-8 col-sm-offset-2'>
     <%= f.file_field :icon %>
-  </p>
+  </div>
 
-  <%= render partial: 'shared/gadgets/form_buttons', locals: { f: f } %>
+  <%= render partial: 'shared/form/cancel_and_submit_buttons.html', locals: { f: f } %>
 
 <% end %>

@@ -1,40 +1,53 @@
-<div class="col-sm-12 text-center">
+<div class="col-sm-12 text-center top-gap">
   <%= image_tag("engines_logo.png", class: "home-page-logo-holder") %>
 </div>
 
-<div class="col-sm-12 top-gap">
-  <div class="jumbotron">
-    <h2>Engines makes it easy to run servers</h2>
-    <p>
-      Host web applications for personal and business use.
-    </p>
-    <% if current_user.nil? %>
-      <p>
-        <%= link_to((content_tag(:i, '', class: 'fa fa-user-plus').html_safe + " Not registered? Sign up here..."), user_registration_path, class: "btn btn-lg btn-primary") %>
-      </p>
-    <% end %>
+<div class="col-sm-6 top-gap">
+  <div class="btn-group-vertical">
+    <%= link_to((content_tag(:i, '', class: 'fa fa-list').html_safe + " Software gallery"), published_softwares_path, class: "btn btn-lg btn-default") %>
+    <%= link_to((content_tag(:i, '', class: 'fa fa-user').html_safe + " Sign in"), new_user_registration_path, class: "btn btn-lg btn-primary") %>
   </div>
 </div>
 
-<div class="col-sm-6">
-  <%= form_tag published_softwares_path, method: 'get' do %>
-    <div class="input-group input-group-lg">
-      <div class="input-group-addon">
-        <i class=" fa fa-search"></i>
-      </div>
-      <%= text_field_tag :search, params[:search], placeholder: "Search the gallery", class: 'form-control', autofocus: true %>
-      <a href="<%= published_softwares_path %>" class="input-group-addon btn"><i class=" fa fa-list"></i> Show all</a>
+
+<div class="col-sm-6 top-gap">
+        <%= form_tag published_softwares_path, class: 'btn-group-addon', method: 'get' do %>
+          <div class="input-group input-group-lg">
+            <div class="input-group-addon">
+              <i class=" fa fa-search"></i>
+            </div>
+            <%= text_field_tag :search, params[:search], placeholder: "Search the software gallery", class: 'form-control', autofocus: true %>
+          </div>
+        <% end %>
+
+</div>
+
+
+
+
+<div class="col-sm-12 top-gap">
+  <div class="jumbotron">
+    <h2>Engines makes it easy to host your own servers</h2>
+    <p>
+      Run web applications and store data for personal and organisational use.
+    </p>
+    <div class="btn-group-vertical">
+      <%= link_to((content_tag(:i, '', class: 'fa fa-info').html_safe + " Learn more about Engines"), overview_path, class: "btn btn-lg btn-info") %>
+      <% if current_user.nil? %>
+        <%= link_to((content_tag(:i, '', class: 'fa fa-user-plus').html_safe + " Not registered? Sign up..."), new_user_registration_path, class: "btn btn-lg btn-primary") %>
+      <% end %>
     </div>
-  <% end %>
+  </div>
 </div>
 
 <div class="col-sm-12">
+  <h2><i class="fa fa-tablet"></i> Featured software</h2>
   <div class="published-softwares-list">
-    <h2><i class="fa fa-tablet"></i>Featured software</h2>
     <% @published_softwares.each do |published_software| %>
       <div class="published-software-row" onclick="location.href='<%= published_software_path(published_software) %>';">
         <%= render 'published_softwares/presenter', published_software: published_software %>
       </div>
     <%end%>
   </div>
+  <p>Check out the <%= link_to "software gallery", published_softwares_path %> to see all the applications that can run on Engines.</p>
 </div>

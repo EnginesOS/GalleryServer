@@ -34,6 +34,7 @@ GEM
     arel (5.0.1.20140414130214)
     awesome_nested_set (3.0.2)
       activerecord (>= 4.0.0, < 5)
+    awesome_print (1.2.0)
     bcrypt (3.1.10)
     bootstrap3-rails (3.2.0)
       rails (>= 4.0.0)
@@ -148,6 +149,7 @@ PLATFORMS
 
 DEPENDENCIES
   acts_as_commentable_with_threading
+  awesome_print (~> 1.2.0)
   bootstrap3-rails
   coffee-rails (~> 4.0.0)
   devise

@@ -4,6 +4,7 @@ source 'https://rubygems.org'
 #gem 'thin'
 
 gem 'git'
+gem 'awesome_print', '~> 1.2.0'
 
 
 gem 'devise'
