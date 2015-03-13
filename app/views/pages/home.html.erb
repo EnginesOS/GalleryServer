@@ -2,29 +2,6 @@
   <%= image_tag("engines_logo.png", class: "home-page-logo-holder") %>
 </div>
 
-<div class="col-sm-6 top-gap">
-  <div class="btn-group-vertical">
-    <%= link_to((content_tag(:i, '', class: 'fa fa-list').html_safe + " Software gallery"), published_softwares_path, class: "btn btn-lg btn-default") %>
-    <%= link_to((content_tag(:i, '', class: 'fa fa-user').html_safe + " Sign in"), new_user_registration_path, class: "btn btn-lg btn-primary") %>
-  </div>
-</div>
-
-
-<div class="col-sm-6 top-gap">
-        <%= form_tag published_softwares_path, class: 'btn-group-addon', method: 'get' do %>
-          <div class="input-group input-group-lg">
-            <div class="input-group-addon">
-              <i class=" fa fa-search"></i>
-            </div>
-            <%= text_field_tag :search, params[:search], placeholder: "Search the software gallery", class: 'form-control', autofocus: true %>
-          </div>
-        <% end %>
-
-</div>
-
-
-
-
 <div class="col-sm-12 top-gap">
   <div class="jumbotron">
     <h2>Engines makes it easy to host your own servers</h2>
@@ -35,9 +12,27 @@
       <%= link_to((content_tag(:i, '', class: 'fa fa-info').html_safe + " Learn more about Engines"), overview_path, class: "btn btn-lg btn-info") %>
       <% if current_user.nil? %>
         <%= link_to((content_tag(:i, '', class: 'fa fa-user-plus').html_safe + " Not registered? Sign up..."), new_user_registration_path, class: "btn btn-lg btn-primary") %>
+        <%= link_to((content_tag(:i, '', class: 'fa fa-user').html_safe + " Sign in"), new_user_registration_path, class: "btn btn-lg btn-default") %>
       <% end %>
     </div>
   </div>
+</div>
+
+<div class="col-sm-6 top-gap">
+  <div class="btn-group-vertical">
+    <%= link_to((content_tag(:i, '', class: 'fa fa-list').html_safe + " Software gallery"), published_softwares_path, class: "btn btn-lg btn-default") %>
+  </div>
+</div>
+
+<div class="col-sm-6 top-gap">
+  <%= form_tag published_softwares_path, class: 'btn-group-addon', method: 'get' do %>
+    <div class="input-group input-group-lg">
+      <div class="input-group-addon">
+        <i class=" fa fa-search"></i>
+      </div>
+      <%= text_field_tag :search, params[:search], placeholder: "Search the software gallery", class: 'form-control', autofocus: true %>
+    </div>
+  <% end %>
 </div>
 
 <div class="col-sm-12">
