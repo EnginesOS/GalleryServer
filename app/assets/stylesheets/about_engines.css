@@ -6,3 +6,19 @@
   margin-top: 5px;
   font-size: 90%;
 }
+
+#animated-engine-gif-holder {
+  float: right;
+  margin-left: 30px;
+}
+
+#animated-engine-gif {
+  background-image: url('radial-engine-placeholder.gif');
+  width: 280px;
+  height: 233px;
+}
+
+#animated-engine-gif:hover {
+  background-image: url('radial-engine.gif');
+}
+

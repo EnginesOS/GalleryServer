@@ -10,6 +10,8 @@
 
 <% if params['controller'] == 'pages' && params['action'] == 'home' %>
   <%= render partial: 'layouts/home_navbar' %>
+<% elsif params['controller'] == 'pages' && params['action'] == 'credits' %>
+  <%= render partial: 'layouts/home_navbar' %>
 <% elsif params['controller'] == 'pages' %>
   <%= render partial: 'layouts/pages_navbar' %>
 <% else %>
