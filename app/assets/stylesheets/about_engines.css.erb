@@ -7,18 +7,23 @@
   font-size: 90%;
 }
 
+#engine-image-holder {
+  float: right;
+  margin-left: 30px;
+}
+
 #animated-engine-gif-holder {
   float: right;
   margin-left: 30px;
 }
 
 #animated-engine-gif {
-  background-image: url('radial-engine-placeholder.gif');
+  background-image: url("<%= image_url 'radial-engine-placeholder.gif' %>");
   width: 280px;
   height: 233px;
 }
 
 #animated-engine-gif:hover {
-  background-image: url('radial-engine.gif');
+  background-image: url("<%= image_url 'radial-engine.gif' %>");
 }
 

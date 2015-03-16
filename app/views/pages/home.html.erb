@@ -12,7 +12,7 @@
       <%= link_to((content_tag(:i, '', class: 'fa fa-info').html_safe + " Learn more about Engines"), overview_path, class: "btn btn-lg btn-info") %>
       <% if current_user.nil? %>
         <%= link_to((content_tag(:i, '', class: 'fa fa-user-plus').html_safe + " Not registered? Sign up..."), new_user_registration_path, class: "btn btn-lg btn-primary") %>
-        <%= link_to((content_tag(:i, '', class: 'fa fa-user').html_safe + " Sign in"), new_user_registration_path, class: "btn btn-lg btn-default") %>
+        <%= link_to((content_tag(:i, '', class: 'fa fa-user').html_safe + " Sign in"), new_user_session_path, class: "btn btn-lg btn-default") %>
       <% end %>
     </div>
   </div>
