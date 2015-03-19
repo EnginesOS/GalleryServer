@@ -53,12 +53,12 @@ class PublishedSoftwaresController < ApplicationController
   end
 
   def update
-    if published_software_params[:title].blank?
-      return redirect_to edit_published_software_path(published_software_params), alert: 'Title cannot be blank.'
-    end
-    if published_software_params[:repository_url].blank?
-      return redirect_to edit_published_software_path(published_software_params), alert: 'Repository URL must be a valid URL.'
-    end
+    # if published_software_params[:title].blank?
+    #   return redirect_to edit_published_software_path(published_software_params), alert: 'Title cannot be blank.'
+    # end
+    # if published_software_params[:repository_url].blank?
+    #   return redirect_to edit_published_software_path(published_software_params), alert: 'Repository URL must be a valid URL.'
+    # end
 
     @published_software = PublishedSoftware.find(params[:id])
     if @published_software.update(published_software_params)
