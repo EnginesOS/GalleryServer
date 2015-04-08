@@ -52,10 +52,8 @@ class PublishedSoftware < ActiveRecord::Base
     if icon.present?
       'http://' + host_with_port + self.icon.url
     else
-      'a'
+      ''
     end
-  rescue
-    'b' + host_with_port.to_s
   end
 
   def as_json(options = {host_with_port: ''})

@@ -9,7 +9,7 @@
       Run web applications and store data for personal and organisational use.
     </p>
     <div class="btn-group-vertical">
-      <%= link_to((content_tag(:i, '', class: 'fa fa-info').html_safe + " Learn more about Engines"), overview_path, class: "btn btn-lg btn-info") %>
+      <%= link_to((content_tag(:i, '', class: 'fa fa-info').html_safe + " Learn more about Engines"), overview_path, class: "btn btn-xlg btn-info") %>
       <% if current_user.nil? %>
         <%= link_to((content_tag(:i, '', class: 'fa fa-user-plus').html_safe + " Not registered? Sign up..."), new_user_registration_path, class: "btn btn-lg btn-primary") %>
         <%= link_to((content_tag(:i, '', class: 'fa fa-user').html_safe + " Sign in"), new_user_session_path, class: "btn btn-lg btn-default") %>
