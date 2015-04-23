@@ -6,3 +6,16 @@
 #home-page-software-gallery-button {
   font-size: 30px;
 }
+
+.home_page_background_cover { 
+background: url(/assets/home_office.png) no-repeat center center fixed; 
+-webkit-background-size: cover;
+-moz-background-size: cover;
+-o-background-size: cover;
+background-size: cover;
+}
+
+.home_page .jumbotron {
+  background-color: rgba(225,225,225, 0.5);
+
+}

@@ -1,6 +1,6 @@
 $(document).ready(function(){
 
-    if (document.getElementsByClassName("devise-view")) {
+    if (document.getElementsByClassName("devise-view").length) {
       $(".devise-view input[name!='commit'][type!='checkbox']").each( function(){
           $(this).addClass("form-control");
       });
