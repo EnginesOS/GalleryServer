@@ -30,11 +30,9 @@
   <div class="col-sm-12 top-gap">
     <div class="jumbotron">
 
-      <div class="btn-group-vertical">
+      <p>Check out the software gallery to see all the applications that can run on Engines.</p>
         <%= link_to((content_tag(:i, '', class: 'fa fa-list').html_safe + " Software gallery"), published_softwares_path, class: "btn btn-lg btn-default") %>
-      </div>
-
-      <h2><i class="fa fa-tablet"></i> Featured software</h2>
+      <h3><i class="fa fa-tablet"></i> Featured software</h3>
       <div class="published-softwares-list">
         <% @published_softwares.each do |published_software| %>
           <div class="published-software-row" onclick="location.href='<%= published_software_path(published_software) %>';">
@@ -42,7 +40,6 @@
           </div>
         <%end%>
       </div>
-      <p>Check out the <%= link_to "software gallery", published_softwares_path %> to see all the applications that can run on Engines.</p>
 
     </div>
   </div>
