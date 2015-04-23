@@ -3,6 +3,11 @@
   margin-bottom: 0px;
 }
 
+.transparent_navbar {
+  background-color: transparent;
+  border: none;
+}
+
 .navbar-brand {
   font-size: 16px;
 }
@@ -21,7 +26,7 @@
 }
 
 .navbar-default .navbar-nav > li > a.dropdown-toggle {
-  background-color: #f8f8f8;
+  background-color: transparent;
 }
 
 .navbar-default .navbar-nav > li > a.dropdown-toggle:hover {
