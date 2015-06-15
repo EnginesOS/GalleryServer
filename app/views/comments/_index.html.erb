@@ -1,0 +1,25 @@
+<div class="software_review_panel top-gap panel panel-default">
+  <div class="panel-heading">
+    <i class="fa fa-star-half-empty"></i> Reviews (<%= comments.count %>)
+  </div>
+  <div class="panel-body" style="max-height: 400px;overflow-y: scroll;">
+    <% if comments.present? %>
+      <div class="col-sm-8 col-sm-offset-2">
+        <% comments.order('created_at DESC').each do |comment| %>
+          <div class="top-gap panel">
+              <% if current_admin
+                    label = comment.commentable.title
+                 else
+                   label = comment.user.username
+                 end %>
+              <%= label %>
+              <small><%= (distance_of_time_in_words comment.created_at, DateTime.now) + ' ago' %></small><br>
+              <small><%= comment.body %></small>
+          </div>
+        <% end %>
+      </div>
+    <% else %>
+      <i>none</i>
+    <% end %>
+  </div>
+</div>

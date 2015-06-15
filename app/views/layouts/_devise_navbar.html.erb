@@ -23,9 +23,9 @@
       <ul class="nav navbar-nav navbar-right">
 
         <% if request.fullpath == "/users/sign_in" %>
-          <li><%= link_to content_tag(:i, nil, class: 'fa fa-sign-in') + " Admin", new_admin_session_path %></li>
+          <li><%= link_to content_tag(:i, nil, class: 'fa fa-sign-in') + " Admin sign in", new_admin_session_path %></li>
         <% else %>
-          <li><%= link_to content_tag(:i, nil, class: 'fa fa-sign-in') + " User", new_user_session_path %></li>
+          <li><%= link_to content_tag(:i, nil, class: 'fa fa-sign-in') + " Sign in", new_user_session_path %></li>
         <% end %>
 
       </ul>

@@ -1,91 +1,28 @@
-<%  record ||= f.object
-    offset ||= 2
-    width ||= 8
-    buffer ||= 2
-    record_class = record.class
+<%  record_object ||= f.object
+    offset ||= nil
+    width ||= nil
+    buffer ||= nil
+    record_class = record_object.class
     record_class_name = record_class.to_s
-    label ||= record_class_name.underscore.humanize
-    new_record_path ||= [:new, record_class_name.underscore]
-    nest_in ||= false
+    # label ||= nil
+    nest_in ||= nil
 
-    has_many_associations ||= record_class.reflect_on_all_associations(:has_many).map(&:name)
-    has_one_associations ||= record_class.reflect_on_all_associations(:has_one).map(&:name)
     belongs_to_associations ||= record_class.reflect_on_all_associations(:belongs_to).map(&:name)
     belongs_to_fields = belongs_to_associations.map{|association| (association.to_s + '_id').to_sym}
 
-    attributes ||= (record_class.column_names.map(&:to_sym) - [:id, :created_at, :updated_at]).
+    attributes ||= (record_class.column_names.map(&:to_sym) - [:id, :created_at, :updated_at, :value_confirmation] ).
       map do |attribute|
         belongs_to_fields.include?(attribute) ? attribute.to_s.chomp('_id').to_sym : attribute
       end
 
+    if (nest_in.present? && attributes.exclude?(nest_in))
+      attributes << nest_in
+    end
+
      %>
 
-<%  attributes.each do |attribute|
-    
-      if attribute.kind_of?(Array)
-        label = attribute[1]
-        attribute = attribute[0]
-      else
-        label = attribute.to_s.humanize
-      end
+<% attributes.each do |attribute| %>
 
-      if record_class.reflect_on_association(attribute)
+  <%= render "shared/form/field", f: f, attribute: attribute, offset: offset, width: width, buffer: buffer, nest_in: nest_in %>  
 
-        if record_class.reflect_on_association(attribute).options[:polymorphic] %>
-
-          <%= render "shared/form/hidden_field", f: f, name: (attribute.to_s + '_id') %>
-          <%= render "shared/form/hidden_field", f: f, name: (attribute.to_s + '_type') %>
-
-    <%  elsif nest_in.to_s == attribute.to_s %>
-
-          <%= render "shared/form/hidden_field", f: f, name: (attribute.to_s + '_id') %>
-
-    <%  else %>
-
-          <% if attribute.to_s.camelcase.constantize.count < 0 %>
-            <%= render 'shared/form/association_radio_buttons', f: f, name: attribute, label: label, offset: offset, width: width, buffer: buffer, nest_in: nest_in %>
-          <% else %>
-            <%= render 'shared/form/association_select', f: f, name: attribute, label: label, offset: offset, width: width, buffer: buffer, nest_in: nest_in %>
-          <% end %>
-          
-   <%   end
-
-      else
-        attribute_detail = record_class.columns_hash[attribute.to_s]
-        if attribute_detail
-          if attribute == (nest_in.to_s.underscore + '_id').to_sym ||
-             attribute.to_s.ends_with?('_consumer_type' )
-            attribute_type = :hidden
-          else
-            attribute_type = attribute_detail.type
-          end
-        else
-          attribute_detail = 'WTF!'
-        end
-
-        field_type = case attribute_type
-          when :boolean
-            'checkbox'
-          when :date
-            'date_field'
-          when :datetime
-            'datetime_field'
-          when [:decimal, :float, :integer, :binary].include?(attribute_type)
-            'number_field'
-          when :time || :timestamp
-            'time_field'
-          when :text
-            'text_area'
-          when :hidden
-            'hidden_field'
-          else
-            'text_field'
-        end
-
-%>
-
-    <%= render partial: "shared/form/#{field_type}", locals: {f: f, name: attribute, label: label, offset: offset, width: width, buffer: buffer, nest_in: nest_in } %>
-
-<%    end
-    end
-%>
+<% end %>

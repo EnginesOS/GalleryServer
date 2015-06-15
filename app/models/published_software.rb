@@ -15,11 +15,19 @@ class PublishedSoftware < ActiveRecord::Base
   end
 
   def repository_handler
+
+p :repository_handler
+p repository_url
+
     RepositoryHandler.new(repository_url: repository_url)
   end
 
   def load_repository_data
+p :load_repository_data
     blueprint = repository_handler.load_blueprint_from_repository
+p :blueprint
+p blueprint
+
     if blueprint
       self.blueprint = blueprint.to_json.to_s
       self.website_from_blueprint = blueprint['software']['home_page']

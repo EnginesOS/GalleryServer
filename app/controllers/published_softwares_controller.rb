@@ -10,7 +10,7 @@ class PublishedSoftwaresController < ApplicationController
     @published_software = PublishedSoftware.new(published_software_params)
     if @published_software.valid?
       if @published_software.load_repository_data
-        @published_software.update_icon_from_url_in_respository
+        # @published_software.update_icon_from_url_in_respository
         if @published_software.save
           redirect_to @published_software, notice: 'Software successfully published to gallery.'
         else

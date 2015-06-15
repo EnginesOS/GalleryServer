@@ -1,6 +1,10 @@
 $(document).ready(function(){
 
-    if (document.getElementsByClassName("devise-view").length) {
+    $(".devise-view").each( function() {
+
+if ( $(this).find(".do-not-apply-devise-view-js-formatting").length == 0 ) {
+
+      $(this).addClass("col-sm-6 col-sm-offset-3");
       $(".devise-view input[name!='commit'][type!='checkbox']").each( function(){
           $(this).addClass("form-control");
       });
@@ -13,8 +17,8 @@ $(document).ready(function(){
       $(".devise-view a").each( function(){
           $(this).addClass("btn btn-default btn-sm top-gap trigger-response-modal");
       });
-      $()
+};
 
-    };
+    });
 });
 

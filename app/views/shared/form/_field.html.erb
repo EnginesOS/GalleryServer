@@ -1,0 +1,118 @@
+<%  record ||= f.object
+    record_class = record.class
+    record_class_name = record_class.to_s
+    
+    if attribute.kind_of?(Array)
+      label = attribute[1]
+      name = attribute[0].to_sym
+    elsif attribute.kind_of?(Hash)
+      attribute.symbolize_keys!
+      label = if attribute[:label].present?
+                attribute[:label].to_s
+              else
+                attribute[:name].to_s.humanize
+              end
+      attribute_type = attribute[:attribute_type]
+      select_collection = attribute[:select_collection]
+      tooltip = attribute[:tooltip]
+      hint = attribute[:hint]
+      placeholder = attribute[:placeholder]
+      comment = attribute[:comment]
+      offset = attribute[:offset]
+      width = attribute[:width]
+      buffer = attribute[:buffer]
+      nest_in = attribute[:nest_in]
+      name = attribute[:name].to_sym
+    else
+      label ||= attribute.to_s.humanize
+      name = attribute.to_sym
+    end
+
+    offset ||= 2
+    width ||= 8
+    buffer ||= 2
+    nest_in ||= false
+    attribute_type ||= nil
+    select_collection ||= nil
+    tooltip ||= nil
+    hint ||= nil
+    placeholder ||= nil
+    comment ||= nil
+
+    if record_class.reflect_on_association(name)
+
+      if record_class.reflect_on_association(name).options[:polymorphic] %>
+
+        <%= render "shared/form/hidden_field", f: f, name: (name.to_s + '_id') %>
+        <%= render "shared/form/hidden_field", f: f, name: (name.to_s + '_type') %>
+
+  <%  elsif nest_in.to_s == name.to_s %>
+
+        <%= render "shared/form/hidden_field", f: f, name: (name.to_s + '_id') %>
+
+  <%  else %>
+
+        <% if name.to_s.camelcase.constantize.count < 5 %>
+          <%= render 'shared/form/association_radio_buttons', f: f, name: name, select_collection: select_collection, label: label, offset: offset, width: width, buffer: buffer, nest_in: nest_in %>
+        <% else %>
+          <%= render 'shared/form/association_select', f: f, name: name, select_collection: select_collection, label: label, offset: offset, width: width, buffer: buffer, nest_in: nest_in %>
+        <% end %>
+          
+  <%  end
+
+    else
+
+      if attribute_type.nil?
+
+        attribute_detail = record_class.columns_hash[name.to_s]
+
+        if attribute_detail
+
+          if name == (nest_in.to_s.underscore + '_id').to_sym ||
+            name.to_s.ends_with?('_consumer_type' )
+            attribute_type = :hidden
+          else
+            attribute_type = attribute_detail.type
+          end
+
+        else
+
+          attribute_type = :string
+
+        end
+
+      end
+
+      field_type = case (attribute_type.to_sym)
+        when :boolean
+          'checkbox'
+        when :date
+          'date_field'
+        when :datetime
+          'datetime_field'
+        when :decimal, :float, :integer, :binary
+          'number_field'
+        when :time, :timestamp
+          'time_field'
+        when :text
+          'text_area'
+        when :code_box
+          'code_box'
+        when :hidden
+          'hidden_field'
+        when :select, :select_single
+          'select'
+        when :password
+          'password'
+        when :password_with_confirmation
+          'password_with_confirmation'
+        else
+          'text_field'
+      end
+
+%>
+
+      <%= render "shared/form/#{field_type}", f: f, name: name, label: label, offset: offset, width: width, buffer: buffer, nest_in: nest_in, select_collection: select_collection, tooltip: tooltip, hint: hint, placeholder: placeholder, comment: comment %>
+
+<%  end %>
+

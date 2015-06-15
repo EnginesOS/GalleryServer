@@ -6,15 +6,7 @@ class CommentsController < ApplicationController
 
   def create
     @comment = Comment.new(comment_params)
-    instance_variable_set(
-      "@#{comment_params['commentable_type'].underscore}",
-      comment_params['commentable_type'].constantize.find(comment_params['commentable_id'])
-      )
-    instance_variable_set(
-      "@comments",
-      instance_variable_get("@#{comment_params['commentable_type'].underscore}").root_comments
-      )
-    # render text: @comment.errors.full_messages
+    set_parent_object
     if @comment.save
       @comment = Comment.build_from( instance_variable_get("@#{comment_params['commentable_type'].underscore}"), current_user.id, nil )
     end
@@ -54,6 +46,21 @@ private
 
   def comment_params
     params.require(:comment).permit!
+  end
+
+  def set_parent_object
+    instance_variable_set(
+      "@#{comment_params['commentable_type'].underscore}",
+      comment_params['commentable_type'].constantize.find(comment_params['commentable_id'])
+      )
+    set_comments_for_parent
+  end
+
+  def set_comments_for_parent
+    instance_variable_set(
+      "@comments",
+      instance_variable_get("@#{comment_params['commentable_type'].underscore}").root_comments
+      )
   end
 
 end

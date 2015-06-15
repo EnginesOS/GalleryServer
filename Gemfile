@@ -6,6 +6,7 @@ source 'https://rubygems.org'
 gem 'git'
 gem 'awesome_print', '~> 1.2.0'
 
+gem 'rails_admin'
 
 gem 'devise'
 gem 'bootstrap3-rails'

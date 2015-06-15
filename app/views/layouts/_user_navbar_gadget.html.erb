@@ -1,19 +1,23 @@
-<ul class="nav navbar-nav navbar-right transparent_navbar">
-  <% if user_signed_in? %>
+<% if user_signed_in? %>
+  <ul class="nav navbar-nav navbar-right transparent_navbar">
     <li class="dropdown">
       <a href="#" class="dropdown-toggle" data-toggle="dropdown"><%= content_tag(:i, "", class: "fa fa-user") %> <%= current_user.email %><span class="caret"></span></a>
       <ul class="dropdown-menu" role="menu">
         <li><%= link_to (content_tag(:i, "", class: "fa fa-sign-out") + " Sign out"), destroy_user_session_path, class: 'trigger-response-modal', method: :delete %></li>
       </ul>
     </li>
-  <% elsif admin_signed_in? %>
+  </ul>
+<% elsif admin_signed_in? %>
+  <ul class="nav navbar-nav navbar-right transparent_navbar">
     <li class="dropdown">
       <a href="#" class="dropdown-toggle" data-toggle="dropdown"><%= content_tag(:i, "", class: "fa fa-user") %> <%= current_admin.email %><span class="caret"></span></a>
       <ul class="dropdown-menu" role="menu">
+        <li><%= link_to (content_tag(:i, "", class: "fa fa-users") + " Users"), user_admins_path, class: 'trigger-response-modal' %></li>
+        <li><%= link_to (content_tag(:i, "", class: "fa fa-database") + " Database"), db_admin_path, class: 'trigger-response-modal' %></li>
         <li><%= link_to (content_tag(:i, "", class: "fa fa-sign-out") + " Sign out"), destroy_admin_session_path, class: 'trigger-response-modal', method: :delete %></li>
       </ul>
     </li>
-  <% else %>
-    <li><%= link_to((content_tag(:i, '', class: 'fa fa-sign-in') + " Sign in"), new_user_session_path) %></li>  
-  <% end %>
-</ul>
+  </ul>
+<% else %>
+  <%= render 'layouts/navbar_sign_in' %>  
+<% end %>

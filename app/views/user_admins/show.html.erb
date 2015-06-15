@@ -1,0 +1,26 @@
+
+<%= content_tag :div, class: 'col-sm-12' do %>
+
+  <%= content_tag :h1 do %>
+    <%= content_tag(:i, '', class: 'fa fa-user') %> User
+  <% end %>
+
+  <%= content_tag :div, class: 'top-gap' do %>
+
+    <% @user.tap do |user| %>
+
+      <%= content_tag :div, class: 'panel panel-default' do %>
+        <%= content_tag :div, class: 'panel-heading clearfix' do %>
+          <%= user.username %> (<%= user.email %>)
+          <%= link_to (content_tag(:i, "", class: "fa fa-trash") + " Delete"), user_admin_path(@user), class: 'trigger-response-modal btn btn-lg pull-right', method: :delete %>
+        <% end %>   
+        <%= content_tag :div, class: 'panel-body' do %>
+          <%= render 'comments/index', comments: user.comments %>
+        <% end %>   
+      <% end %>   
+
+    <% end %>
+
+  <% end %>
+
+<% end %>
