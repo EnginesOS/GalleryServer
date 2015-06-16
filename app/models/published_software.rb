@@ -1,9 +1,15 @@
 class PublishedSoftware < ActiveRecord::Base
 
   attr_accessor :delete_icon
-  has_attached_file :icon, :dependent => :destroy
+  has_attached_file :icon, dependent: :destroy
+  has_many :videos, dependent: :destroy
+  has_many :screenshots, dependent: :destroy
+
   validates_attachment_content_type :icon, :content_type => /\Aimage\/.*\Z/
   before_validation { icon.clear if delete_icon == '1' }
+
+  accepts_nested_attributes_for :videos, :reject_if => :all_blank, :allow_destroy => true
+  accepts_nested_attributes_for :screenshots, :reject_if => :all_blank, :allow_destroy => true
 
   acts_as_commentable
 
@@ -30,16 +36,73 @@ p blueprint
 
     if blueprint
       self.blueprint = blueprint.to_json.to_s
-      self.website_from_blueprint = blueprint['software']['home_page']
-      self.default_engine_name_from_blueprint = blueprint['software']['name']
-      self.full_title_from_blueprint = blueprint['software']['full_title']
-      self.short_title_from_blueprint = blueprint['software']['short_title']
-      self.description_from_blueprint = blueprint['software']['description']
-      self.icon_url_from_blueprint = blueprint['software']['icon_url']
+      # self.website_from_blueprint = blueprint['software']['home_page']
+      # self.default_engine_name_from_blueprint = blueprint['software']['name']
+      # self.full_title_from_blueprint = blueprint['software']['full_title']
+      # self.short_title_from_blueprint = blueprint['software']['short_title']
+      # self.description_from_blueprint = blueprint['software']['description']
+      # self.icon_url_from_blueprint = blueprint['software']['icon_url']
+      # self.license_title_from_blueprint = blueprint['software']['license_label']
+      # self.license_url_from_blueprint = blueprint['software']['license_sourceurl']
       return true
     end
   rescue
     return false
+  end
+
+  def blueprint_software
+    @blueprint_software ||= YAML.load(blueprint)['software']
+  end
+
+  def icon_url_from_blueprint
+    blueprint_software['icon_url']
+  end
+
+  def default_engine_name
+    blueprint_software['name']
+  end
+
+  def title_from_blueprint
+    blueprint_software['full_title']
+  end
+
+  def description
+    blueprint_software['description']
+  end
+
+  def license_title
+    blueprint_software['license_label']
+  end
+
+  def license_url
+    blueprint_software['license_sourceurl']
+  end
+
+  def home_page_url
+    blueprint_software['home_page_url']
+  end
+
+  def support_page_url
+    blueprint_software['support_page_url']
+  end
+
+  def about
+    blueprint_software['about']
+  end
+
+  def framework
+    [ blueprint_software['framework'], blueprint_software['language'] ].join("/")
+  end
+
+  def memory
+    [ blueprint_software['required_memory'], blueprint_software['recommended_memory'] ].join(" - ")
+  end    
+
+  def version
+    [ blueprint_software['major'] || "0", 
+      blueprint_software['minor'] || "0", 
+      blueprint_software['patch'] || "0" ].join(".") + " " +
+      (blueprint_software['release_level'] || "Releasecandidate")
   end
 
   def update_icon_from_url_in_respository

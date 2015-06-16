@@ -1,0 +1,36 @@
+
+<% software_title = published_software.title_from_blueprint
+   description = published_software.description
+   home_url = published_software.home_page_url
+   support_url = published_software.support_page_url
+   license_url = published_software.license_url
+   license_title = published_software.license_title
+   memory = published_software.memory
+   about = published_software.about
+   version = published_software.version
+   framework = published_software.framework %>
+
+<div class="top-gap">
+    <h3><%= software_title %></h3>
+    <% if description.present? %><p><%= description %></p><% end %>
+    <% if home_url.present? %><p><%= link_to home_url, home_url, target: home_url.underscore %></p><% end %>
+
+    <div class="panel panel-default">
+      <div class="panel-body">
+        <small>
+          <% if support_url.present? %><p>Support: <%= link_to support_url, support_url, target: support_url.underscore %></p><% end %>
+          <% if about.present? %><p><%= about %></p><% end %>
+          <% if license_title.present? || license_url.present? %>
+            <p>License: 
+              <% if license_title.present? %><%= license_title %><% end %>
+              <% if license_url.present? %><%= link_to license_url, license_url, target: license_url.underscore %><% end %>
+            </p>
+          <% end %>
+          <% if version.present? %><p>Version: <%= version %></p><% end %>
+          <% if memory.present? %><p>Memory: <%= memory %> Mb</p><% end %>
+          <% if framework.present? %><p>Framework: <%= framework %></p><% end %>
+        </small>
+      </div>
+    </div>
+
+</div>

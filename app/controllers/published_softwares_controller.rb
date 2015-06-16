@@ -61,6 +61,7 @@ class PublishedSoftwaresController < ApplicationController
     # end
 
     @published_software = PublishedSoftware.find(params[:id])
+    # render text: published_software_params
     if @published_software.update(published_software_params)
       redirect_to @published_software, notice: "Successfully updated."
     else
@@ -99,7 +100,12 @@ class PublishedSoftwaresController < ApplicationController
 private
 
   def  published_software_params
-    params.require(:published_software).permit!
+    result = params.require(:published_software).permit! #(:title, :detail, :repository_url, videos_attributes: [:id])
+
+
+    # result[:screenshots_attributes]["0"]["_destroy"] = "1"  
+    # result[:screenshots_attributes].permit!
+    result
   end
 
 end

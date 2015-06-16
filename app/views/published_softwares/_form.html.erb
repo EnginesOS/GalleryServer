@@ -1,5 +1,9 @@
 <%= form_for @published_software do |f| %> 
   <%= render 'shared/form/errors', f: f %>
   <%= render 'shared/form/default_fields', f: f, attributes: [:title, :detail, :repository_url] %>
+
+  <%= render 'shared/form/nested_fields_for', association: :videos, f: f %>
+  <%= render 'shared/form/nested_fields_for', association: :screenshots, attributes: [{name: :image, attribute_type: :image_field}], f: f %>
+
   <%= render 'shared/form/cancel_and_submit_buttons', f: f  %>
 <% end %>

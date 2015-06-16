@@ -8,14 +8,14 @@
       partial_with_path = partial
     else 
       parent_partial = association.to_s.singularize + '_fields'
-      parent_class_name = f.object.class.to_s.underscore
-      parent_partial_file = "#{parent_class_name}/_#{parent_partial}.html.erb"
-      parent_partial_with_path = "#{parent_class_name}/#{parent_partial}"
+      parent_view_folder = nest_in.to_s.pluralize.underscore
+      parent_partial_file = "#{parent_view_folder}/_#{parent_partial}.html.erb"
+      parent_partial_with_path = "#{parent_partial}"
 
       association_partial = association.to_s.singularize + '_fields'
-      association_class_name = f.object.class.to_s.underscore
-      association_partial_file = "#{association_class_name}/_#{association_partial}.html.erb"
-      association_partial_with_path = "#{association_class_name}/#{association_partial}"
+      association_view_folder = f.object.class.to_s.underscore
+      association_partial_file = "#{association_view_folder}/_#{association_partial}.html.erb"
+      association_partial_with_path = "#{association_view_folder}/#{association_partial}"
 
       default_partial_with_path = 'shared/form/default_nested_fields'
 
@@ -28,8 +28,8 @@
       end
 %>
 
-<div class="col-sm-8 col-sm-offset-2 nested-fields">
-  <div class="panel panel-info">
+<div class="col-sm-12 nested-fields">
+  <div class="panel panel-default">
     <div class="panel-heading clearfix">
       <div class="btn-group pull-right">
         <a href="#" type="button" class="btn btn-lg dropdown-toggle" title="Delete" data-toggle="dropdown">

@@ -1,8 +1,3 @@
-<div id="blueprint-panel" class="top-gap panel panel-info">
-  <div class="panel-heading">
-    <i class="fa fa-file-text"></i> Blueprint
-  </div>
-  <div class="panel-body" style="max-height: 400px;overflow-y: scroll;">
+<div class="top-gap">
     <%= (ap JSON.parse(published_software.blueprint), plain: true, index: false).html_safe %>
-  </div>
 </div>

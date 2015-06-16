@@ -12,6 +12,10 @@
   cursor: pointer;
 }
 
+.screenshot img {
+  max-width: 100%;
+}
+
 .published-software-panel.panel {
   margin-bottom: 0px;
   background-color: transparent;
