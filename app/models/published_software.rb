@@ -51,6 +51,10 @@ p blueprint
   end
 
   def blueprint_software
+
+p :loading_blueprint
+p blueprint
+
     @blueprint_software ||= YAML.load(blueprint)['software']
   end
 
