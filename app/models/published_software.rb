@@ -29,11 +29,7 @@ p repository_url
   end
 
   def load_repository_data
-p :load_repository_data
     blueprint = repository_handler.load_blueprint_from_repository
-p :blueprint
-p blueprint
-
     if blueprint
       self.blueprint = blueprint.to_json.to_s
       # self.website_from_blueprint = blueprint['software']['home_page']
@@ -51,11 +47,6 @@ p blueprint
   end
 
   def blueprint_software
-
-p :loading_blueprint
-p title
-p blueprint
-
     @blueprint_software ||= YAML.load(blueprint)['software']
   end
 

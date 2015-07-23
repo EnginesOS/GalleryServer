@@ -7,7 +7,7 @@
       <div class="col-sm-8 col-sm-offset-2">
         <% comments.order('created_at DESC').each do |comment| %>
           <div class="top-gap panel">
-              <% if params[:controller] == "user_admins"
+              <% if (params[:controller] == "user_admins" || params[:controller] == "users")
                     label = comment.commentable.title
                  else
                    label = comment.user.username

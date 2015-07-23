@@ -17,7 +17,7 @@ protected
     if user_signed_in? || admin_signed_in?
       super
     else
-      redirect_to desktop_path
+      redirect_to root_path
     end
   end
   

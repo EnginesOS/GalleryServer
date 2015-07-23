@@ -1,6 +1,18 @@
 Rails.application.routes.draw do
   devise_for :users
   devise_for :admins
+  resources :users do
+    member do
+      get :edit_password
+      patch :edit_password, to: "users#update_password"
+    end
+  end
+  resources :admins do
+    member do
+      get :edit_password
+      patch :edit_password, to: "admins#update_password"
+    end
+  end
   resources :user_admins
   resources :published_softwares
   # resources :published_softwares, :path => "json_published_softwares", :only => [:index,:show], :defaults => { :format => 'json' }

@@ -8,13 +8,15 @@
     width ||= (12 - offset.to_i)
  %>
 
-<div class="col-sm-<%= offset %> clearfix">
-  <label class="control-label no-text-wrap pull-right pull-left-on-collapse show-labelled-text-label">
-    <%= label %>
-  </label>
-</div>
-<div class="col-sm-<%= width %>">
-  <div class="show-labelled-text-value">
-    <%= SharedViews.value_as_html value %> &nbsp;
+<div class="row" >
+  <div class="col-sm-<%= offset %> clearfix">
+    <label class="control-label no-text-wrap pull-right pull-left-on-collapse show-labelled-text-label">
+      <%= label %>
+    </label>
+  </div>
+  <div class="col-sm-<%= width %>">
+    <div class="show-labelled-text-value">
+      <%= SharedViews.value_as_html value %> &nbsp;
+    </div>
   </div>
 </div>

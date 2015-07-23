@@ -1,0 +1,37 @@
+<%= content_tag :div, class: 'col-sm-12' do %>
+
+  <%= content_tag :h1 do %>
+    <%= content_tag(:i, '', class: 'fa fa-user') %> Admin user
+  <% end %>
+
+  <%= content_tag :div, class: 'top-gap' do %>
+
+    <% @admin.tap do |admin| %>
+
+      <%= content_tag :div, class: 'panel panel-default' do %>
+        <%= content_tag :div, class: 'panel-heading clearfix' do %>
+          <%= admin.username %> (<%= admin.email %>)
+          <div class="btn-toolbar pull-right">
+            <div class="btn-group">
+              <%= link_to (content_tag(:i, "", class: "fa fa-edit") + " Edit"), edit_admin_path(@admin), class: 'trigger-response-modal btn btn-default btn-noborder btn-lg' %>
+            </div>
+            <div class="btn-group">
+              <%= link_to (content_tag(:i, "", class: "fa fa-lock") + " Change password"), edit_password_admin_path(@admin), class: 'trigger-response-modal btn btn-default btn-noborder btn-lg' %>
+            </div>
+          </div>
+        <% end %>
+        <%= content_tag :div, class: 'panel-body' do %>
+          <%= render 'shared/show/inline_labelled_text', label: 'Email', text: @admin.email  %>
+          <%= render 'shared/show/inline_labelled_text', label: 'Signin count', text: @admin.sign_in_count  %>
+          <%= render 'shared/show/inline_labelled_text', label: 'Current signin', text: @admin.current_sign_in_at  %>
+          <%= render 'shared/show/inline_labelled_text', label: 'Last signin', text: @admin.last_sign_in_at  %>
+          <%= render 'shared/show/inline_labelled_text', label: 'Current IP', text: @admin.current_sign_in_ip  %>
+          <%= render 'shared/show/inline_labelled_text', label: 'Last IP', text: @admin.last_sign_in_ip  %>
+        <% end %>   
+      <% end %>   
+
+    <% end %>
+
+  <% end %>
+
+<% end %>

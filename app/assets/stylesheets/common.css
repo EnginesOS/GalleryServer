@@ -38,3 +38,11 @@ hr {
 .btn-xlg {
   font-size: 30px;
 }
+
+.btn-noborder {
+  border: none;
+}
+
+.panel.panel-default .panel-heading {
+  background-color: #FFFFFF;
+}
