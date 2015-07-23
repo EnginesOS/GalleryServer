@@ -1,4 +1,7 @@
 Rails.application.configure do
+
+  config.action_mailer.default_url_options = {:host => $ENV['fqdn']}
+
   # Settings specified here will take precedence over those in config/application.rb.
   config.assets.paths += %W("#{Rails.root}/vendor/assets/fonts")
   # Code is not reloaded between requests.
