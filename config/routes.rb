@@ -13,7 +13,11 @@ Rails.application.routes.draw do
       patch :edit_password, to: "admins#update_password"
     end
   end
-  resources :user_admins
+  resources :user_admins do
+    member do
+      get :ban, :unban
+    end
+  end
   resources :published_softwares
   # resources :published_softwares, :path => "json_published_softwares", :only => [:index,:show], :defaults => { :format => 'json' }
   resources :comments

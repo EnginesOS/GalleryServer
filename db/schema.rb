@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150723085522) do
+ActiveRecord::Schema.define(version: 20150723100619) do
 
   create_table "admins", force: :cascade do |t|
     t.string   "email",                  limit: 255, default: "", null: false
@@ -27,6 +27,9 @@ ActiveRecord::Schema.define(version: 20150723085522) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "username",               limit: 255
+    t.integer  "failed_attempts",                    default: 0
+    t.string   "unlock_token"
+    t.datetime "locked_at"
   end
 
   add_index "admins", ["email"], name: "index_admins_on_email", unique: true
@@ -99,6 +102,10 @@ ActiveRecord::Schema.define(version: 20150723085522) do
     t.string   "confirmation_token"
     t.datetime "confirmed_at"
     t.datetime "confirmation_sent_at"
+    t.integer  "failed_attempts",                    default: 0
+    t.string   "unlock_token"
+    t.datetime "locked_at"
+    t.boolean  "banned"
   end
 
   add_index "users", ["confirmation_token"], name: "index_users_on_confirmation_token", unique: true

@@ -15,7 +15,11 @@ protected
 
   def authenticate_user!
     if user_signed_in? || admin_signed_in?
-      super
+      if current_user && current_user.banned
+        render text: "Sorry. There is a ban on this account."
+      else
+        super
+      end
     else
       redirect_to root_path
     end

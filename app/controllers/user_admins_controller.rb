@@ -14,6 +14,17 @@ class UserAdminsController < ApplicationController
     @user = User.find(params[:id])
   end
 
+  def ban
+    @user = User.find(params[:id])
+    @user.update(banned: true)
+    redirect_to user_admin_path(@user)
+  end
+
+  def unban
+    @user = User.find(params[:id])
+    @user.update(banned: false)
+    redirect_to user_admin_path(@user)
+  end
 
   def update
     @user = User.find(params[:id])

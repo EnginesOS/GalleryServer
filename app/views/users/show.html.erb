@@ -20,12 +20,11 @@
             </div>
           </div>
         <% end %>
-        <%= content_tag :div, class: 'panel-body' do %>
-          <legend>Reviews</legend>
-          <%= render 'comments/index', comments: user.comments %>
-        <% end %>   
       <% end %>   
-
+      <%= content_tag :div, class: '' do %>
+        <legend>Reviews</legend>
+        <%= render 'comments/index', comments: user.comments %>
+      <% end %>   
     <% end %>
 
   <% end %>

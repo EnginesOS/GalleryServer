@@ -6,7 +6,10 @@
     <% if comments.present? %>
       <div class="col-sm-8 col-sm-offset-2">
         <% comments.order('created_at DESC').each do |comment| %>
-          <div class="top-gap panel">
+          <div class="top-gap"><hr>
+              <% if params[:controller] == "user_admins" %>
+                <%= link_to (content_tag(:i, "", class: "fa fa-edit") + " Edit"), edit_comment_path(comment), class: 'trigger-response-modal btn btn-lg btn-noborder btn-default pull-right' %>
+              <% end %>
               <% if (params[:controller] == "user_admins" || params[:controller] == "users")
                     label = comment.commentable.title
                  else
@@ -15,9 +18,6 @@
               <%= label %>
               <small><%= (distance_of_time_in_words comment.created_at, DateTime.now) + ' ago' %></small><br>
               <small><%= comment.body %></small>
-              <% if current_admin %>
-                <% # = admin stuff %>
-              <% end %>
           </div>
         <% end %>
       </div>

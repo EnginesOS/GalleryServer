@@ -11,13 +11,20 @@
 
       <%= content_tag :div, class: 'panel panel-default' do %>
         <%= content_tag :div, class: 'panel-heading clearfix' do %>
-          <%= user.username %> (<%= user.email %><%= user.confirmed? ? "" : " - not confirmed" %>)
-          <%= link_to (content_tag(:i, "", class: "fa fa-trash") + " Delete"), user_admin_path(@user), class: 'trigger-response-modal btn btn-lg pull-right', method: :delete %>
-        <% end %>   
-        <%= content_tag :div, class: 'panel-body' do %>
-          <%= render 'comments/index', comments: user.comments %>
+          <%= user.banned ? "BANNED " : "" %><%= user.username %> (<%= user.email %><%= user.confirmed? ? "" : " not confirmed" %>)
+          <div class="btn-toolbar pull-right">
+            <div class="btn-group">
+              <% if user.banned %>
+                <%= link_to (content_tag(:i, "", class: "fa fa-check-circle-o") + " Unban"), unban_user_admin_path(@user), class: 'trigger-response-modal btn btn-lg btn-noborder btn-default pull-right' %>
+              <% else %>
+                <%= link_to (content_tag(:i, "", class: "fa fa-ban") + " Ban"), ban_user_admin_path(@user), class: 'trigger-response-modal btn btn-lg btn-noborder btn-default pull-right', data: { confirm: "Are you sure that you want to ban #{user.username}?", confirm_title: 'Confirm ban' } %>
+              <% end %>
+            </div>
+          </div>
         <% end %>   
       <% end %>   
+      <legend>Reviews</legend>
+      <%= render 'comments/index', comments: user.comments %>
 
     <% end %>
 
