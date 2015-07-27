@@ -21,9 +21,14 @@
         <li class="<%= 'active' if active_menu_item == :overview %>">
           <%= link_to content_tag(:i, "", class: "fa fa-info") + " Overview", overview_path, class: "trigger-response-modal" %>
         </li>
+        <li class="<%= 'active' if active_menu_item == :install %>">
+          <%= link_to content_tag(:i, "", class: "fa fa-floppy-o") + " Install", install_path, class: "trigger-response-modal" %>
+        </li>
+<% if false %>        
         <li class="<%= 'active' if active_menu_item == :user_stories %>">
           <%= link_to content_tag(:i, "", class: "fa fa-smile-o") + " User stories", user_stories_path, class: "trigger-response-modal" %>
         </li>
+<% end %>
         <li class="<%= 'active' if active_menu_item == :software_videos %>">
           <%= link_to content_tag(:i, "", class: "fa fa-video-camera") + " Software videos", software_videos_path, class: "trigger-response-modal" %>
         </li>

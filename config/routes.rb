@@ -26,6 +26,7 @@ Rails.application.routes.draw do
   get 'api/v0/software', to: 'published_softwares#index', :format => 'json'
   get 'home', to: "pages#home", as: :home
   get 'overview', to: "pages#overview", as: :overview
+  get 'install', to: "pages#install", as: :install
   get 'technical_brief', to: "pages#technical_brief", as: :technical_brief
   get 'user_stories', to: "pages#user_stories", as: :user_stories
   get 'software_videos', to: "pages#software_videos", as: :software_videos

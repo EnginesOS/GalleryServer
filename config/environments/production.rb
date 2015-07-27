@@ -1,6 +1,13 @@
 Rails.application.configure do
 
   config.action_mailer.default_url_options = {:host => $ENV['fqdn']}
+  config.action_mailer.delivery_method = :smtp
+  config.action_mailer.smtp_settings = {
+                  :address  => "smtp.engines.internal",
+                  :port => 25,
+                  :domain => "engines.onl",
+                  :enable_starttls_auto => false
+            } 
 
   # Settings specified here will take precedence over those in config/application.rb.
   config.assets.paths += %W("#{Rails.root}/vendor/assets/fonts")

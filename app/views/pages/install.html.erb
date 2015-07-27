@@ -1,0 +1,23 @@
+<div class="col-md-12">
+  <div class="alert alert-warning">
+    <strong><i class="fa fa fa-exclamation-triangle"></i> Disclaimer</strong>
+    <p>Engines is in currently at a prelease stage and available for testing purposes. We do not recommend installation onto a production system.</p>
+  </div>
+
+<h2><i class="fa fa-floppy-o"></i> Install</h2>
+<p>Start with a base system: fresh Ubuntu 14.04 or 15.x installation with at least 2GB of RAM and 40GB available disk space.</p>
+<p>Paste into a terminal window...</p>
+
+<pre>sudo apt-get install -y git<br>
+git clone https://github.com/EnginesOS/EnginesInstaller<br>
+cd EnginesInstaller<br>
+sudo  ./install_engines.sh alpha</pre>
+
+<p>Follow prompts. Once the installer has run you will be presented with a URL that you will need to paste into a browser. Best to use Chrome (we are still testing GUI javascript on other browsers). Sign in.</p>
+<pre>Username 'admin', password 'password'</pre>
+<p>Complete the setup wizard and you're done.</p>
+<p>More detailed installation instructions on the <%= link_to (content_tag(:i, nil, class: 'fa fa-git') + " GitHub page"), "https://github.com/EnginesOS/System/wiki/Installation", class: 'btn btn-default btn-lg' %></p>
+
+
+
+</div>
