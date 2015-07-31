@@ -6,16 +6,29 @@
 
 <h2><i class="fa fa-floppy-o"></i> Install</h2>
 <p>Start with a base system: fresh Ubuntu 14.04 or 15.x installation with at least 2GB of RAM and 40GB available disk space.</p>
-<p>Paste into a terminal window...</p>
+<p>Open a terminal window. Paste into terminal window...</p>
 
-<pre>sudo apt-get install -y git<br>
-git clone https://github.com/EnginesOS/EnginesInstaller<br>
-cd EnginesInstaller<br>
+<pre>sudo apt-get install -y git
+git clone https://github.com/EnginesOS/EnginesInstaller
+cd EnginesInstaller
 sudo  ./install_engines.sh alpha</pre>
 
-<p>Follow prompts. Once the installer has run you will be presented with a URL that you will need to paste into a browser. Best to use Chrome (we are still testing GUI javascript on other browsers). Sign in.</p>
+<p>This will:
+  <ul>
+    <li>Make sure that git is installed.</li>
+    <li>Use git to extract the installer software into a new EnginesInstaller directory.</li>
+    <li>Go to the EnginesInstaller directory.</li>
+    <li>Install Engines in the /opt/engines directory.</li>
+  </ul>
+</p>
+
+<p>Follow prompts. Once the installer has run you will be presented with a URL that you will need to open in a browser. Sign in to Engines.</p>
 <pre>Username 'admin', password 'password'</pre>
 <p>Complete the setup wizard and you're done.</p>
-<p>More detailed installation instructions on the <%= link_to (content_tag(:i, nil, class: 'fa fa-git') + " GitHub page"), "https://github.com/EnginesOS/System/wiki/Installation", class: 'btn btn-default btn-lg' %></p>
+<p>More detailed and technical installation instructions on the <%= link_to (content_tag(:i, nil, class: 'fa fa-git') + " GitHub page"), "https://github.com/EnginesOS/System/wiki/Installation", class: 'btn btn-default btn-lg' %></p>
+
+<h3><i class="fa fa-trash-o"></i> Uninstall</h3>
+<p>Open a terminal window (ensuring that you are in the same directory that you used when starting installation) and enter...</p>
+<pre>sudo EnginesInstaller/obliterate_engines_no_warning.sh</pre>
 
 </div>
