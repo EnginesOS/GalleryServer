@@ -26,6 +26,7 @@ class PublishedSoftwaresController < ApplicationController
 
   def show
     @published_software = PublishedSoftware.find(params[:id])
+    @published_software.save
     respond_to do |format|
       format.json { render json: @published_software, host_with_port: request.host_with_port }
       format.html {}
@@ -37,7 +38,12 @@ class PublishedSoftwaresController < ApplicationController
   end
 
   def index
-   @published_softwares = PublishedSoftware.search(params[:search])
+    @published_softwares = PublishedSoftware.search(params[:search])
+    if params[:tags].present?
+      @published_softwares = @published_softwares.tagged_with(params[:tags])
+    end
+    @published_softwares = @published_softwares.page(params[:page]).per(10)
+
     respond_to do |format|
       format.json { render json: @published_softwares, host_with_port: request.host_with_port }
       format.html { render :index }
@@ -95,6 +101,20 @@ class PublishedSoftwaresController < ApplicationController
         redirect_to published_software_path(params[:id]), alert: 'Icon was not reloaded from blueprint.'
       end
     end
+  end
+
+  def add_tag
+    @published_software = PublishedSoftware.find(params[:id])
+    @published_software.tag_list.add(params[:new_tag].present? ? params[:new_tag] : params[:existing_tag])
+    @published_software.save
+    redirect_to @published_software
+  end
+
+  def remove_tag
+    @published_software = PublishedSoftware.find(params[:id])
+    @published_software.tag_list.remove(params[:tag])
+    @published_software.save
+    redirect_to @published_software
   end
 
 private

@@ -1,0 +1,3 @@
+<% tag_cloud(@tags, %w(tag-cloud-1 tag-cloud-2 tag-cloud-3 tag-cloud-4)) do |tag, css_class| %>
+  <%= link_to tag.name, published_softwares_path(tags: tag.name), class: ('tag-cloud ' + css_class) %>
+<% end %>

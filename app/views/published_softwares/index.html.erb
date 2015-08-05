@@ -1,21 +1,43 @@
-<div class="col-sm-12">
-  <h1><%= content_tag(:i, '', class: 'fa fa-th-list') %> Software</h1>
+<div class="col-md-12">
+  <h1><%= content_tag(:i, '', class: 'fa fa-th-list') %> <%= params[:tags] || "All" %> software</h1>
 </div>
-
  
 <div class="top-gap">
-  <div class="col-sm-6 index-view-action">
-    <%= form_tag published_softwares_path, method: 'get' do %>
+  <div class="col-md-8 index-view-action">
+    <%= form_tag :published_softwares, url: published_softwares_path(), tags: params[:tags], method: 'get' do %>
       <div class="input-group input-group-lg">
-        <div class="input-group-addon"><i class=" fa fa-search"></i></div>
-          <%= text_field_tag :search, params[:search], placeholder: "Search", class: 'form-control', autofocus: true %>
-          <a href="<%= published_softwares_path %>" class="input-group-addon btn" title="Show all"><i class=" fa fa-list"></i> Show all</a>
+        <div class="input-group-addon">
+          <i class=" fa fa-search"></i>
+        </div>
+        <%= hidden_field_tag :tags, params[:tags] %>
+        <%= text_field_tag :search, params[:search], placeholder: ["search", (params[:tags] || "all"), "software"].compact.join(" "), class: 'form-control', autofocus: true %>
+        <div class="input-group-addon dropdown">
+          <div type="button" class="" data-toggle="dropdown">
+            <i class="fa fa-binoculars"></i> Find by
+            <span class="caret"></span>
+          </div>
+          <ul class="dropdown-menu">
+            <li>
+              <a href="<%= published_softwares_path() %>" class="btn-lg trigger-response-modal" title="Show all"><i class=" fa fa-list"></i> Show all</a>
+            </li>
+            <li>
+              <% if params[:tags].present? %>
+                <a href="<%= published_softwares_path(tags: params[:tags]) %>" class="btn-lg trigger-response-modal" title="Show all"><i class=" fa fa-list"></i> All <%= params[:tags] %></a>
+              <% end %>
+            </li>
+            <li class="divider"></li>
+            <% PublishedSoftware.list_all_tags_by_name.each do |tag_name| %>
+              <li>
+                <%= link_to tag_name, published_softwares_path(tags: tag_name), class: 'btn-lg trigger-response-modal' %>
+              </li>
+            <% end %>
+          </ul>
         </div>
       </div>
     <% end %>
   </div>
 
-  <div class="col-sm-6 index-view-action">
+  <div class="col-md-4 index-view-action">
     <div class="btn-group pull-right"> 
       <% if admin_signed_in? %>
         <%= link_to (content_tag(:i, '', class: 'fa fa-plus') + ' Add software'), new_published_software_path, class: 'btn btn-lg btn-primary trigger-response-modal', title: 'Add software' %>
@@ -24,8 +46,12 @@
   </div> 
 </div> 
 
-<div class="published-softwares-list top-gap">
-  <% @published_softwares.sort_by{|b| b["full_name"] }.each do |published_software| %>
+<div class="col-sm-12">
+  <%= paginate @published_softwares, :theme => 'twitter-bootstrap-3' %>
+</div>
+
+<div class="col-sm-12 published-softwares-list top-gap">
+  <% @published_softwares.each do |published_software| %>
     <div class="published-software-row" onclick="location.href='<%= published_software_path(published_software) %>';" title="<%= published_software.title %>">
       <% if admin_signed_in? %>
         <%= render 'index_actions', published_software: published_software %>
@@ -33,4 +59,8 @@
       <%= render 'presenter', published_software: published_software %>
     </div>
   <%end%>
+</div>
+
+<div class="col-sm-12">
+  <%= paginate @published_softwares, :theme => 'twitter-bootstrap-3' %>
 </div>

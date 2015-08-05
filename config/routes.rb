@@ -18,10 +18,20 @@ Rails.application.routes.draw do
       get :ban, :unban
     end
   end
-  resources :published_softwares
+  resources :published_softwares do
+    member do
+      get :add_tag, :remove_tag
+    end
+  end
+
   # resources :published_softwares, :path => "json_published_softwares", :only => [:index,:show], :defaults => { :format => 'json' }
   resources :comments
-  resources :tags
+  resources :tags do
+    collection do
+      get :tag_cloud
+    end
+  end
+
   root 'pages#home', :format => 'html'
   get 'api/v0/software', to: 'published_softwares#index', :format => 'json'
   get 'home', to: "pages#home", as: :home

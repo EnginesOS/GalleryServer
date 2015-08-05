@@ -17,21 +17,17 @@
     </div>
   </div>
 
-  <% if current_user.nil? %>
-    <div class="col-sm-12 top-gap">
-      <div class="jumbotron">
-        <div class="btn-group-vertical">
-            <%= link_to((content_tag(:i, '', class: 'fa fa-user-plus').html_safe + " Not registered? Sign up..."), new_user_registration_path, class: "btn btn-lg btn-primary") %>
-        </div>
-      </div>
-    </div>
-  <% end %>
-
-  <div class="col-sm-12 top-gap">
+  <div class="col-sm-12">
     <div class="jumbotron">
-
       <p>Check out the software gallery to see all the applications that can run on Engines.</p>
         <%= link_to((content_tag(:i, '', class: 'fa fa-list').html_safe + " Software gallery"), published_softwares_path, class: "btn btn-lg btn-default") %>
+      <h4 class="text-center top-gap"><i class="fa fa-binoculars"></i> Find software by</h4>
+      <div id="tag_cloud_holder"></div>
+    </div>
+  </div>
+  <div class="col-sm-12">
+    <div class="jumbotron">
+
       <h3><i class="fa fa-tablet"></i> Featured software</h3>
       <div class="published-softwares-list">
         <% @published_softwares.each do |published_software| %>
@@ -43,5 +39,15 @@
 
     </div>
   </div>
+
+  <% if current_user.nil? %>
+    <div class="col-sm-12">
+      <div class="jumbotron">
+        <div class="btn-group-vertical">
+            <%= link_to((content_tag(:i, '', class: 'fa fa-user-plus').html_safe + " Not registered? Sign up..."), new_user_registration_path, class: "btn btn-lg btn-primary") %>
+        </div>
+      </div>
+    </div>
+  <% end %>
 
 </div>

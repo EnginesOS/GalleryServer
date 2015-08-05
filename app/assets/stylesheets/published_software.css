@@ -34,7 +34,6 @@
 
 .published-software-details {
   margin-left: 10px;
-  display: inline-block;
 }
 
 .published-software-title {
@@ -42,10 +41,11 @@
 }
 
 .published-software-icon-holder {
-  display: inline-block;
   vertical-align: top;
-  text-align: center;
   width: 200px;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .published-software-icon {
@@ -57,5 +57,9 @@
 
 .index-view-action {
   margin-top: 10px;
+}
+
+.published-software-tags-holder {
+  margin-left: 10px;
 }
 

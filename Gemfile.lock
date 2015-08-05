@@ -36,6 +36,8 @@ GEM
       minitest (~> 5.1)
       thread_safe (~> 0.3, >= 0.3.4)
       tzinfo (~> 1.1)
+    acts-as-taggable-on (3.5.0)
+      activerecord (>= 3.2, < 5)
     acts_as_commentable_with_threading (2.0.0)
       activerecord (>= 4.0)
       activesupport (>= 4.0)
@@ -45,6 +47,9 @@ GEM
       activerecord (>= 4.0.0, < 5)
     awesome_print (1.2.0)
     bcrypt (3.1.10)
+    bootstrap-kaminari-views (0.0.5)
+      kaminari (>= 0.13)
+      rails (>= 3.1)
     bootstrap3-rails (3.2.0)
       rails (>= 4.0.0)
     builder (3.2.2)
@@ -196,8 +201,10 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  acts-as-taggable-on
   acts_as_commentable_with_threading
   awesome_print (~> 1.2.0)
+  bootstrap-kaminari-views
   bootstrap3-rails
   cocoon
   coffee-rails (~> 4.0.0)
@@ -206,6 +213,7 @@ DEPENDENCIES
   git
   jbuilder (~> 2.0)
   jquery-rails
+  kaminari
   mysql2
   paperclip
   rails

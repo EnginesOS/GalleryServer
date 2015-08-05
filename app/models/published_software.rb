@@ -4,6 +4,7 @@ class PublishedSoftware < ActiveRecord::Base
   has_attached_file :icon, dependent: :destroy
   has_many :videos, dependent: :destroy
   has_many :screenshots, dependent: :destroy
+  default_scope { order('LOWER(title) ASC') }
 
   validates_attachment_content_type :icon, :content_type => /\Aimage\/.*\Z/
   before_validation { icon.clear if delete_icon == '1' }
@@ -12,9 +13,15 @@ class PublishedSoftware < ActiveRecord::Base
   accepts_nested_attributes_for :screenshots, :reject_if => :all_blank, :allow_destroy => true
 
   acts_as_commentable
+  acts_as_taggable
 
   validates :title, :presence => true
   validates :repository_url, :presence => true
+
+ def self.list_all_tags_by_name
+   all_tags.map(&:name)
+ end
+
 
   def to_label
     title

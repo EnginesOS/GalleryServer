@@ -1,0 +1,31 @@
+<div class="col-md-9 col-md-offset-3">
+  <div class="published-software-tags-holder">
+    <%= published_software.tags.map do |tag|
+        ((link_to content_tag(:i, nil, class: "fa fa-trash"), remove_tag_published_software_path(published_software, tag: tag.name), class: "btn-lg", data: { confirm: 'Are you sure that you want to remove this tag?' }) if admin_signed_in?).to_s.html_safe + (link_to tag.name, published_softwares_path(tags: tag.name), class: "btn-lg trigger-response-modal")
+      end.join(admin_signed_in? ? "<br>" : "").to_s.html_safe %>
+  </div>
+</div>
+
+<% if admin_signed_in? %>
+  <div class="">
+    <div class="col-md-12 top-gap">
+      <%= form_for published_software, url: add_tag_published_software_path(published_software), method: 'get' do |f| %>
+        <div class="">
+          <div class="col-sm-5">
+            <%= select_tag :existing_tag, options_for_select(PublishedSoftware.list_all_tags_by_name), prompt: "Existing tag", class: 'form-control' %>
+          </div>
+          <div class="col-sm-5">
+            <%= text_field_tag :new_tag, nil, placeholder: "New tag", class: 'form-control' %>
+          </div>
+          <div class="col-sm-2">
+            <div class="btn-group">
+              <%= button_tag(type: "submit", class: "btn btn-primary trigger-response-modal") do %>
+                <%= content_tag(:i, "", class: "fa fa-tag") + ' Add' %>
+              <% end %>
+            </div>
+          </div>
+        </div>
+      <% end %>
+    </div>
+  </div>
+<% end %>

@@ -12,7 +12,10 @@ gem 'devise'
 gem 'bootstrap3-rails'
 gem 'font-awesome-rails', '4.3.0'
 gem 'paperclip'
+gem 'kaminari'
+gem 'bootstrap-kaminari-views'
 
+gem 'acts-as-taggable-on'
 gem 'acts_as_commentable_with_threading'
 
 group :development do
