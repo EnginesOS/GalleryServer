@@ -1,0 +1,16 @@
+<button type="button" class="btn btn-default btn-lg top-gap" data-toggle="modal" data-target="#home-page-video-modal">
+  <%= image_tag "home_page_promo_video_poster.png", {id: "home_page_promo_video_poster" }  %>
+</button>
+
+<div class="modal fade" id="home-page-video-modal">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <div class="modal-body text-center">
+        <%= video_tag "engines_promo_video.m4v", {controls: true, autobuffer: true} %>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-lg btn-default" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>

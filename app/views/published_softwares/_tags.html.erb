@@ -1,7 +1,7 @@
 <div class="col-md-9 col-md-offset-3">
   <div class="published-software-tags-holder">
-    <%= published_software.tags.map do |tag|
-        ((link_to content_tag(:i, nil, class: "fa fa-trash"), remove_tag_published_software_path(published_software, tag: tag.name), class: "btn-lg", data: { confirm: 'Are you sure that you want to remove this tag?' }) if admin_signed_in?).to_s.html_safe + (link_to tag.name, published_softwares_path(tags: tag.name), class: "btn-lg trigger-response-modal")
+    <%= published_software.list_tags_by_name.map do |tag_name|
+        ((link_to content_tag(:i, nil, class: "fa fa-trash"), remove_tag_published_software_path(published_software, tag: tag_name), class: "btn-lg", data: { confirm: 'Are you sure that you want to remove this tag?' }) if admin_signed_in?).to_s.html_safe + (link_to tag_name, published_softwares_path(tags: tag_name), class: "btn-lg trigger-response-modal")
       end.join(admin_signed_in? ? "<br>" : "").to_s.html_safe %>
   </div>
 </div>

@@ -43,6 +43,10 @@ class PublishedSoftwaresController < ApplicationController
       @published_softwares = @published_softwares.tagged_with(params[:tags])
     end
     @published_softwares = @published_softwares.page(params[:page]).per(10)
+    @published_softwares = {
+      softwares: @published_softwares.as_json,
+      total_pages: @published_softwares.total_pages
+    }
 
     respond_to do |format|
       format.json { render json: @published_softwares, host_with_port: request.host_with_port }

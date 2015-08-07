@@ -3,11 +3,11 @@
 .tag-cloud-3 { font-size: 1.4em; }
 .tag-cloud-4 { font-size: 1.6em; }
 
-.tag-cloud {margin: 10px; }
+/*.tag-cloud {margin: 10px; }
 .tag-cloud:hover { 
   text-decoration: none;
   cursor: pointer;
-}
+}*/
 
 #tag_cloud_holder {
   text-align: center;

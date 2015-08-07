@@ -8,6 +8,19 @@ $(document).ready(function(){
             bind_trigger_response_modal_events();
           });
 
+
+
+$('#home-page-video-modal').on('shown.bs.modal', function() {
+  $('#home-page-video-modal video')[0].play();
+});
+
+$('#home-page-video-modal').on('hidden.bs.modal', function() {
+  $('#home-page-video-modal video')[0].pause();
+});
+
+
+
+
     };
 
 });

@@ -5,45 +5,51 @@
   </div>
 
   <div class="col-sm-12 top-gap">
-    <div class="jumbotron">
-      <h2>Engines makes it easy to run your own server</h2>
-        <p>deploy web applications and store data<br>
-           for organisations and personal use</p>
-        <p><small><i>More control, greater flexibility, lower cost and better privacy.</i></small></p>
-      <div class="btn-group-vertical">
-        <%= link_to((content_tag(:i, '', class: 'fa fa-info').html_safe + " Overview"), overview_path, class: "btn btn-lg btn-default") %>
+    <div class="jumbotron clearfix">
+      <div class="col-md-8">  
+        <h2>Engines makes it easy to run your own server</h2>
+          <p>deploy web applications and store data<br>
+             for organisations and personal use</p>
+          <p><small><i>Simple, more control, lower cost and better privacy.</i></small></p>
+          <%= link_to((content_tag(:i, '', class: 'fa fa-info').html_safe + " Overview"), overview_path, class: "btn btn-lg btn-default") %>
+          <%= link_to((content_tag(:i, '', class: 'fa fa-floppy-o').html_safe + " Install"), install_path, class: "btn btn-lg btn-default") %>
       </div>
-        <%= link_to((content_tag(:i, '', class: 'fa fa-floppy-o').html_safe + " Install"), install_path, class: "btn btn-lg btn-default") %>
+      <div class="col-md-4">  
+          <%= render 'video' %>
+      </div>
     </div>
   </div>
 
   <div class="col-sm-12">
-    <div class="jumbotron">
-      <p>Check out the software gallery to see all the applications that can run on Engines.</p>
+    <div class="jumbotron clearfix">
+      <div class="col-md-4">
+        <h3><i class="fa fa-binoculars"></i> Find software</h3>
         <%= link_to((content_tag(:i, '', class: 'fa fa-list').html_safe + " Software gallery"), published_softwares_path, class: "btn btn-lg btn-default") %>
-      <h4 class="text-center top-gap"><i class="fa fa-binoculars"></i> Find software by</h4>
-      <div id="tag_cloud_holder"></div>
+      </div>
+      <div class="col-md-8">
+        <div id="tag_cloud_holder" class="top-gap"></div>
+      </div>
     </div>
   </div>
   <div class="col-sm-12">
-    <div class="jumbotron">
-
-      <h3><i class="fa fa-tablet"></i> Featured software</h3>
-      <div class="published-softwares-list">
-        <% @published_softwares.each do |published_software| %>
-          <div class="published-software-row" onclick="location.href='<%= published_software_path(published_software) %>';">
-            <%= render 'published_softwares/presenter', published_software: published_software %>
-          </div>
-        <%end%>
+    <div class="jumbotron clearfix">
+      <div class="col-sm-12">
+        <h3><i class="fa fa-flag"></i> Featured software</h3>
+        <div class="published-softwares-list">
+          <% @published_softwares.each do |published_software| %>
+            <div class="published-software-row" onclick="location.href='<%= published_software_path(published_software) %>';">
+              <%= render 'published_softwares/presenter', published_software: published_software %>
+            </div>
+          <%end%>
+        </div>
       </div>
-
     </div>
   </div>
 
   <% if current_user.nil? %>
     <div class="col-sm-12">
       <div class="jumbotron">
-        <div class="btn-group-vertical">
+        <div class="btn-group-vertical top-gap">
             <%= link_to((content_tag(:i, '', class: 'fa fa-user-plus').html_safe + " Not registered? Sign up..."), new_user_registration_path, class: "btn btn-lg btn-primary") %>
         </div>
       </div>

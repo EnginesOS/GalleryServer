@@ -4,13 +4,23 @@
  
 <div class="top-gap">
   <div class="col-md-8 index-view-action">
-    <%= form_tag :published_softwares, url: published_softwares_path(), tags: params[:tags], method: 'get' do %>
+    <%= form_tag :published_softwares, url: published_softwares_path(), method: 'get' do %>
       <div class="input-group input-group-lg">
         <div class="input-group-addon">
           <i class=" fa fa-search"></i>
         </div>
         <%= hidden_field_tag :tags, params[:tags] %>
         <%= text_field_tag :search, params[:search], placeholder: ["search", (params[:tags] || "all"), "software"].compact.join(" "), class: 'form-control', autofocus: true %>
+        <% if params[:search].present? %>
+          <div class="input-group-addon">
+            <% if params[:tags].blank? %>
+              <a type="button" href="<%= published_softwares_path() %>" class="trigger-response-modal" title="Clear search"><i class=" fa fa-times"></i></a>
+            <% else %>
+              <a type="button" href="<%= published_softwares_path(tags: params[:tags]) %>" class="trigger-response-modal" title="Clear search"><i class=" fa fa-times"></i></a>
+            <% end %>
+            </div>
+        <% end %>
+
         <div class="input-group-addon dropdown">
           <div type="button" class="" data-toggle="dropdown">
             <i class="fa fa-binoculars"></i> Find by
@@ -18,17 +28,14 @@
           </div>
           <ul class="dropdown-menu">
             <li>
-              <a href="<%= published_softwares_path() %>" class="btn-lg trigger-response-modal" title="Show all"><i class=" fa fa-list"></i> Show all</a>
+              <a type="button" href="<%= published_softwares_path(search: params[:search]) %>" class="btn-lg trigger-response-modal"><i class="fa fa-bars"></i> All</a>
             </li>
             <li>
-              <% if params[:tags].present? %>
-                <a href="<%= published_softwares_path(tags: params[:tags]) %>" class="btn-lg trigger-response-modal" title="Show all"><i class=" fa fa-list"></i> All <%= params[:tags] %></a>
-              <% end %>
             </li>
             <li class="divider"></li>
             <% PublishedSoftware.list_all_tags_by_name.each do |tag_name| %>
               <li>
-                <%= link_to tag_name, published_softwares_path(tags: tag_name), class: 'btn-lg trigger-response-modal' %>
+                <%= link_to tag_name, published_softwares_path(tags: tag_name, search: params[:search]), class: 'btn-lg trigger-response-modal' %>
               </li>
             <% end %>
           </ul>

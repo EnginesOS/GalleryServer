@@ -34,6 +34,7 @@ Rails.application.routes.draw do
 
   root 'pages#home', :format => 'html'
   get 'api/v0/software', to: 'published_softwares#index', :format => 'json'
+  get 'api/v0/software_tags', to: 'tags#list_tags_by_name', :format => 'json'
   get 'home', to: "pages#home", as: :home
   get 'overview', to: "pages#overview", as: :overview
   get 'install', to: "pages#install", as: :install

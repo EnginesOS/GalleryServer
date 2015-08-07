@@ -18,20 +18,19 @@ class PublishedSoftware < ActiveRecord::Base
   validates :title, :presence => true
   validates :repository_url, :presence => true
 
- def self.list_all_tags_by_name
-   all_tags.map(&:name)
- end
+  def self.list_all_tags_by_name
+    all_tags.map(&:name).sort_by { |name| name.downcase }
+  end
 
+  def list_tags_by_name
+    tags.map(&:name).sort_by { |name| name.downcase }
+  end
 
   def to_label
     title
   end
 
   def repository_handler
-
-p :repository_handler
-p repository_url
-
     RepositoryHandler.new(repository_url: repository_url)
   end
 
@@ -39,14 +38,6 @@ p repository_url
     blueprint = repository_handler.load_blueprint_from_repository
     if blueprint
       self.blueprint = blueprint.to_json.to_s
-      # self.website_from_blueprint = blueprint['software']['home_page']
-      # self.default_engine_name_from_blueprint = blueprint['software']['name']
-      # self.full_title_from_blueprint = blueprint['software']['full_title']
-      # self.short_title_from_blueprint = blueprint['software']['short_title']
-      # self.description_from_blueprint = blueprint['software']['description']
-      # self.icon_url_from_blueprint = blueprint['software']['icon_url']
-      # self.license_title_from_blueprint = blueprint['software']['license_label']
-      # self.license_url_from_blueprint = blueprint['software']['license_sourceurl']
       return true
     end
   rescue
@@ -131,9 +122,9 @@ p repository_url
   end
 
   def as_json(options = {host_with_port: ''})
-    default_json = super
-    default_json['icon_url_from_gallery'] = icon_url_from_gallery options[:host_with_port]
-    default_json
+    result = super
+    result['icon_url_from_gallery'] = icon_url_from_gallery options[:host_with_port]
+    result
   end
 
 private
