@@ -36,7 +36,7 @@
     <% end %>
   </div>
 
-  <div class="col-md-4 index-view-action">
+  <div class="col-md-4">
     <div class="btn-group pull-right"> 
       <% if admin_signed_in? %>
         <%= link_to (content_tag(:i, '', class: 'fa fa-plus') + ' Add software'), new_published_software_path, class: 'btn btn-lg btn-primary trigger-response-modal', title: 'Add software' %>
