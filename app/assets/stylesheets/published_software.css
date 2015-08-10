@@ -63,3 +63,25 @@
   margin-left: 10px;
 }
 
+.find_by_dropdown_submit_button{
+  padding: 3px 20px;
+  line-height: 1.42857;
+  min-width: 100%;
+  text-align: left;  
+  border: none;
+  border-radius: 0px;
+  background-color: #FFF;
+}
+
+.find_by_dropdown_submit_button:hover{
+  background-color: #F5F5F5;
+}
+
+.search-clear-button {
+  background-color: #FFF;
+  color: #555;
+}
+
+.search-clear-button:hover {
+  color: #333;
+}

@@ -28,7 +28,7 @@ class PublishedSoftwaresController < ApplicationController
     @published_software = PublishedSoftware.find(params[:id])
     @published_software.save
     respond_to do |format|
-      format.json { render json: @published_software, host_with_port: request.host_with_port }
+      format.json { render json: @published_software }
       format.html {}
     end
     @comments = @published_software.root_comments
@@ -39,17 +39,19 @@ class PublishedSoftwaresController < ApplicationController
 
   def index
     @published_softwares = PublishedSoftware.search(params[:search])
-    if params[:tags].present?
+    params[:tags] = ( (params[:commit] == 'All' || params[:tags].blank?) ? 'All' : params[:tags] )
+    if params[:tags] != 'All'
       @published_softwares = @published_softwares.tagged_with(params[:tags])
     end
-    @published_softwares = @published_softwares.page(params[:page]).per(10)
-    @published_softwares = {
+    @published_softwares = @published_softwares.page(params[:page]).per( params[:per_page] || 10)
+    @published_softwares_json = {
       softwares: @published_softwares.as_json,
+      page: params[:page],
       total_pages: @published_softwares.total_pages
     }
 
     respond_to do |format|
-      format.json { render json: @published_softwares, host_with_port: request.host_with_port }
+      format.json { render json: @published_softwares_json, host_with_port: request.host_with_port }
       format.html { render :index }
     end
   end
