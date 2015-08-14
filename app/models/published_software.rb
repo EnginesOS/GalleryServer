@@ -123,8 +123,20 @@ class PublishedSoftware < ActiveRecord::Base
 
   def as_json(options = {host_with_port: ''})
     result = super
-    result['icon_url_from_gallery'] = icon_url_from_gallery options[:host_with_port]
-    result
+    {
+      'title' => result['title'],
+      'detail' => result['detail'],
+      'repository_url' => result['repository_url'],
+      'website_from_blueprint' => result['website_from_blueprint'],
+      'default_engine_name_from_blueprint' => result['default_engine_name_from_blueprint'],
+      'description_from_blueprint' => result['description_from_blueprint'],
+      'icon_url_from_blueprint' => result['icon_url_from_blueprint'],
+      'icon_url_from_gallery' => result['icon_url_from_gallery'],
+      'full_title_from_blueprint' => result['full_title_from_blueprint'],
+      'short_title_from_blueprint' => result['short_title_from_blueprint'],
+      'fees_comment' => result['fees_comment'],
+      'icon_url_from_gallery' => icon_url_from_gallery(options[:host_with_port])
+    }.to_json
   end
 
 private

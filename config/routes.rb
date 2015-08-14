@@ -32,12 +32,17 @@ Rails.application.routes.draw do
     end
   end
 
+  resources :bug_reports
+  
+
   root 'pages#home', :format => 'html'
   get 'api/v0/software', to: 'published_softwares#index', :format => 'json'
   get 'api/v0/software_tags', to: 'tags#list_tags_by_name', :format => 'json'
   get 'home', to: "pages#home", as: :home
+  get 'home/social_buttons', to: "pages#social_buttons"
   get 'overview', to: "pages#overview", as: :overview
   get 'install', to: "pages#install", as: :install
+  get 'screenshots', to: "pages#screenshots", as: :screenshots
   get 'technical_brief', to: "pages#technical_brief", as: :technical_brief
   get 'user_stories', to: "pages#user_stories", as: :user_stories
   get 'software_videos', to: "pages#software_videos", as: :software_videos

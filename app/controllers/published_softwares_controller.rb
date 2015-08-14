@@ -49,11 +49,12 @@ class PublishedSoftwaresController < ApplicationController
       page: params[:page],
       total_pages: @published_softwares.total_pages
     }
-
     respond_to do |format|
       format.json { render json: @published_softwares_json, host_with_port: request.host_with_port }
-      format.html { render :index }
+      format.html {}
     end
+    
+
   end
 
   def edit

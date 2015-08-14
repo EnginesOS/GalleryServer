@@ -1,5 +1,5 @@
 <div class="col-md-12">
-  <h1><%= content_tag(:i, '', class: 'fa fa-th-list') %> Software</h1>
+  <h1><%= content_tag(:i, '', class: 'fa fa-th-list') %> Software library</h1>
 </div>
  
 <div class="top-gap">
@@ -37,7 +37,7 @@
   </div>
 
   <div class="col-md-4">
-    <div class="btn-group pull-right"> 
+    <div class="btn-group pull-right col-md-top-gap-on-collapse"> 
       <% if admin_signed_in? %>
         <%= link_to (content_tag(:i, '', class: 'fa fa-plus') + ' Add software'), new_published_software_path, class: 'btn btn-lg btn-primary trigger-response-modal', title: 'Add software' %>
       <% end %>

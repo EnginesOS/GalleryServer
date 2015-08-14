@@ -6,6 +6,16 @@
 .transparent_navbar {
   background-color: transparent;
   border: none;
+  margin-top: 0px;
+}
+
+.transparent_navbar li.dropdown.open ul.dropdown-menu {
+  background-color: #E7E7E7;
+  padding-bottom: 15px;
+}
+
+.transparent_navbar li.dropdown.open ul.dropdown-menu li:hover {
+  color: #333;
 }
 
 .navbar-brand {

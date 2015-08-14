@@ -18,8 +18,13 @@
           <%= link_to content_tag(:i, "", class: "fa fa-home") + " Home", home_path, class: "trigger-response-modal" %>
         </li>
         <li class="active">
-          <%= link_to content_tag(:i, "", class: "fa fa-th-list") + " Software gallery", published_softwares_path, class: "trigger-response-modal" %>
+          <%= link_to content_tag(:i, "", class: "fa fa-th-list") + " Library", published_softwares_path, class: "trigger-response-modal" %>
         </li>
+        <li>
+          <%= link_to((content_tag(:i, '', class: 'fa fa-info').html_safe + " Info"), overview_path, class: "trigger-response-modal") %>
+        </li>
+
+
 
 <!--         <li class="<%= 'active' if params[:controller] == 'published_softwares' %>">
           <%= link_to content_tag(:i, "", class: "fa fa-th-list") + " Gallery", published_softwares_path, class: 'trigger-response-modal' %>

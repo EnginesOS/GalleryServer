@@ -15,25 +15,14 @@
     <!-- Collect the nav links, forms, and other content for toggling -->
     <div class="collapse navbar-collapse" id="main-navbar-collapse">
       <ul class="nav navbar-nav">
-        <li class="<%= 'active' if active_menu_item == :home %>">
+        <li>
           <%= link_to content_tag(:i, "", class: "fa fa-home") + " Home", home_path, class: "trigger-response-modal" %>
         </li>
-        <li class="<%= 'active' if active_menu_item == :overview %>">
-          <%= link_to content_tag(:i, "", class: "fa fa-info") + " Overview", overview_path, class: "trigger-response-modal" %>
+        <li>
+          <%= link_to content_tag(:i, "", class: "fa fa-th-list") + " Library", published_softwares_path, class: "trigger-response-modal" %>
         </li>
-        <li class="<%= 'active' if active_menu_item == :install %>">
-          <%= link_to content_tag(:i, "", class: "fa fa-floppy-o") + " Install", install_path, class: "trigger-response-modal" %>
-        </li>
-<% if false %>        
-        <li class="<%= 'active' if active_menu_item == :user_stories %>">
-          <%= link_to content_tag(:i, "", class: "fa fa-smile-o") + " User stories", user_stories_path, class: "trigger-response-modal" %>
-        </li>
-<% end %>
-        <li class="<%= 'active' if active_menu_item == :software_videos %>">
-          <%= link_to content_tag(:i, "", class: "fa fa-video-camera") + " Software videos", software_videos_path, class: "trigger-response-modal" %>
-        </li>
-        <li class="<%= 'active' if active_menu_item == :technical_brief %>">
-          <%= link_to content_tag(:i, "", class: "fa fa-code") + " Technical brief", technical_brief_path, class: "trigger-response-modal" %>
+        <li class="active">
+          <%= link_to((content_tag(:i, '', class: 'fa fa-info').html_safe + " Info"), overview_path, class: "trigger-response-modal") %>
         </li>
       </ul>
       <%= render 'layouts/user_navbar_gadget' %>

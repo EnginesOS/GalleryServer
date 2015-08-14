@@ -8,6 +8,12 @@
   margin-top: 15px;
 }
 
+@media (max-width:991px) {
+  .col-md-top-gap-on-collapse {
+    margin-top: 15px;
+  }
+}
+
 body {
   background-color: transparent;
   font-size: 18px;

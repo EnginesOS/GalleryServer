@@ -1,12 +1,15 @@
 <div class="col-md-12">
-  <div class="alert alert-warning">
+
+  <%= render 'sub_navbar' %>
+
+  <div id="prerelease_alert" class="alert alert-warning top-gap">
     <strong><i class="fa fa fa-exclamation-triangle"></i> Please note</strong>
     <p>Engines is currently at a pre-release stage. It is available for testing purposes only. We do not recommend installation onto a production system.</p>
   </div>
 
 <h2><i class="fa fa-floppy-o"></i> Install</h2>
 <p>Start with a base system, which should be a fresh Ubuntu 14.04 or 15.x installation with at least 2GB of RAM and 40GB available disk space.</p>
-<p>Open a terminal window. Paste into terminal window...</p>
+<p>Open a terminal window. Paste to the command line...</p>
 
 <pre>sudo apt-get install -y git
 git clone https://github.com/EnginesOS/EnginesInstaller
@@ -16,19 +19,19 @@ sudo ./install_engines.sh alpha</pre>
 <p>These commands will:
   <ol>
     <li>make sure that Git is installed,</li>
-    <li>use Git to extract the Engines installer software into a new directory called EnginesInstaller,</li>
+    <li>use Git to create the Engines installer software into a new directory (called EnginesInstaller),</li>
     <li>go to the EnginesInstaller directory, and</li>
-    <li>run the script that installs Engines (into the /opt/engines directory).</li>
+    <li>run the script that installs the Engines System files (these go to the /opt/engines directory).</li>
   </ol>
 </p>
 
 <p>Follow the prompts. Once the installer has run you will be presented with a URL that you will need to open in a browser. Sign in to Engines.</p>
 <pre>Username 'admin', password 'password'</pre>
 <p>Complete the setup wizard and you're done.</p>
-<p>More detailed and technical installation instructions on the <%= link_to (content_tag(:i, nil, class: 'fa fa-github') + " GitHub page"), "https://github.com/EnginesOS/System/wiki/Installation", class: 'btn btn-default btn-lg' %></p>
+<p>More technical installation instructions, and a guide on how to install on AWS, are available on the <%= link_to ("Engines " + content_tag(:i, nil, class: 'fa fa-github') + "GitHub page").html_safe, "https://github.com/EnginesOS/System/wiki/Installation", target: "_engines_github", class: '' %>.</p>
 
 <h3><i class="fa fa-trash-o"></i> Uninstall</h3>
-<p>Open a terminal window (in the same directory that you used during install, which will be the parent directory of the EnginesInstaller directory) and enter...</p>
+<p>Open a terminal window (in the same directory that you were in at the start of installation, which will be the parent directory of the EnginesInstaller directory) and enter...</p>
 <pre>sudo EnginesInstaller/obliterate_engines_no_warning.sh</pre>
 
 <p>This command will uninstall both the Engines software and the Engines installer software.</p>
