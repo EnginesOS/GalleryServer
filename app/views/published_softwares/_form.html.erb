@@ -2,8 +2,8 @@
   <%= render 'shared/form/errors', f: f %>
   <%= render 'shared/form/default_fields', f: f, attributes: [:title, :detail, :repository_url] %>
 
-  <%= render 'shared/form/legend', text: "Fees" %>
-  <%= render 'shared/form/default_fields', f: f, attributes: [{name: :fees_comment, label: "Comment"}, {name: :fees_buttons_html, label: "HTML for buttons", attribute_type: :code_box}] %>
+  <%= render 'shared/form/legend', text: "Payment" %>
+  <%= render 'shared/form/default_fields', f: f, attributes: [{name: :fees_comment, label: "Comment"}, {name: :fees_button_url, label: "URL to payment"}] %>
 
   <%= render 'shared/form/nested_fields_for', association: :videos, f: f %>
   <%= render 'shared/form/nested_fields_for', association: :screenshots, attributes: [{name: :image, attribute_type: :image_field}], f: f %>

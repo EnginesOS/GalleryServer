@@ -1,0 +1,127 @@
+.home-page-logo-holder {
+  width: 50%;
+  max-width: 300px; 
+}
+
+#home-page-software-gallery-button {
+  font-size: 30px;
+}
+
+.share_by_email {
+/*  margin-top: 5px;*/
+width: 100%;
+}
+
+.social_links_area {
+  line-height: 0.5;
+  text-align: center;
+  width: 100%;
+}
+
+.social_links_area div.social_icons {
+  display: inline-block;
+}
+
+#open_social_links_button {
+  width: 100%;
+  white-space: pre-wrap;
+}
+
+#social_share_buttons_holder {
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  display: inline-block;
+  text-align: center;
+  background-color: #fff;
+  padding-left: 5px;
+  padding-right: 5px;
+  width: 100%;
+  min-height: 32px;
+  overflow: hidden;
+}
+
+#social_share_buttons_holder.hide_while_loading {
+  border: none;
+  display: inline-block;
+  height:0px;
+  min-height: 0px;
+  position: absolute;
+}
+
+
+
+
+#social_share_buttons_holder .social_share_button {
+  display: inline-block;
+  vertical-align: top;
+  height: 32px;
+}
+
+#social_share_buttons_holder .social_share_button.twitter {
+  padding-top: 2px;
+}
+
+#social_share_buttons_holder .social_share_button.pinterest {
+  padding-top: 2px;
+}
+
+#social_share_buttons_holder .social_share_button.linkedin {
+  padding-top: 6px;
+}
+
+#social_share_buttons_holder .social_share_button.facebook {
+  padding-top: 6px;
+}
+
+#social_share_buttons_holder .social_share_button.reddit {
+  padding-top: 8px;
+}
+
+
+
+
+.home_page_background_cover { 
+background: url("/assets/home_background.png") no-repeat center center fixed; 
+-webkit-background-size: cover;
+-moz-background-size: cover;
+-o-background-size: cover;
+background-size: cover;
+}
+
+.home_page .jumbotron {
+  background-color: rgba(225,225,225, 0.7);
+  padding-top: 24px;
+}
+
+.video_button{
+  padding: 5px;
+}
+
+#home-page-video-modal video {
+  width: 100%;
+}
+
+#home_page_promo_video_poster {
+  width: 100%;
+}
+
+.tag-cloud-1 { font-size: 1.0em; }
+.tag-cloud-2 { font-size: 1.2em; }
+.tag-cloud-3 { font-size: 1.4em; }
+.tag-cloud-4 { font-size: 1.6em; }
+
+#tag_cloud_holder {
+  text-align: center;
+/*  background-color: rgba(225,225,225, 0.3);
+  border: 1px solid;
+  border-radius: 6px;
+  border-color: #ccc;
+*/}
+
+#tag_cloud_holder a {
+  color: #666;
+}
+
+#tag_cloud_holder a:hover {
+  color: #428BCA;
+}

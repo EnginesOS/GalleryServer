@@ -32,7 +32,7 @@ Rails.application.routes.draw do
     end
   end
 
-  resources :bug_reports
+  resource :feedback
   
 
   root 'pages#home', :format => 'html'

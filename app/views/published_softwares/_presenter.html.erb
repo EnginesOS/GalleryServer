@@ -1,27 +1,23 @@
-<div class="panel panel-default published-software-panel">
-  <div class="panel-body">
-    <div class="published-software-holder">
-      <div class="col-md-3">
-        <% if published_software.icon.exists? %>
-        <div class="published-software-icon-holder">
-          <img src=<%= published_software.icon.url %> class="published-software-icon">
-        </div>
-        <% end %>
+<div class="col-md-3">
+  <% if published_software.icon.exists? %>
+  <div class="published-software-icon-holder">
+    <img src=<%= published_software.icon.url %> class="published-software-icon">
+  </div>
+  <% end %>
+</div>
+<div class="col-md-9"> 
+  <div class="published-software-details">
+    <% if published_software.title.present? %>
+      <div class="published-software-title">
+        <%= published_software.title %>
       </div>
-      <div class="col-md-9"> 
-        <div class="published-software-details">
-          <% if published_software.title.present? %>
-            <div class="published-software-title">
-              <%= published_software.title %>
-            </div>
-          <% end %>
-          <% if published_software.detail.present? %>
-            <div class="published-software-description">
-              <%= published_software.detail %>
-            </div>
-          <% end %>
-        </div>
+    <% end %>
+    <% if published_software.detail.present? %>
+      <div class="published-software-description">
+        <%= published_software.detail %>
       </div>
-    </div>
+    <% end %>
   </div>
 </div>
+
+

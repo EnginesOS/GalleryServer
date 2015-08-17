@@ -31,6 +31,7 @@
       <div class="col-md-12">
         <h2>Software</h2>
         <%= link_to((content_tag(:i, '', class: 'fa fa-list').html_safe + " Library"), published_softwares_path, class: "btn btn-lg btn-default") %>
+        <%= link_to content_tag(:i, "", class: "fa fa-heart-o") + " Add my favorite software!", feedback_path(), class: "btn btn-default btn-lg trigger-response-modal" %>
         <h3><i class="fa fa-binoculars"></i> Find</h3>
         <div id="tag_cloud_holder" class="top-gap"></div>
       </div>
@@ -39,7 +40,13 @@
         <div class="published-softwares-list">
           <% @published_softwares.each do |published_software| %>
             <div class="published-software-row" onclick="location.href='<%= published_software_path(published_software) %>';">
-              <%= render 'published_softwares/presenter', published_software: published_software %>
+              <div class="panel panel-default published-software-panel">
+                <div class="panel-body">
+                  <div class="published-software-holder">
+                    <%= render 'published_softwares/presenter', published_software: published_software %>
+                  </div>
+                </div>
+              </div>
             </div>
           <%end%>
         </div>

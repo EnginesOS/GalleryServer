@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150805013262) do
+ActiveRecord::Schema.define(version: 20150817053840) do
 
   create_table "admins", force: :cascade do |t|
     t.string   "email",                  limit: 255, default: "", null: false
@@ -70,7 +70,7 @@ ActiveRecord::Schema.define(version: 20150805013262) do
     t.string   "full_title_from_blueprint",          limit: 255
     t.string   "short_title_from_blueprint",         limit: 255
     t.text     "fees_comment"
-    t.text     "fees_buttons_html"
+    t.text     "fees_button_url"
   end
 
   create_table "screenshots", force: :cascade do |t|

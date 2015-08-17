@@ -17,14 +17,15 @@
         <li>
           <%= link_to content_tag(:i, "", class: "fa fa-home") + " Home", home_path, class: "trigger-response-modal" %>
         </li>
-        <li class="active">
+        <li class="<%= params['controller'] == 'published_softwares' ? 'active' : '' %>">
           <%= link_to content_tag(:i, "", class: "fa fa-th-list") + " Library", published_softwares_path, class: "trigger-response-modal" %>
         </li>
-        <li>
+        <li class="<%= params['controller'] == 'pages' ? 'active' : '' %>">
           <%= link_to((content_tag(:i, '', class: 'fa fa-info').html_safe + " Info"), overview_path, class: "trigger-response-modal") %>
         </li>
-
-
+        <li class="<%= params['controller'] == 'feedback' ? 'active' : '' %>">
+          <%= link_to((content_tag(:i, '', class: 'fa fa-pencil').html_safe + " Feedback"), feedback_path, class: "trigger-response-modal") %>
+        </li>
 
 <!--         <li class="<%= 'active' if params[:controller] == 'published_softwares' %>">
           <%= link_to content_tag(:i, "", class: "fa fa-th-list") + " Gallery", published_softwares_path, class: 'trigger-response-modal' %>

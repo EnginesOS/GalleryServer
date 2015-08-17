@@ -12,8 +12,6 @@
   <%= render partial: 'layouts/home_navbar' %>
 <% elsif params['controller'] == 'pages' && params['action'] == 'credits' %>
   <%= render partial: 'layouts/home_navbar' %>
-<% elsif params['controller'] == 'pages' %>
-  <%= render partial: 'layouts/pages_navbar' %>
 <% else %>
   <%= render partial: 'layouts/navbar' %>
 <% end %>

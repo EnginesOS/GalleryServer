@@ -1,0 +1,56 @@
+.panel-thumbnail-container {
+  margin-bottom: 30px;
+}
+
+.panel-thumbnail-text {
+  margin-top: 5px;
+  font-size: 90%;
+}
+
+#engine-image-holder {
+  float: right;
+  margin-left: 30px;
+}
+
+.info-page-image-holder {
+  text-align: center;
+}
+
+#prerelease_alert {
+  background-color: #FFF;
+}
+
+#animated-engine-gif {
+  background-image: url("/assets/radial-engine-placeholder.gif");
+  width: 280px;
+  height: 233px;
+  display: inline-block;
+}
+
+#animated-engine-gif:hover {
+  background-image: url("/assets/radial-engine.gif");
+}
+
+#pages_sub_nav.btn-group-vertical {
+  margin-left: 15px;
+  margin-bottom: 15px;
+}
+
+.dropdown_help li {
+  padding: 10px;
+}
+
+
+#screenshots_carousel {
+  border: 3px solid #ccc;
+}
+
+#screenshots_carousel .carousel-caption {
+  background-color: rgba(255,255,255,0.5);
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  font-size: 36px;
+  text-shadow: none;
+  color: #333;
+}

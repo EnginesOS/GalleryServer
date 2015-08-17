@@ -1,3 +1,12 @@
 <div class="top-gap">
+
+<%= published_software.humanized_blueprint_html %>
+
+<button class="btn btn-default" type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
+  {} JSON <span class="caret"></span>
+</button>
+<div class="collapse top-gap" id="collapseExample">
     <%= (ap JSON.parse(published_software.blueprint), plain: true, index: false).html_safe %>
+</div>
+
 </div>

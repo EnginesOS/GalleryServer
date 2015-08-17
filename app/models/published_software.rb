@@ -22,6 +22,10 @@ class PublishedSoftware < ActiveRecord::Base
     all_tags.map(&:name).sort_by { |name| name.downcase }
   end
 
+  def humanized_blueprint_html
+    @humanized_blueprint_html ||= BlueprintHumanizer::Blueprint.new(blueprint).html
+  end
+
   def list_tags_by_name
     tags.map(&:name).sort_by { |name| name.downcase }
   end

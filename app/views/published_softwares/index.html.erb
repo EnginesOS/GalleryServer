@@ -1,5 +1,6 @@
 <div class="col-md-12">
-  <h1><%= content_tag(:i, '', class: 'fa fa-th-list') %> Software library</h1>
+  <%= link_to content_tag(:i, "", class: "fa fa-heart-o") + " Add my favorite software!", feedback_path(), class: "btn btn-default pull-right top-gap trigger-response-modal" %>
+  <h2><%= content_tag(:i, '', class: 'fa fa-th-list') %> Library</h2>
 </div>
  
 <div class="top-gap">
@@ -63,7 +64,13 @@
       <% if admin_signed_in? %>
         <%= render 'index_actions', published_software: published_software %>
       <% end %>
-      <%= render 'presenter', published_software: published_software %>
+      <div class="panel panel-default published-software-panel">
+        <div class="panel-body">
+          <div class="published-software-holder">
+            <%= render 'published_softwares/presenter', published_software: published_software %>
+          </div>
+        </div>
+      </div>
     </div>
   <%end%>
 </div>

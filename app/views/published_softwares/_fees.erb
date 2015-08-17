@@ -1,9 +1,12 @@
-<div class="top-gap">
-    <% if published_software.fees_comment.present? || published_software.fees_buttons_html.present? %>
-      <p><%= published_software.fees_comment %></p>
-      <p><%= published_software.fees_buttons_html.html_safe %></p>
-    <% else %>
-      <p>This software does not contain information on licensing fees.
-    <% end %>
-
-</div>
+<% if published_software.fees_comment.present? || published_software.fees_button_url.present? %>
+  <div class="top-gap panel panel-default">
+    <div class="panel-body">
+      <% if published_software.fees_comment.present? %>
+        <p><%= published_software.fees_comment %></p>
+      <% end %>
+      <% if published_software.fees_button_url.present? %>
+        <p><%= link_to (content_tag(:i, nil, class: "fa fa-external-link") + " Buy / donate"), published_software.fees_button_url, class: "btn btn-success pull-right", target: "_" + published_software.title.delete("^a-zA-Z0-9") %></p>
+      <% end %>
+    </div>
+  </div>
+<% end %>

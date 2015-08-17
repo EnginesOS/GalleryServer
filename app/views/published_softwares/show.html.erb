@@ -10,8 +10,14 @@
   <div class="top-gap">
     <%= render 'published_softwares/presenter', published_software: @published_software %>
   </div>
+  <div class="col-md-9 col-md-offset-3"> 
+    <%= render 'published_softwares/fees', published_software: @published_software %>
+  </div>
+
   <%= render 'published_softwares/tags', published_software: @published_software %>
 </div>
+
+
 
 <div class="col-sm-12 top-gap">
   <div role="tabpanel">
@@ -19,7 +25,6 @@
       <li role="presentation" class="active"><a href="#reviews" role="tab" data-toggle="tab"><%= content_tag :i, nil, class: "fa fa-star-half-empty" %> Reviews</a></li>
       <li role="presentation"><a href="#screenshots" role="tab" data-toggle="tab"><%= content_tag :i, nil, class: "fa fa-camera" %> Screenshots</a></li>
       <li role="presentation"><a href="#videos" role="tab" data-toggle="tab"><%= content_tag :i, nil, class: "fa fa-video-camera" %> Videos</a></li>
-      <li role="presentation"><a href="#fees" role="tab" data-toggle="tab"><%= content_tag :i, nil, class: "fa fa-dollar" %> Fees</a></li>
       <li role="presentation"><a href="#info" role="tab" data-toggle="tab"><%= content_tag :i, nil, class: "fa fa-info" %> Info</a></li>
       <li role="presentation"><a href="#blueprint" role="tab" data-toggle="tab"><%= content_tag :i, nil, class: "fa fa-file-text" %> Blueprint</a></li>
     </ul>
@@ -34,9 +39,6 @@
       </div>
       <div role="tabpanel" class="tab-pane" id="videos">
         <%= render 'published_softwares/videos', published_software: @published_software %>
-      </div>
-      <div role="tabpanel" class="tab-pane" id="fees">
-        <%= render 'published_softwares/fees', published_software: @published_software %>
       </div>
       <div role="tabpanel" class="tab-pane" id="info">
         <%= render 'published_softwares/info', published_software: @published_software %>
