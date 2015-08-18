@@ -8,9 +8,9 @@
 </head>
 <body>
 
-<% if params['controller'] == 'pages' && params['action'] == 'home' %>
+<% if params['controller'] == 'info_pages' && params['action'] == 'home' %>
   <%= render partial: 'layouts/home_navbar' %>
-<% elsif params['controller'] == 'pages' && params['action'] == 'credits' %>
+<% elsif params['controller'] == 'info_pages' && params['action'] == 'credits' %>
   <%= render partial: 'layouts/home_navbar' %>
 <% else %>
   <%= render partial: 'layouts/navbar' %>
