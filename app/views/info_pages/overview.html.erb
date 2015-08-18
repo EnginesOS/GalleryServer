@@ -1,0 +1,29 @@
+<div class="col-md-12">
+
+  <%= render 'sub_navbar' %>
+
+  <h2><i class="fa fa-hand-o-right"></i> Overview</h2>
+
+  <p>Engines is for running your own server. Use it to self-host server software and store your data. Create a cloud environment that you own and control.</p>
+
+  <h3>Simple</h3>
+  <p>Engines has a web interface to manage your system and its software. Applications are straightforward to install, configure and maintain. Back-ups are simple to set-up and run.</p>
+
+  <h3>Flexible</h3>
+  <p>Install Engines on your own hardware in the office or at home, or put it on a hosted virtual machine. Find a range of software in the offical Engines library as well as third-party libraries.</p>
+
+  <h3>Powerful</h3>
+  <p>Run multiple applications and solve multiple problems. Share applications, files and data to connect your devices, friends, contacts, empoyees and colleagues.</p>
+
+  <h3>Secure and private</h3>
+  <p>Only you hold the keys to your system and its logs. Applications run in sandboxed containers to protect your server from malicious and defective software. Domicile in the jurisdiction that makes most sense for you. Run a VPN for extra protection.</p>
+
+  <h3>Software</h3>
+  <p>Use Engines for hosting email, serving files, media libraries, online stores, personal social feeds, blogs and wikis, end-point browsing, instant messaging, multiplayer gaming, managing projects, CRM, fleet tracking, voip, accounting, document sharing, group contacts and calendar, ERP, education, student portfolios, and more.</p>
+  <p>Check out the <%= link_to (content_tag(:i, nil, class: "fa fa-th-list") + " library"), published_softwares_path(), class: "trigger-response-modal" %>.</p>
+  <p>If your favorite software is not shown in the library, or if you're a software developer that would like to have your application added to Engines, please <%= link_to content_tag(:i, nil, class: "fa fa-pencil") + " get in touch", contact_us_info_pages_path(), class: "trigger-response-modal" %> and let us know.</p>
+  <div class="info-page-image-holder">
+    <%= image_tag 'radial-engine.jpg' %>
+  </div>
+
+</div>

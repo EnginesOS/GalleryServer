@@ -3,6 +3,39 @@
   margin-bottom: 0px;
 }
 
+.navbar-toggle {
+  color: #f0582a;
+  border-radius: 0;
+    border: none;
+    margin: 0px;
+    font-size: 48px;
+    line-height: 0;
+    padding: 0;
+    height: 50.35px;
+    width: 100px;
+}
+
+#navbar_user_menu_toggle {
+  width: 100px;
+  text-align: center;
+  line-height: 0;
+  font-size: 32px;
+  padding: 10px;
+  height: 50.35px;
+}
+
+#navbar_user_menu_toggle small {
+  font-size: 10px;
+}
+
+#navbar_user_menu_toggle:hover {
+  background-color: rgba(0,0,0,0.1);
+}
+
+.navbar_user_icon {
+  color: #f0582a;
+}
+
 .transparent_navbar {
   background-color: transparent;
   border: none;

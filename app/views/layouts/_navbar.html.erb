@@ -4,9 +4,7 @@
     <div class="navbar-header">
       <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
         <span class="sr-only">Toggle navigation</span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
+        <i class="fa fa-caret-down"></i>
       </button>
       <%= link_to (image_tag("engines_logo.png", class: "navbar-icon")), root_path, class: 'trigger-response-modal navbar-brand' %>
     </div>
@@ -15,16 +13,13 @@
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav">
         <li>
-          <%= link_to content_tag(:i, "", class: "fa fa-home") + " Home", home_path, class: "trigger-response-modal" %>
+          <%= link_to content_tag(:i, "", class: "fa fa-home") + " Home", home_info_pages_path, class: "trigger-response-modal" %>
         </li>
         <li class="<%= params['controller'] == 'published_softwares' ? 'active' : '' %>">
           <%= link_to content_tag(:i, "", class: "fa fa-th-list") + " Library", published_softwares_path, class: "trigger-response-modal" %>
         </li>
-        <li class="<%= params['controller'] == 'pages' ? 'active' : '' %>">
-          <%= link_to((content_tag(:i, '', class: 'fa fa-info').html_safe + " Info"), overview_path, class: "trigger-response-modal") %>
-        </li>
-        <li class="<%= params['controller'] == 'feedback' ? 'active' : '' %>">
-          <%= link_to((content_tag(:i, '', class: 'fa fa-pencil').html_safe + " Feedback"), feedback_path, class: "trigger-response-modal") %>
+        <li class="<%= params['controller'] == 'info_pages' ? 'active' : '' %>">
+          <%= link_to((content_tag(:i, '', class: 'fa fa-info').html_safe + " Info"), overview_info_pages_path, class: "trigger-response-modal") %>
         </li>
 
 <!--         <li class="<%= 'active' if params[:controller] == 'published_softwares' %>">

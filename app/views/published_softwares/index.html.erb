@@ -1,5 +1,4 @@
 <div class="col-md-12">
-  <%= link_to content_tag(:i, "", class: "fa fa-heart-o") + " Add my favorite software!", feedback_path(), class: "btn btn-default pull-right top-gap trigger-response-modal" %>
   <h2><%= content_tag(:i, '', class: 'fa fa-th-list') %> Library</h2>
 </div>
  
@@ -55,7 +54,6 @@
         </h3>
     </div>
   <% end %>
-  <%= paginate @published_softwares, :theme => 'twitter-bootstrap-3' %>
 </div>
 
 <div class="col-sm-12 published-softwares-list top-gap">

@@ -20,7 +20,7 @@ $(document).ready(function(){
       $('#open_social_links_button').click( function() {
         $(this).html('<i class="fa fa-spinner fa-spin"></i>');
         $.ajax({
-          url : "home/social_buttons",
+          url : "/info_pages/social_buttons",
           cache : true,
           timeout: 5000,
           success : function(html) {

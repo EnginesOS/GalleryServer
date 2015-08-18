@@ -1,0 +1,56 @@
+<div class="home_page <%= 'navbar-buffer' if admin_signed_in? %>">
+
+  <div class="col-sm-12 text-center">
+    <%= image_tag("engines_logo.png", class: "home-page-logo-holder") %>
+  </div>
+
+  <div class="col-sm-12 top-gap">
+    <div class="jumbotron clearfix">
+      <div class="col-md-8">  
+        <h2>Engines makes it easy to run your own server</h2>
+        <p>deploy web applications and store data<br>
+           for organisations and personal use</p>
+        <p><small><i>Simpler, with more control, lower costs and better privacy.</i></small></p>
+        <%= link_to((content_tag(:i, '', class: 'fa fa-hand-o-right').html_safe + " Overview"), overview_info_pages_path, class: "btn btn-lg btn-default trigger-response-modal top-gap") %>
+        <%= link_to((content_tag(:i, '', class: 'fa fa-floppy-o').html_safe + " Install"), install_info_pages_path, class: "btn btn-lg btn-default trigger-response-modal top-gap") %>
+        <% if current_user.nil? %>
+          <%= link_to((content_tag(:i, '', class: 'fa fa-user-plus').html_safe + " Not registered? Sign up..."), new_user_registration_path, class: "btn btn-lg btn-primary trigger-response-modal top-gap") %>
+        <% end %>
+      </div>
+      <div class="col-md-4 text-center">  
+        <%= render 'video' %>
+        <a class="btn btn-default share_by_email" href="mailto:?subject=Engines&amp;body=%20Engines is for running your own server. Have a look at engines.onl"><i class="fa fa-share"></i> to <i class="fa fa-envelope"></i></a>
+        <div class="social_links_area"><button type="button" class="btn btn-default" id="open_social_links_button"><i class="fa fa-share"></i>&nbspto social&nbspmedia <div class="social_icons"><%= content_tag :i, nil, class: "fa fa-twitter" %>&nbsp<%= content_tag :i, nil, class: "fa fa-pinterest" %>&nbsp<%= content_tag :i, nil, class: "fa fa-linkedin" %>&nbsp<%= content_tag :i, nil, class: "fa fa-facebook" %>&nbsp<%= content_tag :i, nil, class: "fa fa-reddit" %></button></div>
+
+      </div>
+    </div>
+  </div>
+
+  <div class="col-sm-12">
+    <div class="jumbotron clearfix">
+      <div class="col-md-12">
+        <h2>Software</h2>
+        <%= link_to((content_tag(:i, '', class: 'fa fa-th-list').html_safe + " Library"), published_softwares_path, class: "btn btn-lg btn-default") %>
+        <h3><i class="fa fa-binoculars"></i> Find</h3>
+        <div id="tag_cloud_holder" class="top-gap"></div>
+      </div>
+      <div class="col-sm-12 top-gap">
+        <h3><i class="fa fa-flag"></i> Featured</h3>
+        <div class="published-softwares-list">
+          <% @published_softwares.each do |published_software| %>
+            <div class="published-software-row" onclick="location.href='<%= published_software_path(published_software) %>';">
+              <div class="panel panel-default published-software-panel">
+                <div class="panel-body">
+                  <div class="published-software-holder">
+                    <%= render 'published_softwares/presenter', published_software: published_software %>
+                  </div>
+                </div>
+              </div>
+            </div>
+          <%end%>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>
