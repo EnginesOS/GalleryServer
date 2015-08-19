@@ -1,4 +1,4 @@
-class HomeController < ApplicationController
+class HomesController < ApplicationController
 
   def show
     @published_softwares = PublishedSoftware.all.shuffle.first(3)

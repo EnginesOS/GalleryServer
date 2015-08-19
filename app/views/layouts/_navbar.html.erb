@@ -13,7 +13,7 @@
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav">
         <li>
-          <%= link_to content_tag(:i, "", class: "fa fa-home") + " Home", contact_us_info_pages_path, class: "trigger-response-modal" %>
+          <%= link_to content_tag(:i, "", class: "fa fa-home") + " Home", home_path, class: "trigger-response-modal" %>
         </li>
         <li class="<%= params['controller'] == 'published_softwares' ? 'active' : '' %>">
           <%= link_to content_tag(:i, "", class: "fa fa-th-list") + " Library", published_softwares_path, class: "trigger-response-modal" %>
