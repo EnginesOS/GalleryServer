@@ -21,14 +21,14 @@
 }
 
 #animated-engine-gif {
-  background-image: url("/assets/radial-engine-placeholder.gif");
+  background-image: url("radial-engine-placeholder.gif");
   width: 280px;
   height: 233px;
   display: inline-block;
 }
 
 #animated-engine-gif:hover {
-  background-image: url("/assets/radial-engine.gif");
+  background-image: url("radial-engine.gif");
 }
 
 #pages_sub_nav.btn-group-vertical {
