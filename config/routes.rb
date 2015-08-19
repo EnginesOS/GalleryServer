@@ -32,9 +32,10 @@ Rails.application.routes.draw do
     end
   end
 
-  root 'info_pages#home', :format => 'html'
+  root 'home#show', :format => 'html'
+  resource :home
   resource :info_pages do
-    get :home, :overview, :install, :screenshots, :technical_brief,
+    get :overview, :install, :screenshots, :technical_brief,
           :software_videos, :credits, :contact_us, :social_buttons
   end
 
