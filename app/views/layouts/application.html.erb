@@ -16,7 +16,7 @@
   <%= render partial: 'layouts/navbar' %>
 <% end %>
 
-<div id="content" class="<%= params['action'] == 'home' ? '' : 'navbar-buffer' %>">
+<div id="content" class="<%= params['controller'] == 'homes' ? '' : 'navbar-buffer' %>">
   <%= render partial: 'shared/flash_messages' %>
   <div class="container">
     <div class="row">
