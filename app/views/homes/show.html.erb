@@ -1,3 +1,13 @@
+<style>
+.home_page_background_cover { 
+background: url(<%= image_url 'home_background.png' %>) no-repeat center center fixed; 
+-webkit-background-size: cover;
+-moz-background-size: cover;
+-o-background-size: cover;
+background-size: cover;
+}
+</style>
+
 <div class="home_page <%= 'navbar-buffer' if admin_signed_in? %>">
 
   <div class="col-sm-12 text-center">
