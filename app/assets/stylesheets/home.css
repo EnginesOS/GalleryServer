@@ -8,14 +8,22 @@
 }
 
 .share_by_email {
-/*  margin-top: 5px;*/
-width: 100%;
+  width: 100%;
+  color: #666;
+}
+
+.share_by_email:hover {
+  color: #428BCA;
 }
 
 .social_links_area {
   line-height: 0.5;
   text-align: center;
   width: 100%;
+}
+
+.social_links_area .loading_spinner {
+  color: #666;
 }
 
 .social_links_area div.social_icons {
@@ -25,14 +33,18 @@ width: 100%;
 #open_social_links_button {
   width: 100%;
   white-space: pre-wrap;
+  background-color: transparent;
+  color: #666;
 }
 
+#open_social_links_button:hover {
+  color: #428BCA;
+}
+
+
 #social_share_buttons_holder {
-  border: 1px solid #ccc;
-  border-radius: 4px;
   display: inline-block;
   text-align: center;
-  background-color: #fff;
   padding-left: 5px;
   padding-right: 5px;
   width: 100%;
@@ -47,9 +59,6 @@ width: 100%;
   min-height: 0px;
   position: absolute;
 }
-
-
-
 
 #social_share_buttons_holder .social_share_button {
   display: inline-block;
@@ -94,7 +103,7 @@ background-size: cover;
 }
 
 .video_button{
-  padding: 5px;
+  padding: 0px;
 }
 
 #home-page-video-modal video {

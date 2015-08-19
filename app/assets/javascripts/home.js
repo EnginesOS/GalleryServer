@@ -18,7 +18,7 @@ $(document).ready(function(){
       });
 
       $('#open_social_links_button').click( function() {
-        $(this).html('<i class="fa fa-spinner fa-spin"></i>');
+        $(this).html('<i class="fa fa-spinner fa-spin loading_spinner"></i>');
         $.ajax({
           url : "/info_pages/social_buttons",
           cache : true,
