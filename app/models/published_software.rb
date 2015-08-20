@@ -140,7 +140,7 @@ class PublishedSoftware < ActiveRecord::Base
       'short_title_from_blueprint' => result['short_title_from_blueprint'],
       'fees_comment' => result['fees_comment'],
       'icon_url_from_gallery' => icon_url_from_gallery(options[:host_with_port])
-    }.to_json
+    }
   end
 
 private
