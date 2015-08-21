@@ -17,7 +17,7 @@
               <% if user.banned %>
                 <%= link_to (content_tag(:i, "", class: "fa fa-check-circle-o") + " Unban"), unban_user_admin_path(@user), class: 'trigger-response-modal btn btn-lg btn-noborder btn-default pull-right' %>
               <% else %>
-                <%= link_to (content_tag(:i, "", class: "fa fa-ban") + " Ban"), ban_user_admin_path(@user), class: 'trigger-response-modal btn btn-lg btn-noborder btn-default pull-right', data: { confirm: "Are you sure that you want to ban #{user.username}?", confirm_title: 'Confirm ban' } %>
+                <%= link_to (content_tag(:i, "", class: "fa fa-ban") + " Ban"), ban_user_admin_path(@user), class: 'btn btn-lg btn-noborder btn-default pull-right', data: { confirm: "Are you sure that you want to ban #{user.username}?", confirm_title: 'Confirm ban' } %>
               <% end %>
             </div>
           </div>
