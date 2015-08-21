@@ -1,4 +1,4 @@
-<h2>User sign in</h2>
+<h2><%= content_tag :i, '', class: 'fa fa-sign-in' %> Sign in</h2>
 
 <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
   <div><%= f.label :login %> username or email<br />
@@ -14,6 +14,9 @@
   <div><%= f.submit "Sign in" %></div>
 <% end %>
 
-<%= link_to('resend', new_user_confirmation_path) %>
-
+<div class="btn-group-vertical">
+  <%= link_to (content_tag(:i, '', class: 'fa fa-lock').html_safe + " Forgot your password?"), new_user_password_path() %>
+  <%= link_to((content_tag(:i, '', class: 'fa fa-send').html_safe + " Resend email address confirmation."), new_user_confirmation_path) %>
+  <%= link_to((content_tag(:i, '', class: 'fa fa-user-plus').html_safe + " Not registered? Sign up."), new_user_registration_path, class: "btn-sm trigger-response-modal") %>
+</div>
 

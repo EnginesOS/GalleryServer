@@ -20,10 +20,12 @@
               </div>
               <div class="form-group">
                   <%= f.submit 'Sign in', class: 'btn btn-lg btn-primary' %>
-                  <%= link_to "Forgot your password?", new_user_password_path(), class: "btn btn-sm btn-default pull-right top-gap" %>
+                <div class="pull-right">
+                    <%= link_to (content_tag(:i, '', class: 'fa fa-lock').html_safe + " Forgot your password?"), new_user_password_path(), class: "btn-sm trigger-response-modal" %><br>
+                    <%= link_to((content_tag(:i, '', class: 'fa fa-user-plus').html_safe + " Not registered? Sign up."), new_user_registration_path, class: "btn-sm trigger-response-modal") %>
+                </div>
               </div>
             <% end %>
-            <%= link_to "Admin", new_admin_session_path(), class: "btn-sm" %>
         </li>
       </ul>
     </li>
