@@ -87,4 +87,9 @@
   color: #333;
 }
 
-
+.featured_software_icon {
+  display: inline-block;
+  color: #FFD710;
+  font-size: 16px;
+  vertical-align: top;
+}

@@ -4,7 +4,7 @@ class PublishedSoftware < ActiveRecord::Base
   has_attached_file :icon, dependent: :destroy
   has_many :videos, dependent: :destroy
   has_many :screenshots, dependent: :destroy
-  default_scope { order('LOWER(title) ASC') }
+  default_scope { order('LOWER(title) ASC, featured_software DESC') }
 
   validates_attachment_content_type :icon, :content_type => /\Aimage\/.*\Z/
   before_validation { icon.clear if delete_icon == '1' }

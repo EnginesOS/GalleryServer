@@ -1,6 +1,6 @@
 <%= form_for @published_software do |f| %> 
   <%= render 'shared/form/errors', f: f %>
-  <%= render 'shared/form/default_fields', f: f, attributes: [:title, :detail, :repository_url] %>
+  <%= render 'shared/form/default_fields', f: f, attributes: [:title, :detail, :repository_url, :featured_software] %>
 
   <%= render 'shared/form/legend', text: "Payment" %>
   <%= render 'shared/form/default_fields', f: f, attributes: [{name: :fees_comment, label: "Comment"}, {name: :fees_button_url, label: "URL to payment"}] %>
