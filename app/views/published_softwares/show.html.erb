@@ -14,10 +14,9 @@
     <%= render 'published_softwares/fees', published_software: @published_software %>
   </div>
 
-  <%= render 'published_softwares/tags', published_software: @published_software %>
+  <%= render 'published_softwares/tags', published_software: @published_software,
+          search: params[:search], page: params[:page], tags: params[:tags]  %>
 </div>
-
-
 
 <div class="col-sm-12 top-gap">
   <div role="tabpanel">

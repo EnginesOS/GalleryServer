@@ -8,7 +8,7 @@ class User < ActiveRecord::Base
 
   has_many :comments, dependent: :destroy
 
-  validates :username, presence: true, uniqueness: {case_sensitive: false}, length: { within: 6..40 }
+  validates :username, presence: true, uniqueness: {case_sensitive: false}, length: { within: 8..40 }
   validates :email, presence: true, uniqueness: {case_sensitive: false}, format: { with: /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\z/i }
   # validates :password
   validate :password_valid

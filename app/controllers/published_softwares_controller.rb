@@ -114,14 +114,14 @@ class PublishedSoftwaresController < ApplicationController
     @published_software = PublishedSoftware.find(params[:id])
     @published_software.tag_list.add(params[:new_tag].present? ? params[:new_tag] : params[:existing_tag])
     @published_software.save
-    redirect_to @published_software
+    redirect_to published_software_path(@published_software, search: params[:search], page: params[:page], tags: params[:tags])
   end
 
   def remove_tag
     @published_software = PublishedSoftware.find(params[:id])
-    @published_software.tag_list.remove(params[:tag])
+    @published_software.tag_list.remove(params[:remove_tag])
     @published_software.save
-    redirect_to @published_software
+    redirect_to published_software_path(@published_software, search: params[:search], page: params[:page], tags: params[:tags])
   end
 
 private

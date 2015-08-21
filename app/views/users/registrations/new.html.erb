@@ -5,7 +5,7 @@
 
   <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
 
-  <% attributes = [{name: :username, hint:"6 to 40 characters"}, :email, {name: :password, attribute_type: :password_with_confirmation}] %>
+  <% attributes = [{name: :username, hint:"8 to 40 characters"}, :email, {name: :password, attribute_type: :password_with_confirmation}] %>
 
   <%= render 'shared/form/errors',f: f, attributes: attributes %>
   <%= render 'shared/form/default_fields',f: f, attributes: attributes %>
