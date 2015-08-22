@@ -53,7 +53,7 @@ background-size: cover;
   </div>
 
   <div class="col-sm-12">
-    <div class="jumbotron clearfix">
+    <div class="jumbotron software_jumbotron clearfix">
       <div class="col-md-4">
         <h2>Software</h2>
         <%= link_to((content_tag(:i, '', class: 'fa fa-th-list').html_safe + " Library"), published_softwares_path, class: "btn btn-lg btn-default") %>
@@ -62,7 +62,7 @@ background-size: cover;
         <div id="tag_cloud_holder" class="top-gap"></div>
       </div>
       <div class="col-sm-12 top-gap">
-        <h3><i class="fa fa-trophy"></i> Featured</h3>
+        <h4><i class="fa fa-star"></i> Featured</h4>
         <div class="published-softwares-list">
           <% @published_softwares.each do |published_software| %>
             <div class="published-software-row" onclick="location.href='<%= published_software_path(published_software) %>';">
