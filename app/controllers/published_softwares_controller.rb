@@ -45,15 +45,17 @@ class PublishedSoftwaresController < ApplicationController
     end
     @published_softwares = @published_softwares.page(params[:page]).per( params[:per_page] || 10)
     @published_softwares_json = {
-      softwares: @published_softwares.as_json,
+      softwares: @published_softwares.
+                    map{|software| software.library_software_record}.
+                    map{|software| software[:icon_url] = software[:icon_url].
+                                      gsub('__HOST_WITH_PORT__', request.host_with_port); software},
       page: params[:page],
       total_pages: @published_softwares.total_pages
     }
     respond_to do |format|
-      format.json { render json: @published_softwares_json, host_with_port: request.host_with_port }
+      format.json { render json: @published_softwares_json }
       format.html {}
     end
-    
 
   end
 

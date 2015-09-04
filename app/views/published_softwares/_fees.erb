@@ -5,7 +5,12 @@
         <p><%= published_software.fees_comment %></p>
       <% end %>
       <% if published_software.fees_button_url.present? %>
-        <p><%= link_to (content_tag(:i, nil, class: "fa fa-external-link") + " Buy / donate"), published_software.fees_button_url, class: "btn btn-success pull-right", target: "_" + published_software.title.delete("^a-zA-Z0-9") %></p>
+        <p>
+          <% fees_button_url = published_software.fees_button_url
+             fees_button_label = published_software.fees_button_label
+             fees_button_label = 'Donate' if fees_button_label.blank? %>
+          <%= link_to (content_tag(:i, nil, class: "fa fa-external-link") + " " + fees_button_label), fees_button_url, class: "btn btn-success pull-right", target: "_" + published_software.title.delete("^a-zA-Z0-9") %>
+        </p>
       <% end %>
     </div>
   </div>

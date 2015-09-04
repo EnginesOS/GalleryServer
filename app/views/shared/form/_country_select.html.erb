@@ -11,7 +11,7 @@
     <%= f.label name, class: 'control-label' do %>
       <%= label %>
     <% end %>
-    <%= comment %>
+    <small><%= comment %></small>
     <%= f.country_code_select name, collection, {include_blank: placeholder}, {title: tooltip, class: 'form-control input-lg'} %>
     <% if hint.present? %>
       <div class='form-field-hint'>

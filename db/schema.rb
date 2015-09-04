@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150821082912) do
+ActiveRecord::Schema.define(version: 20150822235015) do
 
   create_table "admins", force: :cascade do |t|
     t.string   "email",                  limit: 255, default: "", null: false
@@ -72,6 +72,7 @@ ActiveRecord::Schema.define(version: 20150821082912) do
     t.text     "fees_comment"
     t.text     "fees_button_url"
     t.boolean  "featured_software"
+    t.string   "fees_button_label"
   end
 
   create_table "screenshots", force: :cascade do |t|

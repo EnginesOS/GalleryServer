@@ -42,7 +42,7 @@
       <%= f.label name, class: ('control-label ' + label_class) do %>
         <%= label %>
       <% end %>
-      <%= comment %>
+      <small><%= comment %></small>
       <%= f.select name, collection_as_array, {selected: value, include_blank: include_blank}, {title: tooltip, placeholder: placeholder, class: select_class, id: id, data: select_data_options} %>
       <% if errors.present? %>
         <div class='form-field-errors'>

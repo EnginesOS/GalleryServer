@@ -117,29 +117,23 @@ class PublishedSoftware < ActiveRecord::Base
     end
   end
 
-  def icon_url_from_gallery host_with_port
+  def icon_url_from_gallery
     if icon.present?
-      'http://' + host_with_port + self.icon.url
+      'http://__HOST_WITH_PORT__' + self.icon.url
     else
       ''
     end
   end
 
-  def as_json(options = {host_with_port: ''})
-    result = super
+  def library_software_record
     {
-      'title' => result['title'],
-      'detail' => result['detail'],
-      'repository_url' => result['repository_url'],
-      'website_from_blueprint' => result['website_from_blueprint'],
-      'default_engine_name_from_blueprint' => result['default_engine_name_from_blueprint'],
-      'description_from_blueprint' => result['description_from_blueprint'],
-      'icon_url_from_blueprint' => result['icon_url_from_blueprint'],
-      'icon_url_from_gallery' => result['icon_url_from_gallery'],
-      'full_title_from_blueprint' => result['full_title_from_blueprint'],
-      'short_title_from_blueprint' => result['short_title_from_blueprint'],
-      'fees_comment' => result['fees_comment'],
-      'icon_url_from_gallery' => icon_url_from_gallery(options[:host_with_port])
+      label: title,
+      detail: detail,
+      repository_url: repository_url,
+      website: website_from_blueprint,
+      title: full_title_from_blueprint,
+      fees_comment: fees_comment,
+      icon_url: icon_url_from_gallery
     }
   end
 

@@ -21,16 +21,19 @@
 <div class="col-sm-12 top-gap">
   <div role="tabpanel">
     <ul class="nav nav-tabs" role="tablist">
-      <li role="presentation" class="active"><a href="#reviews" role="tab" data-toggle="tab"><%= content_tag :i, nil, class: "fa fa-star-half-empty" %> Reviews</a></li>
+      <li role="presentation" class="active"><a href="#info" role="tab" data-toggle="tab"><%= content_tag :i, nil, class: "fa fa-info" %> About</a></li>
+      <li role="presentation"><a href="#reviews" role="tab" data-toggle="tab"><%= content_tag :i, nil, class: "fa fa-star-half-empty" %> Reviews</a></li>
       <li role="presentation"><a href="#screenshots" role="tab" data-toggle="tab"><%= content_tag :i, nil, class: "fa fa-camera" %> Screenshots</a></li>
       <li role="presentation"><a href="#videos" role="tab" data-toggle="tab"><%= content_tag :i, nil, class: "fa fa-video-camera" %> Videos</a></li>
-      <li role="presentation"><a href="#info" role="tab" data-toggle="tab"><%= content_tag :i, nil, class: "fa fa-info" %> Info</a></li>
       <li role="presentation"><a href="#blueprint" role="tab" data-toggle="tab"><%= content_tag :i, nil, class: "fa fa-file-text" %> Blueprint</a></li>
     </ul>
 
     <!-- Tab panes -->
     <div class="tab-content">
-      <div role="tabpanel" class="tab-pane active" id="reviews">
+      <div role="tabpanel" class="tab-pane active" id="info">
+        <%= render 'published_softwares/info', published_software: @published_software %>
+      </div>
+      <div role="tabpanel" class="tab-pane" id="reviews">
         <%= render 'published_softwares/reviews', published_software: @published_software %>
       </div>
       <div role="tabpanel" class="tab-pane" id="screenshots">
@@ -38,9 +41,6 @@
       </div>
       <div role="tabpanel" class="tab-pane" id="videos">
         <%= render 'published_softwares/videos', published_software: @published_software %>
-      </div>
-      <div role="tabpanel" class="tab-pane" id="info">
-        <%= render 'published_softwares/info', published_software: @published_software %>
       </div>
       <div role="tabpanel" class="tab-pane" id="blueprint">
         <%= render 'published_softwares/blueprint', published_software: @published_software %>

@@ -17,7 +17,7 @@
     <%= f.label name, class: 'control-label' do %>
       <%= label %>
     <% end %>
-    <%= comment %>
+    <small><%= comment %></small>
     <%= f.text_field name, value: value, title: tooltip, placeholder: placeholder, spellcheck: ("false" if code), style: ("font-family:monospace;" if code), class: 'form-control input-lg' %>
     <% if errors.present? %>
       <div class='form-field-errors'>
