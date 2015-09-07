@@ -8,15 +8,11 @@
 </head>
 <body>
 
-<% if params['controller'] == 'homes' %>
-  <%= render partial: 'layouts/home_navbar' %>
-<% elsif params['controller'] == 'info_pages' && params['action'] == 'credits' %>
-  <%= render partial: 'layouts/home_navbar' %>
-<% else %>
-  <%= render partial: 'layouts/navbar' %>
-<% end %>
 
-<div id="content" class="<%= params['controller'] == 'homes' ? '' : 'navbar-buffer' %>">
+  <%= render partial: 'layouts/navbar' %>
+
+
+<div id="content">
   <%= render partial: 'shared/flash_messages' %>
   <div class="container">
     <div class="row">

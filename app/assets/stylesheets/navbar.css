@@ -3,6 +3,10 @@
   margin-bottom: 0px;
 }
 
+.navbar-default {
+  background-color: #fff;
+}
+
 .navbar-toggle {
   color: #f0582a;
   border-radius: 0;
@@ -36,7 +40,7 @@
   color: #f0582a;
 }
 
-.transparent_navbar {
+/*.transparent_navbar {
   background-color: transparent;
   border: none;
   margin-top: 0px;
@@ -50,7 +54,7 @@
 .transparent_navbar li.dropdown.open ul.dropdown-menu li:hover {
   color: #333;
 }
-
+*/
 .navbar-brand {
   font-size: 16px;
 }

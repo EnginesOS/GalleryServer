@@ -1,23 +1,17 @@
-<div class="col-md-3">
-  <% if published_software.icon.exists? %>
-  <div class="published-software-icon-holder">
-    <img src=<%= published_software.icon.url %> class="published-software-icon">
-  </div>
-  <% end %>
-</div>
-<div class="col-md-9"> 
-  <div class="published-software-details">
-    <% if published_software.title.present? %>
-      <div class="published-software-title">
-        <%= published_software.title %> <%= (content_tag :div, (content_tag :i, nil, class: "fa fa-star", title: "Featured software!"), class: "featured_software_icon") if published_software.featured_software && params[:controller] != 'homes' %>
-      </div>
-    <% end %>
-    <% if published_software.detail.present? %>
-      <div class="published-software-description">
-        <%= published_software.detail %>
-      </div>
-    <% end %>
-  </div>
-</div>
+<% published_softwares.each do |published_software| %>
 
+  <div class="col-md-3 software-panel">
+      <a href="<%= published_software_path(published_software, tags: params[:tags], search: params[:search], page: params[:page]) %>" class="btn btn-noborder btn-lg trigger-response-modal" title="Install <%= published_software.title %>">
+        <div class="software-icon-area">
+            <div class="helper-to-vertical-align-middle"></div><img src="<%= published_software.icon.url %>" class="software-icon" alt="">
+        </div>
+        <% if published_software.title.present? %>
+            <div class="software-name"><%= published_software.title %></div>
+        <% end %>
+        <% if published_software.detail.present? %>
+            <div class="software-detail"><%= published_software.detail %></div>
+        <% end %>
+      </a>
+  </div>
 
+<%end%>

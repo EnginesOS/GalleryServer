@@ -7,13 +7,11 @@
   <div class="top-gap">
     <%= render 'published_softwares/show_actions', published_software: @published_software %>
   </div>
-  <div class="top-gap">
-    <%= render 'published_softwares/presenter', published_software: @published_software %>
-  </div>
-  <div class="col-md-9 col-md-offset-3"> 
-    <%= render 'published_softwares/fees', published_software: @published_software %>
-  </div>
+</div>
 
+<%= render 'published_softwares/software_icon_title_detail', published_software: @published_software %>
+
+<div class="col-sm-12">
   <%= render 'published_softwares/tags', published_software: @published_software,
           search: params[:search], page: params[:page], tags: params[:tags]  %>
 </div>

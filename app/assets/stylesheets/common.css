@@ -47,6 +47,11 @@ hr {
 
 .btn-noborder {
   border: none;
+  color: #333;
+}
+
+.btn-noborder:hover {
+  background-color: #E6E6E6;
 }
 
 .panel.panel-default .panel-heading {

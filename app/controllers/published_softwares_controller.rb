@@ -43,7 +43,7 @@ class PublishedSoftwaresController < ApplicationController
     if params[:tags] != 'All'
       @published_softwares = @published_softwares.tagged_with(params[:tags])
     end
-    @published_softwares = @published_softwares.page(params[:page]).per( params[:per_page] || 10)
+    @published_softwares = @published_softwares.page(params[:page]).per( params[:per_page] || 8)
     @published_softwares_json = {
       softwares: @published_softwares.
                     map{|software| software.library_software_record}.

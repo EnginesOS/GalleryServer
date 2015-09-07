@@ -47,30 +47,17 @@
 
 <div class="col-sm-12">
   <% if (params[:tags] != 'All' || params[:search].present?) %>
-    <div class="col-sm-12">
-        <h3>
-          <%= params[:tags] %> <%= (" - search '#{params[:search]}'") if params[:search].present? %>
-        <%= link_to content_tag(:i, nil, class: "fa fa-times"), published_softwares_path(), title: "Clear", class: 'search-clear-button trigger-response-modal' %>
-        </h3>
-    </div>
+    <h3>
+      <%= params[:tags] %> <%= (" - search '#{params[:search]}'") if params[:search].present? %>
+    <%= link_to content_tag(:i, nil, class: "fa fa-times"), published_softwares_path(), title: "Clear", class: 'search-clear-button trigger-response-modal' %>
+    </h3>
   <% end %>
 </div>
 
-<div class="col-sm-12 published-softwares-list top-gap">
-  <% @published_softwares.each do |published_software| %>
-    <div class="published-software-row" onclick="location.href='<%= published_software_path(published_software, tags: params[:tags], search: params[:search], page: params[:page]) %>';" title="<%= published_software.title %>">
-      <% if admin_signed_in? %>
-        <%= render 'index_actions', published_software: published_software %>
-      <% end %>
-      <div class="panel panel-default published-software-panel">
-        <div class="panel-body">
-          <div class="published-software-holder">
-            <%= render 'published_softwares/presenter', published_software: published_software %>
-          </div>
-        </div>
-      </div>
-    </div>
-  <%end%>
+<div class="col-sm-12">
+  <div class="top-gap">
+    <%= render 'published_softwares/presenter', published_softwares: @published_softwares %>
+  </div>
 </div>
 
 <div class="col-sm-12">
