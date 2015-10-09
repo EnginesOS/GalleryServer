@@ -7,7 +7,25 @@
   <%= render 'sub_navbar' %>
   <h2><i class="fa fa-code"></i> Technical brief</h2>
 
+
+Engines is a managed system of containerised applications and services that is controlled through a fully-featured web front end.   while maintaining system and data security.
+
+
+
+Users install new applications from software galleries. Galleries hold manifests, called a software blueprints, that configure the software installation process. Installation is generally fully-automaed, with some installation processes complete after receiving input from the user via a web interface. 
+
+Blueprints can be written by software developers, or by technical end-users. One software title could be blueprinted by many different users, with each blueprint reflecting preferences for certain solutions.
+
+Application images are built locally to enhance security and automate integration of applications with a local environment and required services. Application software cannot run as root, even at build time.
+
+Default system services include volumes, FTP, backup, authentication, cron, logging, routing, DNS, e-mail, and various database flavours. The Engines architecture allows new services to be added easily, and for third-party services to be used in place of default services.
+
+Enignes is written in Ruby, runs under Linux and uses Docker for containerization. Advanced users can install software using Docker images from sources such as DockerHub.
+
+
+
   <p>Engines is a managed system of containerised applications and services that is controlled through a fully-featured web front end. Its purpose is to provide users with tools to easily launch a machine (VM or BM) and install a collection of server software. Software can be easily configured for data access and sharing.</p>
+  <p>An Engines instance can run many arbitrary network applications on one host.</p>
   <p>Engines can run a wide range of software while maintaining system and data security. Application images are built locally. This underpins security and makes it possibe to automatically integrate software with a local environment and system services.</p>
   <p>Software blueprints are used to define an installation and to configure the associated image build process. The installation process is generally fully-automated. Some installation processes complete after receiving input from the user via a web iterface. Users find and access blueprints for new software in software galleries.</p>
   <p>Engines is currently in alpha on a weekly release cycle with a planned beta release due in August. The software is released under Apache 2.0.</p>

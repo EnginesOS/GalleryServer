@@ -36,7 +36,7 @@ Rails.application.routes.draw do
   resource :home
   resource :info_pages do
     get :overview, :install, :screenshots, :technical_brief,
-          :software_videos, :credits, :contact_us, :social_buttons
+          :software_videos, :credits, :contact, :about, :social_buttons
   end
 
   # get 'overview', to: "pages#overview", as: :overview
