@@ -19,4 +19,14 @@ $(document).ready(function(){
       resize_sub_nav_toolbar();
 
     };
+
+
+    if ($("#screenshots_carousel").length) {
+
+      $("#screenshots_carousel").click(function() {
+        $("#screenshots_carousel").carousel('next');
+      });
+
+    };
+
 });

@@ -47,7 +47,7 @@ Rails.application.routes.draw do
   # get 'software_videos', to: "pages#software_videos", as: :software_videos
   # get 'credits', to: "pages#credits", as: :credits
 
-
+  get 'install', to: 'info_pages#install_curl_script'
   get 'api/v0/software', to: 'published_softwares#index', :format => 'json'
   get 'api/v0/software_tags', to: 'tags#list_tags_by_name', :format => 'json'
   # get 'home/social_buttons', to: "pages#social_buttons"
