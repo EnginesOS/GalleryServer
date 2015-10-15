@@ -19,3 +19,6 @@
 
 #ignore database.yaml during development
 /config/database.yaml
+
+#ignore icons added to softwares during development
+/public/system/published_softwares
