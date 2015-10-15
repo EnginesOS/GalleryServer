@@ -27,9 +27,8 @@
     <%= f.password_field :current_password, autocomplete: "off" %>
   </div>
 
-  <div class="actions">
-            <%= link_to((content_tag(:i, "", class: "fa fa-times") + " Cancel"), cancel_path, class: "btn btn-lg btn-warning form-button-cancel") %>
-
-    <%= f.submit "Update", class: "pull-right" %>
+  <div class="row actions">
+    <%= render 'shared/devise/cancel_and_submit_buttons', f: f, cancel_path: admin_root_path %>
   </div>
+
 <% end %>

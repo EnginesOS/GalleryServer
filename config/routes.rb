@@ -1,13 +1,21 @@
 Rails.application.routes.draw do
 
   devise_for :users
-  devise_for :admins, :skip => [:registrations] 
+
+  # admin registrations via console or admin panel.
+  devise_for :admins, :skip => [:registrations]
+
+  # recreate the edit routes that were lost by skipping registrations
   as :admin do
     get 'admins/edit' => 'devise/registrations#edit', :as => 'edit_admin_registration'
     put 'admins' => 'devise/registrations#update', :as => 'admin_registration'
   end
+
+  # 'my home' routes
   get 'user_home', :to => 'user_homes#show', :as => :user_root
   get 'admin_home', :to => 'admin_homes#show', :as => :admin_root
+
+  # admin actions
   resources :user_admins do
     member do
       get :ban, :unban
@@ -16,6 +24,7 @@ Rails.application.routes.draw do
 
   root 'homes#show', :format => 'html'
   resource :home
+
   resource :info_pages do
     get :overview, :install, :screenshots, :technical_brief,
           :software_videos, :credits, :contact, :about, :social_buttons
