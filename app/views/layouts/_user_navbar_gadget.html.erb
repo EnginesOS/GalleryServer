@@ -6,8 +6,8 @@
       </a>
       <ul class="dropdown-menu" role="menu">
         <li>
-          <% link_body = (content_tag(:i, '', class: 'fa fa-cog') + ' ' + current_user.email) %>
-          <%= link_to link_body, user_path(current_user), class: 'trigger-response-modal' %>
+        <% link_body = (content_tag(:i, '', class: 'fa fa-cog') + ' ' + current_user.email) + (" (banned)" if current_user.banned?) %>
+        <%= link_to link_body, user_root_path, class: 'trigger-response-modal' %>
         </li>
         <li class="divider"></li>
         <li><%= link_to (content_tag(:i, "", class: "fa fa-sign-out") + " Sign out"), destroy_user_session_path, class: 'trigger-response-modal', method: :delete %></li>
@@ -23,7 +23,7 @@
       <ul class="dropdown-menu" role="menu">
         <li>
           <% link_body = (content_tag(:i, '', class: 'fa fa-cog') + ' ' + current_admin.email) %>
-          <%= link_to link_body, admin_path(current_admin), class: 'trigger-response-modal' %>
+          <%= link_to link_body, admin_root_path, class: 'trigger-response-modal' %>
         </li>
         <li class="divider"></li>
         <li><%= link_to (content_tag(:i, "", class: "fa fa-users") + " Users"), user_admins_path, class: 'trigger-response-modal' %></li>

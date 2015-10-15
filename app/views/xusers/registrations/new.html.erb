@@ -1,0 +1,16 @@
+<div class="do-not-apply-devise-view-js-formatting">
+<div class="col-sm-8 col-sm-offset-2">
+  <h2><%= content_tag :i, nil, class: "fa fa-user-plus" %> Sign up</h2>
+</div>
+
+  <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+
+  <% attributes = [{name: :username, hint:"8 to 40 characters"}, :email, {name: :password, attribute_type: :password_with_confirmation}] %>
+
+  <%= render 'shared/form/errors',f: f, attributes: attributes %>
+  <%= render 'shared/form/default_fields',f: f, attributes: attributes %>
+  <%= render 'shared/form/cancel_and_submit_buttons', f: f, cancel_path: root_path, submit_label: "Sign-up" %>
+
+</div>
+
+<% end %>

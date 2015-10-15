@@ -1,6 +1,6 @@
 class Admin < ActiveRecord::Base
 
-  devise :database_authenticatable, :rememberable, :trackable
+  devise :database_authenticatable, :rememberable, :trackable, :registerable
 
   attr_accessor :login, :update_password
 

@@ -6,17 +6,14 @@
 
   <%= content_tag :div, class: 'top-gap' do %>
 
-    <% @user.tap do |user| %>
+    <% current_user.tap do |user| %>
 
       <%= content_tag :div, class: 'panel panel-default' do %>
         <%= content_tag :div, class: 'panel-heading clearfix' do %>
           <%= user.username %> (<%= user.email %>)
           <div class="btn-toolbar pull-right">
             <div class="btn-group">
-              <%= link_to (content_tag(:i, "", class: "fa fa-edit") + " Edit"), edit_user_path(@user), class: 'trigger-response-modal btn btn-default btn-noborder btn-lg' %>
-            </div>
-            <div class="btn-group">
-              <%= link_to (content_tag(:i, "", class: "fa fa-lock") + " Change password"), edit_password_user_path(@user), class: 'trigger-response-modal btn btn-default btn-noborder btn-lg' %>
+              <%= link_to (content_tag(:i, "", class: "fa fa-edit") + " Edit"), edit_user_registration_path, class: 'trigger-response-modal btn btn-default btn-noborder btn-lg' %>
             </div>
           </div>
         <% end %>
