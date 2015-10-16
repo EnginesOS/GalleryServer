@@ -10,7 +10,7 @@ gem 'rails_admin'
 
 gem 'devise'
 gem 'bootstrap3-rails'
-gem 'font-awesome-rails', '4.3.0'
+gem 'font-awesome-rails', '4.4.0'
 gem 'paperclip'
 gem 'kaminari'
 gem 'bootstrap-kaminari-views'
