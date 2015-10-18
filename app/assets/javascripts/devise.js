@@ -1,15 +1,5 @@
 $(document).ready(function(){
 
-
-
-$('input[type="submit"]').click( function(e) {
-
-    e.preventDefault();
-    alert("Can't submit until the error message is gone");
-
-});
-
-
   $(".devise-view").each( function() {
 
     if ( $(this).find(".do-not-apply-devise-view-js-formatting").length == 0 ) {
