@@ -16,7 +16,7 @@ $(document).ready(function(){
       });
 
       $(".devise-view a").each( function(){
-          $(this).addClass("btn btn-default trigger-response-modal");
+          $(this).addClass("btn btn-default trigger-response-modal top-gap");
       });
 
     };
