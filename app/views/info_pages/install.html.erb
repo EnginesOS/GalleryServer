@@ -19,11 +19,11 @@ curl engines.onl/install | bash
     What will this command do? <span class="caret"></span>
   </button>
   <ul class="dropdown-menu dropdown_help">
-    <li>Downloads and runs a script that:<br>
+    <li>Download and run scripts that:<br>
     1. Makes sure that Git is installed.<br>
-    2. Downloads the Engines installer software into a directory called EnginesInstaller.<br>
-    3. Runs the installer, which downloads the Engines system software into /opt/engines.<br>
-    4. Starts the Engines system software.</li>
+    2. Download the Engines installer software into a directory called EnginesInstaller.<br>
+    3. Downloads the Engines system software into /opt/engines.<br>
+    4. Start the Engines system software.</li>
   </ul>
 </div>
 <div class="btn-group">
@@ -31,10 +31,10 @@ curl engines.onl/install | bash
     I'm an advanced user <span class="caret"></span>
   </button>
   <ul class="dropdown-menu dropdown_help">
-    <li>If you don't like to curl | bash, you can enter:<pre>sudo apt-get install -y git
+    <li>If you don't like to curl | bash, you might prefer:<pre>sudo apt-get install -y git
 git clone https://github.com/EnginesOS/EnginesInstaller
 cd EnginesInstaller
-sudo ./install_engines.sh beta-rc</pre>
+sudo ./install_engines.sh</pre>
 <br>
 Technical installation instructions, and a guide on how to install on AWS: <%= link_to ("Engines installation " + content_tag(:i, nil, class: 'fa fa-github') + " GitHub page").html_safe, "https://github.com/EnginesOS/System/wiki/Installation", target: "_engines_github", class: 'btn btn-lg' %></li>
   </ul>
