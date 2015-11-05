@@ -13,53 +13,71 @@ background-size: cover;
   <div class="col-sm-12 top-gap">
     <div class="jumbotron clearfix">
       <div class="col-md-8">  
-        <h2>Use Engines to run your own server</h2>
-        <p>deploy server applications and store data<br>
-           for organisations and personal use</p>
-        <p><small><i>Simpler, with more control, lower costs and better privacy.</i></small></p>
-          <%= link_to((content_tag(:i, '', class: 'fa fa-hand-o-right').html_safe + " Overview"), overview_info_pages_path, class: "btn btn-lg btn-default trigger-response-modal top-gap") %>
-          <%= link_to((content_tag(:i, '', class: 'fa fa-floppy-o').html_safe + " Install"), install_info_pages_path, class: "btn btn-lg btn-default trigger-response-modal top-gap") %>
-        <div class="btn-group top-gap">
-          <div class="dropdown">
-            <button class="btn btn-default btn-lg dropdown-toggle" id="home_more_pages_menu" data-toggle="dropdown">
-              <i class="fa fa-info"></i>
-              <span class="caret"></span>
-            </button>
-            <ul class="dropdown-menu">
-              <li><%= link_to((content_tag(:i, '', class: 'fa fa-camera').html_safe + " Screenshots"), screenshots_info_pages_path, class: "btn-lg trigger-response-modal") %></li>
-              <li><%= link_to content_tag(:i, "", class: "fa fa-smile-o") + " About us", about_info_pages_path, class: "btn-lg btn-default trigger-response-modal" %></li>
-            </ul>
-          </div>
-        </div>
-
-
+        <h2>Engines. Run your own server.</h2>
+        <p>Deploy server applications and store data.<br>
+           For organisations and personal use.</p>
+        <p><small><i>Simpler. More control. Lower costs. Better privacy.</i></small></p>
+        <%= link_to((content_tag(:i, '', class: 'fa fa-hand-o-right').html_safe + " Overview"), overview_info_pages_path, class: "btn btn-lg btn-default trigger-response-modal top-gap") %>
+        <%= link_to((content_tag(:i, '', class: 'fa fa-camera').html_safe + " Screenshots"), screenshots_info_pages_path, class: "btn btn-lg btn-default trigger-response-modal top-gap") %>
         <% if current_user.nil? %>
-          <%= link_to((content_tag(:i, '', class: 'fa fa-user-plus').html_safe + " Not registered? Sign up..."), new_user_registration_path, class: "btn btn-lg btn-primary trigger-response-modal top-gap") %>
+          <%= link_to((content_tag(:i, '', class: 'fa fa-user-plus').html_safe + "Sign up"), new_user_registration_path, class: "btn btn-lg btn-default trigger-response-modal top-gap") %>
         <% end %>
       </div>
       <div class="col-md-4 text-center">  
         <%= render 'video' %>
         <a class="btn share_by_email" href="mailto:?subject=Engines&amp;body=%20Hi%0A%0AEngines is for running your own server. Check out engines.onl - it's really cool."><i class="fa fa-share-alt"></i>&nbspto <i class="fa fa-envelope"></i></a>
         <div class="social_links_area"><button type="button" class="btn" id="open_social_links_button"><i class="fa fa-share-alt"></i>&nbspto <div class="social_icons"><%= content_tag :i, nil, class: "fa fa-twitter" %>&nbsp<%= content_tag :i, nil, class: "fa fa-pinterest" %>&nbsp<%= content_tag :i, nil, class: "fa fa-linkedin" %>&nbsp<%= content_tag :i, nil, class: "fa fa-facebook" %>&nbsp<%= content_tag :i, nil, class: "fa fa-reddit" %></button></div>
+      </div>
+    </div>
+  </div>
 
+  <div class="col-sm-12">
+    <div class="jumbotron clearfix">
+      <div class="col-md-12">
+        <legend>Get started</legend>  
+        <%= link_to((content_tag(:i, '', class: 'fa fa-floppy-o').html_safe + " Installation instructions"), install_info_pages_path, class: "btn btn-lg btn-primary trigger-response-modal") %>
+        <button type="button" class="btn btn-default btn-lg" data-toggle="modal" data-target="#quick_start_modal">
+          <%= content_tag(:i, '', class: 'fa fa-bolt') %> Quick start
+        </button>
       </div>
     </div>
   </div>
 
   <div class="col-sm-12">
     <div class="jumbotron software_jumbotron clearfix">
+      <div class="col-sm-12">
+        <legend>Software</legend>  
+      </div>
       <div class="col-md-4">
-        <h2>Software</h2>
         <%= link_to((content_tag(:i, '', class: 'fa fa-th-list').html_safe + " Library"), published_softwares_path, class: "btn btn-lg btn-default") %>
       </div>
       <div class="col-md-4">
         <div id="tag_cloud_holder" class="top-gap"></div>
       </div>
       <div class="col-sm-12 top-gap">
-        <h4><i class="fa fa-star"></i> Featured software</h4>
+        <h4><i class="fa fa-star"></i> Featured</h4>
         <%= render 'published_softwares/presenter', published_softwares: @published_softwares %>
       </div>
     </div>
   </div>
 
+</div>
+
+<div class="modal fade" id="quick_start_modal" tabindex="-1">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-body">
+        <p><small>Ubuntu 14.04 or 15. Min 2GB RAM and 40GB storage.</small></p>
+        <pre class="top-gap">curl engines.onl/install | bash</pre>
+        <p><small>Sign in 'admin' and 'password'.</small></p>
+        <div id="prerelease_alert" class="alert alert-warning top-gap">
+          <strong><i class="fa fa fa-exclamation-triangle"></i> Please note</strong>
+          <p><small>Engines is currently at a pre-release stage. It is provided as is and without warranty. It's available for beta testing purposes and having a play. Do not use it in production.</small></p>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
 </div>

@@ -4,15 +4,15 @@
 
   <div id="prerelease_alert" class="alert alert-warning top-gap">
     <strong><i class="fa fa fa-exclamation-triangle"></i> Please note</strong>
-    <p>Engines is provided as is and is currently at a pre-release stage. It is available for testing purposes and having a play. Do not use it in production.</p>
+    <p><small>Engines is currently at a pre-release stage. It is provided as is and without warranty. It's available for beta testing purposes and having a play. Do not use it in production.</small></p>
   </div>
 
 <h2><i class="fa fa-floppy-o"></i> Install</h2>
 <p>Start with an updated base system, which should be Ubuntu 14.04 or 15.x with at least 2GB RAM and 40GB available disk space.</p>
 <p>Open a new terminal window (ctrl+alt+T is a common shortcut for that) and enter...
 </p>
-<pre class="top-gap select-on-click">
-sudo apt-get -y install git; curl engines.onl/install | bash
+<pre class="top-gap">
+curl engines.onl/install | bash
 </pre>
 <div class="btn-group">
   <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -32,7 +32,8 @@ sudo apt-get -y install git; curl engines.onl/install | bash
     I'm an advanced user <span class="caret"></span>
   </button>
   <ul class="dropdown-menu dropdown_help">
-    <li>If you don't like to curl | bash, you might prefer:<pre>sudo apt-get install -y git
+    <li>If you don't like to curl | bash, you might prefer:<pre>sudo apt-get update
+sudo apt-get install git
 git clone https://github.com/EnginesOS/EnginesInstaller
 cd EnginesInstaller
 sudo ./install_engines.sh</pre>
