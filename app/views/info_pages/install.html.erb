@@ -22,7 +22,7 @@ curl engines.onl/install | bash
     <li>Download and run scripts that:<br>
     1. Makes sure that Git is installed.<br>
     2. Download the Engines installer software (into a directory called EnginesInstaller).<br>
-    3. Installs Docker<br>
+    3. Updates the base OS and installs Docker<br>
     4. Downloads the Engines system software (into /opt/engines, /var/lib/engines and /var/log/engines).<br>
     5. Downloads the required container images and starts Engines.</li>
   </ul>
@@ -32,8 +32,7 @@ curl engines.onl/install | bash
     I'm an advanced user <span class="caret"></span>
   </button>
   <ul class="dropdown-menu dropdown_help">
-    <li>If you don't like to curl | bash, you might prefer:<pre>sudo apt-get update
-sudo apt-get install git
+    <li>If you don't like to curl | bash, you might prefer:<pre>sudo apt-get install git
 git clone https://github.com/EnginesOS/EnginesInstaller
 cd EnginesInstaller
 sudo ./install_engines.sh</pre>
