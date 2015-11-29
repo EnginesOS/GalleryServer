@@ -3,7 +3,7 @@
   <div class="col-md-3 software-panel">
       <a href="<%= published_software_path(published_software, tags: params[:tags], search: params[:search], page: params[:page]) %>" class="btn btn-noborder btn-lg trigger-response-modal" title="Install <%= published_software.title %>">
         <div class="software-icon-area">
-            <div class="helper-to-vertical-align-middle"></div><img src="<%= published_software.icon.url %>" class="software-icon" alt="">
+            <div class="helper-to-vertical-align-middle"></div><img src="<%= published_software.icon.url(:medium) %>" class="software-icon" alt="">
         </div>
         <% if published_software.title.present? %>
             <div class="software-name"><%= published_software.title %></div>

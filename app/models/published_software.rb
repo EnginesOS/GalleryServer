@@ -1,9 +1,14 @@
 class PublishedSoftware < ActiveRecord::Base
 
   attr_accessor :delete_icon
-  has_attached_file :icon, dependent: :destroy
+  has_attached_file :icon, dependent: :destroy,
+    styles: {
+      small: "64x64^",
+      medium: "128x128^",
+      large: "256x256^" }
   has_many :videos, dependent: :destroy
   has_many :screenshots, dependent: :destroy
+
   default_scope { order('featured_software DESC, LOWER(title) ASC') }
 
   validates_attachment_content_type :icon, :content_type => /\Aimage\/.*\Z/
