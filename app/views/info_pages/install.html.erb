@@ -4,11 +4,11 @@
 
   <div id="prerelease_alert" class="alert alert-warning top-gap">
     <strong><i class="fa fa fa-exclamation-triangle"></i> Please note</strong>
-    <p><small>Engines is currently at a pre-release stage. It is provided as is and without warranty. It's available for beta testing purposes and having a play. Do not use it in production.</small></p>
+    <p><small>Engines is currently at a pre-release stage, provided as is and without warranty. It's available for beta testing purposes and having a play. Do not use it in production.</small></p>
   </div>
 
 <h2><i class="fa fa-floppy-o"></i> Install</h2>
-<p>You'll need a computer with at least 2GB RAM and 40GB available disk space running a fresh and updated version of Ubuntu Server 14.04 LTS.</p>
+<p>You'll need a computer with at least 2GB RAM and 40GB available disk space. It should be running a fresh and updated version of Ubuntu Server 14.04 LTS.</p>
 <p>Login and enter this command...
 </p>
 <pre class="top-gap">
@@ -39,17 +39,22 @@ git clone https://github.com/EnginesOS/EnginesInstaller
 cd EnginesInstaller
 sudo ./install_engines.sh</pre>
 <p>
-Engines can run on Ubuntu 15.x and Desktop versions. Please note that if you run Engines on a Desktop version of Ubuntu you will need to disable dnsmasq.
+While Ubuntu Server 14.04 LTS is recommended, Engines can run on Server and
+Desktop versions of Ubuntu 14.04 and higher. Please note that if you run
+Engines on a Desktop version of Ubuntu, you will need to disable dnsmasq.
 </p>
 <p>
-Technical installation instructions, and a guide on how to install on AWS: <%= link_to ("Engines installation " + content_tag(:i, nil, class: 'fa fa-github') + " GitHub page").html_safe, "https://github.com/EnginesOS/System/wiki/Installation", target: "_engines_github", class: 'btn btn-default' %>
+Technical installation instructions, and a guide on how to install on
+AWS: <%= link_to ("Engines installation " + content_tag(:i, nil, class: 'fa fa-github') +
+ " GitHub page").html_safe, "https://github.com/EnginesOS/System/wiki/Installation",
+ target: "_engines_github", class: 'btn btn-default' %>
 </p>
 </li>
   </ul>
 </div>
 
-<p class="top-gap">You may need to enter your computer's admin password. You will be prompted to set a timezone. The installer will take about half an hour to run. The URL that you will use to access your Engines web interface will appear at the end of the process.</p>
-<p>Open a web browser on a device that is connected to the same local network as your new server. Enter the URL and sign in to Engines.</p>
+<p class="top-gap">You may need to enter your computer's admin password to start the installation. You will be prompted to set a timezone. The installer will take about half an hour to run. The URL that you will use to access your Engines web interface will appear at the end of the process.</p>
+<p>Open a web browser (on a device that is connected to the same local network as your new server). Enter the URL and sign in to Engines.</p>
 <pre>Username 'admin', password 'password'</pre>
 <p>Complete the setup wizard and you're ready to install applications.</p>
 

@@ -99,13 +99,18 @@ class PublishedSoftware < ActiveRecord::Base
 
   def memory
     [ blueprint_software['required_memory'], blueprint_software['recommended_memory'] ].join(" - ")
-  end    
+  end
 
   def version
-    [ blueprint_software['major'] || "0", 
-      blueprint_software['minor'] || "0", 
+    [ blueprint_software['major'] || "0",
+      blueprint_software['minor'] || "0",
       blueprint_software['patch'] || "0" ].join(".") + " " +
       (blueprint_software['release_level'] || "Releasecandidate")
+  end
+
+  def save
+    update_icon_from_url_in_respository
+    super
   end
 
   def update_icon_from_url_in_respository

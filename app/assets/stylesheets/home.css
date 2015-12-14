@@ -1,6 +1,6 @@
 .home-page-logo-holder {
   width: 50%;
-  max-width: 300px; 
+  max-width: 300px;
 }
 
 #home-page-software-gallery-button {
@@ -86,10 +86,12 @@
   padding-top: 8px;
 }
 
+.home_page h2 {
+  color: #f0582a;
+}
 
 
-
-.home_page_background_cover { 
+.home_page_background_cover {
 /*background: url('/assets/home_background.png') no-repeat center center fixed; */
 -webkit-background-size: cover;
 -moz-background-size: cover;
