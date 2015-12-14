@@ -108,9 +108,9 @@ class PublishedSoftware < ActiveRecord::Base
       (blueprint_software['release_level'] || "Releasecandidate")
   end
 
-  def save
+  def load_icon_and_save
     update_icon_from_url_in_respository
-    super
+    save
   end
 
   def update_icon_from_url_in_respository
