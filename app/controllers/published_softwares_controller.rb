@@ -26,7 +26,6 @@ class PublishedSoftwaresController < ApplicationController
 
   def show
     @published_software = PublishedSoftware.find(params[:id])
-    @published_software.save
     respond_to do |format|
       format.json { render json: @published_software }
       format.html {}
@@ -132,7 +131,7 @@ private
     result = params.require(:published_software).permit! #(:title, :detail, :repository_url, videos_attributes: [:id])
 
 
-    # result[:screenshots_attributes]["0"]["_destroy"] = "1"  
+    # result[:screenshots_attributes]["0"]["_destroy"] = "1"
     # result[:screenshots_attributes].permit!
     result
   end
