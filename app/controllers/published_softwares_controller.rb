@@ -45,8 +45,7 @@ class PublishedSoftwaresController < ApplicationController
     @published_softwares_json = {
       softwares: @published_softwares.
                     map{|software| software.library_software_record}.
-                    map{|software| software[:icon_url] = software[:icon_url].
-                                      gsub('__HOST_WITH_PORT__', request.host_with_port); software},
+                    map{|software| software[:icon_url] = prepend_url_scheme_host_port_to software[:icon_url]; software},
       page: params[:page],
       total_pages: @published_softwares.total_pages
     }
@@ -66,15 +65,7 @@ class PublishedSoftwaresController < ApplicationController
   end
 
   def update
-    # if published_software_params[:title].blank?
-    #   return redirect_to edit_published_software_path(published_software_params), alert: 'Title cannot be blank.'
-    # end
-    # if published_software_params[:repository_url].blank?
-    #   return redirect_to edit_published_software_path(published_software_params), alert: 'Repository URL must be a valid URL.'
-    # end
-
     @published_software = PublishedSoftware.find(params[:id])
-    # render text: published_software_params
     if @published_software.update(published_software_params)
       redirect_to @published_software, notice: "Successfully updated."
     else
@@ -133,6 +124,10 @@ private
     # result[:screenshots_attributes]["0"]["_destroy"] = "1"
     # result[:screenshots_attributes].permit!
     result
+  end
+
+  def prepend_url_scheme_host_port_to(icon_path)
+    request.scheme + '://' + request.host_with_port + icon_path if icon_path.present?
   end
 
 end

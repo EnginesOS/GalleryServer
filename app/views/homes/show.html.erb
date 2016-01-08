@@ -6,18 +6,17 @@
     <div class="jumbotron clearfix">
       <div class="col-md-8">
         <h1>Engines<h1>
-        <h2>Run your own server</h2>
-        <p>Deploy server applications and store data.<br>
-           For organisations and personal use.</p>
-        <%= link_to((content_tag(:i, '', class: 'fa fa-hand-o-right').html_safe + " Overview"), overview_info_pages_path, class: "btn btn-lg btn-default trigger-response-modal top-gap") %>
-        <%= link_to((content_tag(:i, '', class: 'fa fa-camera').html_safe + " Screenshots"), screenshots_info_pages_path, class: "btn btn-lg btn-default trigger-response-modal top-gap") %>
+        <h2>Personal cloud</h2>
+        <p><small>Organisations and individuals can use Engines to run a server.</small></p>
+        <%= link_to((content_tag(:i, '', class: 'fa fa-hand-o-right').html_safe + " Overview"), overview_info_path, class: "btn btn-lg btn-default trigger-response-modal top-gap") %>
+        <%= link_to((content_tag(:i, '', class: 'fa fa-camera').html_safe + " Screenshots"), screenshots_info_path, class: "btn btn-lg btn-default trigger-response-modal top-gap") %>
         <% if false #current_user.nil? %>
           <%= link_to((content_tag(:i, '', class: 'fa fa-user-plus').html_safe + "Sign up"), new_user_registration_path, class: "btn btn-lg btn-default trigger-response-modal top-gap") %>
         <% end %>
       </div>
       <div class="col-md-4 text-center">
         <%= render 'video' %>
-        <a class="btn share_by_email" href="mailto:?subject=Engines&amp;body=%20Hi%0A%0AEngines is for running your own server. Check out engines.onl - it's really cool."><i class="fa fa-share-alt"></i>&nbspto <i class="fa fa-envelope"></i></a>
+        <a class="btn share_by_email" href="mailto:?subject=Engines&amp;body=%20Hi%0A%0AEngines is for running your own server. Check out engines.org - it's really cool."><i class="fa fa-share-alt"></i>&nbspto <i class="fa fa-envelope"></i></a>
         <div class="social_links_area"><button type="button" class="btn" id="open_social_links_button"><i class="fa fa-share-alt"></i>&nbspto <div class="social_icons"><%= content_tag :i, nil, class: "fa fa-twitter" %>&nbsp<%= content_tag :i, nil, class: "fa fa-pinterest" %>&nbsp<%= content_tag :i, nil, class: "fa fa-linkedin" %>&nbsp<%= content_tag :i, nil, class: "fa fa-facebook" %>&nbsp<%= content_tag :i, nil, class: "fa fa-reddit" %></button></div>
       </div>
     </div>
@@ -27,8 +26,8 @@
     <div class="jumbotron clearfix">
       <div class="col-md-12">
         <h2>Get started</h2>
-        <p><small>Install Engines on a computer running Linux (Ubuntu 14.04 LTS Server recommended) with at least 2GB RAM and 40GB storage.</small></p>
-        <%= link_to((content_tag(:i, '', class: 'fa fa-floppy-o').html_safe + " Installation instructions"), install_info_pages_path, class: "btn btn-lg btn-default trigger-response-modal") %>
+        <p><small>Install Engines on a computer running Linux (Ubuntu 14.04 LTS Server is recommended) with at least 2GB RAM and 40GB storage.</small></p>
+        <%= link_to((content_tag(:i, '', class: 'fa fa-floppy-o').html_safe + " Install"), install_info_path, class: "btn btn-lg btn-default trigger-response-modal") %>
       </div>
     </div>
   </div>
@@ -59,7 +58,7 @@
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-body">
-        <pre class="top-gap">curl engines.onl/install | bash</pre>
+        <pre class="top-gap">curl engines.org/install | bash</pre>
         <p><small>Install takes about 30 minutes. Sign in 'admin' and 'password'.</small></p>
         <div id="prerelease_alert" class="alert alert-warning top-gap">
           <strong><i class="fa fa fa-exclamation-triangle"></i> Please note</strong>

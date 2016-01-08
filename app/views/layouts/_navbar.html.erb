@@ -12,11 +12,11 @@
     <!-- Collect the nav links, forms, and other content for toggling -->
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav">
-        <li>
+        <li class="<%= params['controller'] == 'homes' ? 'active' : '' %>">
           <%= link_to content_tag(:i, "", class: "fa fa-home") + " Home", home_path, class: "trigger-response-modal" %>
         </li>
-        <li class="<%= params['controller'] == 'info_pages' ? 'active' : '' %>">
-          <%= link_to((content_tag(:i, '', class: 'fa fa-info').html_safe + " Info"), overview_info_pages_path, class: "trigger-response-modal") %>
+        <li class="<%= params['controller'] == 'infos' ? 'active' : '' %>">
+          <%= link_to((content_tag(:i, '', class: 'fa fa-info').html_safe + " Info"), overview_info_path, class: "trigger-response-modal") %>
         </li>
         <li class="<%= params['controller'] == 'published_softwares' ? 'active' : '' %>">
           <%= link_to content_tag(:i, "", class: "fa fa-th-list") + " Library", published_softwares_path, class: "trigger-response-modal" %>

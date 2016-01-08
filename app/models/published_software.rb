@@ -3,9 +3,9 @@ class PublishedSoftware < ActiveRecord::Base
   attr_accessor :delete_icon
   has_attached_file :icon, dependent: :destroy,
     styles: {
-      small: "64x64^",
-      medium: "128x128^",
-      large: "256x256^" }
+      small: "64x64>",
+      medium: "128x128>",
+      large: "256x256>" }
   has_many :videos, dependent: :destroy
   has_many :screenshots, dependent: :destroy
 
@@ -98,7 +98,7 @@ class PublishedSoftware < ActiveRecord::Base
   end
 
   def memory
-    [ blueprint_software['required_memory'], blueprint_software['recommended_memory'] ].join(" - ")
+    [ blueprint_software['required_memory'], blueprint_software['recommended_memory'] ].reject(&:blank?).join(" - ")
   end
 
   def version
@@ -127,14 +127,6 @@ class PublishedSoftware < ActiveRecord::Base
     end
   end
 
-  def icon_url_from_gallery
-    if icon.present?
-      'http://__HOST_WITH_PORT__' + self.icon.url
-    else
-      ''
-    end
-  end
-
   def library_software_record
     {
       label: title,
@@ -143,7 +135,7 @@ class PublishedSoftware < ActiveRecord::Base
       website: website_from_blueprint,
       title: full_title_from_blueprint,
       fees_comment: fees_comment,
-      icon_url: icon_url_from_gallery
+      icon_url: self.icon.url(:large)
     }
   end
 

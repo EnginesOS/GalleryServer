@@ -5,7 +5,7 @@ Rails.application.configure do
   config.action_mailer.smtp_settings = {
                   :address  => "smtp.engines.internal",
                   :port => 25,
-                  :domain => "engines.onl",
+                  :domain => "engines.org",
                   :enable_starttls_auto => false
             } 
 

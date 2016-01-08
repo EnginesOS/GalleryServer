@@ -25,7 +25,7 @@ Rails.application.routes.draw do
   root 'homes#show', :format => 'html'
   resource :home
 
-  resource :info_pages do
+  resource :info do
     get :overview, :install, :screenshots, :technical_brief,
           :software_videos, :credits, :contact, :about, :social_buttons
   end
@@ -34,6 +34,7 @@ Rails.application.routes.draw do
       get :add_tag, :remove_tag
     end
   end
+  resource :software_blueprint
   resources :comments
   resources :tags do
     collection do
@@ -41,7 +42,8 @@ Rails.application.routes.draw do
     end
   end
 
-  get 'install', to: 'info_pages#install_curl_script'
+  get 'install', to: 'infos#install_curl_script'
+  get 'uninstall', to: 'infos#uninstall_curl_script'
   get 'api/v0/software', to: 'published_softwares#index', :format => 'json'
   get 'api/v0/software_tags', to: 'tags#list_tags_by_name', :format => 'json'
   get 'published_softwares/:id/edit_icon', to: "published_softwares#edit_icon", as: :edit_blueprint_info_icon

@@ -1,0 +1,13 @@
+<div id="pages_sub_nav_placemarker"></div>
+<div id="pages_sub_nav" class="top-gap btn-group">
+  <%= link_to((content_tag(:i, '', class: 'fa fa-hand-o-right').html_safe + " Overview"), overview_info_path, class: "btn btn-lg btn-default trigger-response-modal #{ params[:action] == 'overview' ? "active" : "" }") %>
+  <%= link_to((content_tag(:i, '', class: 'fa fa-floppy-o').html_safe + " Install"), install_info_path, class: "btn btn-lg btn-default trigger-response-modal #{ params[:action] == 'install' ? "active" : "" }") %>
+  <%= link_to((content_tag(:i, '', class: 'fa fa-camera').html_safe + " Screenshots"), screenshots_info_path, class: "btn btn-lg btn-default trigger-response-modal #{ params[:action] == 'screenshots' ? "active" : "" }") %>
+  <%= link_to content_tag(:i, "", class: "fa fa-smile-o") + " About us", about_info_path, class: "btn btn-lg btn-default trigger-response-modal #{ params[:action] == 'about' ? "active" : "" }" %>
+  <%= link_to content_tag(:i, "", class: "fa fa-pencil") + " Contact", contact_info_path, class: "btn btn-lg btn-default trigger-response-modal #{ params[:action] == 'contact' ? "active" : "" }" %>
+  <% if false %>
+  <%= link_to content_tag(:i, "", class: "fa fa-video-camera") + " Software videos", software_videos_info_path, class: "btn btn-lg btn-default trigger-response-modal #{ params[:action] == 'software_videos' ? "active" : "" }" %>
+  <%= link_to content_tag(:i, "", class: "fa fa-code") + " Technical brief", technical_brief_info_path, class: "btn btn-lg btn-default trigger-response-modal #{ params[:action] == 'technical_brief' ? "active" : "" }" %>
+  <% end %>
+
+</div>

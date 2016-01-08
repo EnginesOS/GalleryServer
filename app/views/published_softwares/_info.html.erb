@@ -20,7 +20,7 @@
         <% if support_url.present? %><p>Support: <%= link_to support_url, support_url, target: support_url.underscore %></p><% end %>
         <% if about.present? %><p><%= about %></p><% end %>
         <% if license_title.present? || license_url.present? %>
-          <p>License: 
+          <p>License:
             <% if license_title.present? %><%= license_title %><% end %>
             <% if license_url.present? %><%= link_to license_url, license_url, target: license_url.underscore %><% end %>
           </p>
@@ -30,5 +30,4 @@
     </div>
   </div>
 
-<%= render 'published_softwares/fees', published_software: @published_software %>
 </div>

@@ -1,4 +1,4 @@
-class InfoPagesController < ApplicationController
+class InfosController < ApplicationController
 
   def social_buttons
     render partial: 'social_share_buttons'
@@ -8,5 +8,8 @@ class InfoPagesController < ApplicationController
     render layout: false, format: :text
   end
 
+  def uninstall_curl_script
+    render layout: false, format: :text
+  end
+
 end
- 
