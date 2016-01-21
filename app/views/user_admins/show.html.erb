@@ -21,7 +21,7 @@
               <% end %>
             </div>
           </div>
-        <% end %>   
+        <% end %>
       <% end %>
 
 
@@ -29,10 +29,14 @@
     <div class="panel-body">
           <%= render partial: 'shared/show/inline_labelled_text', locals: {object: user, label: 'email', field: :email, offset: 3 } %>
           <%= render partial: 'shared/show/inline_labelled_text', locals: {object: user, field: :sign_in_count, offset: 3 } %>
-          <%= render partial: 'shared/show/inline_labelled_text', locals: {object: user, field: :current_sign_in_at, value: distance_of_time_in_words_to_now(user.current_sign_in_at) + ' ago', offset: 3 } %>
-          <%= render partial: 'shared/show/inline_labelled_text', locals: {object: user, field: :last_sign_in_at, value: distance_of_time_in_words_to_now(user.last_sign_in_at) + ' ago', offset: 3 } %>
-          <%= render partial: 'shared/show/inline_labelled_text', locals: {object: user, field: :current_sign_in_ip, offset: 3 } %>
-          <%= render partial: 'shared/show/inline_labelled_text', locals: {object: user, field: :last_sign_in_ip, offset: 3 } %>
+          <% if user.current_sign_in_at.present? %>
+            <%= render partial: 'shared/show/inline_labelled_text', locals: {object: user, field: :current_sign_in_at, value: distance_of_time_in_words_to_now(user.current_sign_in_at) + ' ago', offset: 3 } %>
+            <%= render partial: 'shared/show/inline_labelled_text', locals: {object: user, field: :current_sign_in_ip, offset: 3 } %>
+          <% end %>
+          <% if user.last_sign_in_at.present? %>
+            <%= render partial: 'shared/show/inline_labelled_text', locals: {object: user, field: :last_sign_in_at, value: distance_of_time_in_words_to_now(user.last_sign_in_at) + ' ago', offset: 3 } %>
+            <%= render partial: 'shared/show/inline_labelled_text', locals: {object: user, field: :last_sign_in_ip, offset: 3 } %>
+          <% end %>
 
       <%#= render 'shared/show/text_field', object: user, field: :email  %>
       <%#= render 'shared/show/text_field', object: user, field: :sign_in_count  %>
