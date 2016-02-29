@@ -131,3 +131,42 @@ background-size: cover;
 #tag_cloud_holder a:hover {
   color: #428BCA;
 }
+
+
+.splash-container {
+    overflow: hidden;
+    width: 100%;
+    padding-top: 20px;
+    padding-bottom: 10px;
+}
+
+.splash-icon {
+  display: inline-block;
+}
+
+.splash-icon img {
+  height: 90px;
+  margin-top: -10px;
+}
+
+.splash {
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+    padding-top: 0px;
+    padding-bottom: 0px;
+
+}
+
+.splash-head {
+  display: inline-block;
+}
+
+.splash-head img {
+  height: 90px;
+}
+
+.splash-subhead {
+  font-size: 24px;
+  color: #666;
+}

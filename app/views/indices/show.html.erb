@@ -1,0 +1,62 @@
+<div class="container-fluid home_page">
+  <div class="row">
+
+    <div class="splash-container">
+        <div class="splash">
+          <div class="splash-icon">
+            <%= image_tag("3_cyl_engine_grey.png", alt: " ") %>
+            <%= image_tag("engines_cursive.png", alt: "Engines") %>
+          </div>
+          <div class="splash-subhead">
+              Run your own server
+          </div>
+          <p>
+              <a href="#get_started" class="btn btn-lg btn-default">Get Started</a>
+          </p>
+        </div>
+    </div>
+
+    <div class="col-sm-12 top-gap">
+      <div class="clearfix">
+        <div class="col-md-8">
+            <p>Organisations and individuals can use Engines to self-host server applications and store data.</p>
+            <p>Install Engines on a hosted virtual computer, or on a personal computer in the office or at home.</p>
+            <p>Applications are straightforward to setup, configure and maintain. Back-ups are simple to setup and run.</p>
+            <p>Connect applications, files and devices, and share with friends and colleagues.</p>
+            <p>Applications run in sandboxed containers to protect your server from malicious and defective software. You hold the keys to your system and its logs. Domicile in the jurisdiction that makes most sense for you. Run VPN to protect your traffic.</p>
+            <p>Use Engines for hosting email, serving files, media libraries, online stores, personal social feeds, blogs and wikis, VPN end-point browsing, instant messaging, multiplayer gaming, managing projects, CRM, fleet tracking, voip, accounting, document sharing, group contacts and calendar, ERP, student portfolios, and more.</p>
+        </div>
+        <div class="col-md-4 text-center">
+          <%= render '/homes/video' %>
+          <a class="btn share_by_email" href="mailto:?subject=Engines&amp;body=%20Hi%0A%0AEngines is for running your own server. Check out engines.org - it's really cool."><i class="fa fa-envelope"></i></a>
+          <div class="social_links_area"><button type="button" class="btn" id="open_social_links_button"><div class="social_icons"><%= content_tag :i, nil, class: "fa fa-twitter" %>&nbsp<%= content_tag :i, nil, class: "fa fa-pinterest" %>&nbsp<%= content_tag :i, nil, class: "fa fa-linkedin" %>&nbsp<%= content_tag :i, nil, class: "fa fa-facebook" %>&nbsp<%= content_tag :i, nil, class: "fa fa-reddit" %></button></div>
+        </div>
+      </div>
+    </div>
+
+    <%= render 'screenshots' %>
+
+    <div class="col-sm-12">
+      <div class="jumbotron clearfix">
+        <div class="col-md-12">
+          <h2>Get started</h2>
+          <p><small>Install Engines on a computer running Linux (Ubuntu 14.04 LTS Server is recommended) with at least 2GB RAM and 40GB storage.</small></p>
+          <%= link_to((content_tag(:i, '', class: 'fa fa-floppy-o').html_safe + " Install"), install_info_path, class: "btn btn-lg btn-default trigger-response-modal") %>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-sm-12">
+      <div class="jumbotron software_jumbotron clearfix">
+        <div class="col-sm-12">
+          <h2>Applications</h2>
+          <p><small>Once Engines is running on your server, you can easily
+            install all sorts of applications. See what's available in the library.</small></p>
+        </div>
+        <div class="col-md-4">
+          <%= link_to((content_tag(:i, '', class: 'fa fa-th-list').html_safe + " Library"), published_softwares_path, class: "btn btn-lg btn-default") %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

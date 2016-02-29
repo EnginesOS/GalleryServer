@@ -1,0 +1,28 @@
+<div class="text-center">
+  <button type="button" class="btn btn-lg btn-primary" data-toggle="modal" data-target="#home-page-get-started-modal">
+    <%= content_tag :i, nil, class: "fa fa-arrow-right" %> Get started
+  </button>
+</div>
+
+<div class="modal fade" id="home-page-get-started-modal">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h3 class="modal-title"><%= content_tag :i, nil, class: "fa fa-arrow-right" %> Get started</h3>
+      </div>
+      <div class="modal-body">
+        <p>To use Engines, install the Engines system software on a dedicated Linux computer.</p>
+        <p>See the installation page for instructions...</p>
+        <%= link_to((content_tag(:i, '', class: 'fa fa-floppy-o').html_safe + " Installation"), installation_path, class: "btn btn-lg btn-default") %>
+        <p class="top-gap">If you are an advanced user and want to run Engines on a virtual machine, please see the installation wiki...</p>
+        <%= link_to (content_tag(:i, nil, class: 'fa fa-github') +
+        " Installation wiki").html_safe, "https://github.com/EnginesOS/System/wiki/Installation",
+        target: "_engines_github", class: 'btn btn-default' %>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-lg btn-default" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>

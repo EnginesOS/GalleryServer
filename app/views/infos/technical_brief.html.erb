@@ -1,36 +1,18 @@
-<style>
-#animated-engine-gif {background-image: url(<%= image_url 'radial-engine-placeholder.gif' %>);}
-#animated-engine-gif:hover {background-image: url(<%= image_url 'radial-engine.gif' %>);}
-</style>
-
 <div class="col-md-12">
   <%= render 'sub_navbar' %>
   <h2><i class="fa fa-code"></i> Technical brief</h2>
-
-
-Engines is a managed system of containerised applications and services that is controlled through a fully-featured web front end.   while maintaining system and data security.
-
-
-
-Users install new applications from software galleries. Galleries hold manifests, called a software blueprints, that configure the software installation process. Installation is generally fully-automaed, with some installation processes complete after receiving input from the user via a web interface. 
-
-Blueprints can be written by software developers, or by technical end-users. One software title could be blueprinted by many different users, with each blueprint reflecting preferences for certain solutions.
-
-Application images are built locally to enhance security and automate integration of applications with a local environment and required services. Application software cannot run as root, even at build time.
-
-Default system services include volumes, FTP, backup, authentication, cron, logging, routing, DNS, e-mail, and various database flavours. The Engines architecture allows new services to be added easily, and for third-party services to be used in place of default services.
-
-Enignes is written in Ruby, runs under Linux and uses Docker for containerization. Advanced users can install software using Docker images from sources such as DockerHub.
-
-
-
-  <p>Engines is a managed system of containerised applications and services that is controlled through a fully-featured web front end. Its purpose is to provide users with tools to easily launch a machine (VM or BM) and install a collection of server software. Software can be easily configured for data access and sharing.</p>
-  <p>An Engines instance can run many arbitrary network applications on one host.</p>
-  <p>Engines can run a wide range of software while maintaining system and data security. Application images are built locally. This underpins security and makes it possibe to automatically integrate software with a local environment and system services.</p>
-  <p>Software blueprints are used to define an installation and to configure the associated image build process. The installation process is generally fully-automated. Some installation processes complete after receiving input from the user via a web iterface. Users find and access blueprints for new software in software galleries.</p>
-  <p>Engines is currently in alpha on a weekly release cycle with a planned beta release due in August. The software is released under Apache 2.0.</p>
-  <p>Some of the advanced features are not functional since Engines is still a work in progress. An AWS AMI can be shared as a demo. There is also a youtube video at</p>
-  <p>Currently there are about 25 software applications available in the Engines Software Gallery. These applications have been selected because they cover a range of installation types. There are many more software applications that will be added in coming months.</p>
+  <p>Engines is a managed system of containerised applications and services that is controlled through a web interface.</p>
+  <p>Its purpose is to provide users with tools to easily install and integrate a collection of self-hosted server software.</p>
+  <p>Software can be easily configured for data access and sharing.</p>
+  <p>Engines can run a wide range of software while maintaining system and data security.</p>
+  <p>Application images are built locally. This underpins security and makes it possible to automatically integrate software with a local environment and system services.</p>
+  <p>Software blueprints are used to define an installation and to configure the associated image build process.</p>
+  <p>The installation process is generally fully-automated. Some installation processes complete after receiving input from the user.</p>
+  <p>Users find new software in software libraries. There is an official Engines software library and third-party libraries.</p>
+  <p>Libraries contain software blueprints, which Engines uses to configure applications. Advanced users can side-load applications directly from blueprints, without using a software library.</p>
+  <p>Users that understand the security implications of giving an application lower-level system access can install applications from container images.</p>
+  <p>If you are a software developer or advanced user, you'll find it easy to publish your own blueprints and run your own software library.</p>
+  <p>Engines is written in Ruby, runs on Linux and uses Docker for containerization.</p>
   <p> Check out the <%= link_to ("Engines " + content_tag(:i, nil, class: 'fa fa-github') + " GitHub wiki").html_safe, "https://github.com/EnginesOS/System/wiki", target: "_engines_github", class: '' %>.</p>
   <div class="info-page-image-holder">
     <a href="//credits"><div id="animated-engine-gif"></div></a>

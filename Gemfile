@@ -4,13 +4,14 @@ source 'https://rubygems.org'
 #gem 'thin'
 
 gem 'git'
-gem 'awesome_print', '~> 1.2.0'
+gem 'awesome_print' #, '~> 1.2.0'
 
 gem 'rails_admin'
 
 gem 'devise'
 gem 'bootstrap3-rails'
-gem 'font-awesome-rails', '4.4.0'
+gem "font-awesome-rails", git: "https://github.com/bokmann/font-awesome-rails.git"
+# gem 'font-awesome-rails', '4.4.0'
 gem 'paperclip'
 gem 'kaminari'
 gem 'bootstrap-kaminari-views'
@@ -67,4 +68,3 @@ gem 'spring',        group: :development
 
 # Use debugger
 # gem 'debugger', group: [:development, :test]
-
