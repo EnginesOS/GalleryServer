@@ -1,0 +1,17 @@
+<% if app.fees_comment.present? || app.fees_button_url.present? %>
+  <div class="top-gap panel panel-default">
+    <div class="panel-body">
+      <% if app.fees_comment.present? %>
+        <p><%= app.fees_comment %></p>
+      <% end %>
+      <% if app.fees_button_url.present? %>
+        <p>
+          <% fees_button_url = app.fees_button_url
+             fees_button_label = app.fees_button_label
+             fees_button_label = 'Donate' if fees_button_label.blank? %>
+          <%= link_to (content_tag(:i, nil, class: "fa fa-external-link") + " " + fees_button_label), fees_button_url, class: "btn btn-success pull-right", target: "_" + app.title.delete("^a-zA-Z0-9") %>
+        </p>
+      <% end %>
+    </div>
+  </div>
+<% end %>

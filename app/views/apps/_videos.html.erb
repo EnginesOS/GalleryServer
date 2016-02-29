@@ -1,0 +1,7 @@
+<% @app.videos.each do |video| %>
+
+  <div class="top-gap col-lg-6 text-center">
+    <%= video.embed_code.html_safe %>
+  </div>
+
+<% end %>

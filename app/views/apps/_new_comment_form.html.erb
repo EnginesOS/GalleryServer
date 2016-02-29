@@ -1,0 +1,14 @@
+<div class="btn btn-lg btn-default" id="write_review_button"><%= content_tag :i, nil, class: "fa fa-edit" %> Write review</div>
+
+<div id="comment_form" style="display: none;">
+  <%= form_for @comment do |f| %>
+
+    <%= render 'shared/form/errors', f: f, label: :Review %>
+    <%= render 'shared/form/hidden_field', f: f, name: :user_id, value: current_user.id %>
+    <%= render 'shared/form/hidden_field', f: f, name: :commentable_id, value: @comment.commentable_id %>
+    <%= render 'shared/form/hidden_field', f: f, name: :commentable_type, value: @comment.commentable_type %>
+    <%= render 'shared/form/text_area', f: f, name: :body, rows: 4, label: false, placeholder: "..." %>
+    <%= render 'shared/form/submit_button', f: f, submit_label: "Post", submit_fa: 'send' %>
+
+  <% end %>
+</div>

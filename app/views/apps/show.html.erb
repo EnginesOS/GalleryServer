@@ -1,0 +1,25 @@
+<div class="col-sm-12">
+  <% if admin_signed_in? %>
+    <div class="top-gap">
+      <%= render 'apps/admin_show_actions', app: @app %>
+    </div>
+  <% end %>
+  <div class="top-gap">
+    <%= render 'apps/show_actions', app: @app %>
+  </div>
+</div>
+
+<%= render 'apps/software_icon_title_detail', app: @app %>
+
+<div class="col-sm-12">
+  <%= render 'apps/tags', app: @app,
+          search: params[:search], page: params[:page], tags: params[:tags]  %>
+</div>
+
+<div class="col-sm-12 top-gap">
+    <%= render 'apps/info', app: @app %>
+    <%= render 'apps/fees', app: @app %>
+    <%= render 'apps/reviews', app: @app %>
+    <%= render 'apps/screenshots', app: @app %>
+    <%= render 'apps/videos', app: @app %>
+</div>

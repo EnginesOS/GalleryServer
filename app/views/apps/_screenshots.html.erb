@@ -1,0 +1,7 @@
+<% @app.screenshots.each do |screenshot| %>
+
+  <div class="top-gap text-center screenshot">
+    <%= image_tag screenshot.image.url %>
+  </div>
+
+<% end %>
