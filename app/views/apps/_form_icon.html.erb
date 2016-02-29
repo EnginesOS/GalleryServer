@@ -1,9 +1,0 @@
-<%= form_for @app do |f| %> 
-
-  <div class='col-sm-8 col-sm-offset-2'>
-    <%= f.file_field :icon %>
-  </div>
-
-  <%= render partial: 'shared/form/cancel_and_submit_buttons.html', locals: { f: f } %>
-
-<% end %>
