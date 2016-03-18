@@ -8,6 +8,7 @@
 /.bundle
 /bundle
 
+Gemfile.lock
 
 # Ignore the default SQLite database.
 /db/*.sqlite3
@@ -21,5 +22,5 @@
 /config/database.yaml
 
 #ignore icons added to softwares during development
-#/public/system
-#/public/assets
+/public/system
+/public/assets
