@@ -41,7 +41,7 @@ Rails.application.routes.draw do
     end
   end
 
-  resource :software_blueprint
+  resources :software_blueprints
   resources :comments
   resources :tags do
     collection do

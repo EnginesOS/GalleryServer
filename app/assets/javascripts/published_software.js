@@ -1,20 +1,24 @@
 $(document).ready(function () {
-    // $('#blueprint-panel').hide();
-    // $(this).find('.toggle-blueprint-button-up-caret').hide();
-    // $('.toggle-blueprint-button').click(function () {
-    //   $(this).find('.toggle-blueprint-button-down-caret').toggle();
-    //   $(this).find('.toggle-blueprint-button-up-caret').toggle();
-    //   $(this).parent().parent().parent().find('#blueprint-panel').slideToggle();
-    // });
 
     $("#write_review_button").click(function(){
       $(this).slideUp();
-      $("#comment_form").slideDown();
+      $("#comment_form").show();
     });
-
     update_pagination_link_class();
-
+    $( "#published_software_blueprint_modal" ).on('shown.bs.modal', function(){
+      load_blueprint_to_modal();
+    });
 });
+
+function load_blueprint_to_modal() {
+  $.ajax({
+      url: $('#blueprint_load_data').attr('data-url'),
+      cache: false,
+      success: function(html){
+        $("#blueprint_load_data").parent().html(html);
+      }
+  });
+};
 
 function update_pagination_link_class() {
    $.each( $('.pagination a'), function(i, obj) {

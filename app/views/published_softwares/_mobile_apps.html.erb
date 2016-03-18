@@ -1,0 +1,28 @@
+<% if @published_software.mobile_apps.present? %>
+
+<div class="top-gap col-sm-12">
+  <legend>Mobile apps</legend>
+</div>
+
+<% end %>
+
+<% @published_software.mobile_apps.each do |mobile_app| %>
+
+  <div class="mobile_app">
+    <div class="col-sm-8 col-sm-offset-2">
+      <label><%= mobile_app.name %></label>
+      <p><%= mobile_app.description %></p>
+      <p><%= link_to (content_tag(:i, nil, class: "fa fa-external-link") + " Website"), mobile_app.url, class: "btn btn-default btn-lg", target: "_" + mobile_app.name.delete("^a-zA-Z0-9") %></p>
+      <div class="text-center">
+        <%= image_tag mobile_app.image.url %>
+      </div>
+    </div>
+  </div>
+
+  <% if mobile_app != @published_software.mobile_apps.last %>
+    <div class="top-gap col-sm-10 col-sm-offset-1">
+      <hr><br>
+    </div>
+  <% end %>
+
+<% end %>

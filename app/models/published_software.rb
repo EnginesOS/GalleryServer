@@ -8,20 +8,29 @@ class PublishedSoftware < ActiveRecord::Base
       large: "256x256>" }
   has_many :videos, dependent: :destroy
   has_many :screenshots, dependent: :destroy
+  has_many :mobile_apps, dependent: :destroy
 
   default_scope { order('featured_software DESC, LOWER(title) ASC') }
 
   validates_attachment_content_type :icon, :content_type => /\Aimage\/.*\Z/
   before_validation { icon.clear if delete_icon == '1' }
 
+  accepts_nested_attributes_for :mobile_apps, :reject_if => :all_blank, :allow_destroy => true
   accepts_nested_attributes_for :videos, :reject_if => :all_blank, :allow_destroy => true
   accepts_nested_attributes_for :screenshots, :reject_if => :all_blank, :allow_destroy => true
 
   acts_as_commentable
   acts_as_taggable
 
-  validates :title, :presence => true
+  validates :title, :presence => true, :on => [ :update ]
+  validates :detail, :presence => true, :on => [ :update ]
   validates :repository_url, :presence => true
+  validates_associated :screenshots
+  validates_associated :mobile_apps
+  validates_associated :videos
+
+  scope :scope_published, -> { where(arel_table[:publish].eq(true)) }
+  scope :scope_unpublished, -> { where(arel_table[:publish].eq(false).or(arel_table[:publish].eq(nil))) }
 
   def self.list_all_tags_by_name
     all_tags.map(&:name).sort_by { |name| name.downcase }
@@ -46,11 +55,10 @@ class PublishedSoftware < ActiveRecord::Base
   def load_repository_data
     blueprint = repository_handler.load_blueprint_from_repository
     if blueprint
-      self.blueprint = blueprint.to_json.to_s
-      return true
+      self.blueprint = blueprint
+      self.title = title_from_blueprint
+      self.detail = description
     end
-  rescue
-    return false
   end
 
   def blueprint_software
@@ -108,22 +116,15 @@ class PublishedSoftware < ActiveRecord::Base
       (blueprint_software['release_level'] || "Releasecandidate")
   end
 
-  def load_icon_and_save
-    update_icon_from_url_in_respository
-    save
-  end
+  # def load_icon_and_save
+  #   save
+  #   update_icon_from_url_in_respository
+  #   save
+  # end
 
   def update_icon_from_url_in_respository
     if icon_url_from_blueprint.present?
       self.icon = icon_from_url icon_url_from_blueprint
-    end
-  end
-
-  def self.search(search)
-    if search
-      where('title LIKE ?', "%#{search}%")
-    else
-      where(nil)
     end
   end
 

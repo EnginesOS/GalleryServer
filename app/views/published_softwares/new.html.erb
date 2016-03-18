@@ -1,2 +1,6 @@
 <h2>Publish software</h2>
-<%= render partial: 'form' %>
+<%= form_for @published_software do |f| %>
+  <%= render 'shared/form/errors', f: f %>
+  <%= render 'shared/form/default_fields', f: f, attributes: [:repository_url] %>
+  <%= render 'shared/form/cancel_and_submit_buttons', f: f  %>
+<% end %>

@@ -1,7 +1,17 @@
+<% if @published_software.videos.present? %>
+
+<div class="col-sm-12 top-gap">
+  <legend>Videos</legend>
+</div>
+
+<% end %>
+
 <% @published_software.videos.each do |video| %>
 
-  <div class="top-gap col-lg-6 text-center">
+<div class="col-sm-12">
+  <div class="top-gap video text-center">
     <%= video.embed_code.html_safe %>
   </div>
+</div>
 
 <% end %>

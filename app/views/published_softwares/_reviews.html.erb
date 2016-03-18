@@ -1,8 +1,16 @@
+<% if @comments.present? || current_user %>
+
+<div class="top-gap col-sm-12">
+  <legend>Reviews</legend>
+</div>
+
+<% end %>
+
 <% if current_user %>
+<div class="col-sm-12">
   <div id="published-software-review-form" class="top-gap">
-    <div class="panel-body">
-      <%= render 'published_softwares/new_comment_form' %>
-    </div>
+    <%= render 'published_softwares/new_comment_form' %>
   </div>
+</div>
 <% end %>
 <%= render 'comments/index', comments: @comments %>

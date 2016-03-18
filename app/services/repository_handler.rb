@@ -7,13 +7,9 @@ class RepositoryHandler
 
   def initialize params
     @repository_url = params[:repository_url]
-p :repository_created
-p repository_url
   end
 
   def load_blueprint_from_repository
-p :oo
-p '== Clone/load blueprint from repository'    
     buildname = File.basename(repository_url)
     segments = buildname.split('.')
     buildname = segments[0]
@@ -21,9 +17,8 @@ p '== Clone/load blueprint from repository'
     blueprint_filename =  "/tmp/" + buildname.to_s + "/blueprint.json"
     blueprint_file = File.open(blueprint_filename,"r")
     blueprint_json_str = blueprint_file.read
-    blueprint_file.close 
-    bluePrint = JSON.parse(blueprint_json_str)
-    return bluePrint
+    blueprint_file.close
+    return blueprint_json_str
   rescue
     return false
   end
@@ -37,7 +32,7 @@ p '== Clone/load blueprint from repository'
 
   def backup_lastbuild repo
     buildname = File.basename(repo)
-    segments = buildname.split('.')   
+    segments = buildname.split('.')
     buildname = segments[0]
     dir = "/tmp/" + buildname.to_s
     if Dir.exists?(dir)
@@ -46,7 +41,7 @@ p '== Clone/load blueprint from repository'
         FileUtils.rm_rf backup
       end
       FileUtils.mv(dir,backup)
-    end     
+    end
   end
 
 end

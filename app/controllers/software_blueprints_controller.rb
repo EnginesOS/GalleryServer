@@ -1,7 +1,7 @@
-class SoftwareBlueprintController < ApplicationController
+class SoftwareBlueprintsController < ApplicationController
 
   def show
-    @published_software = PublishedSoftware.find(params[:software_id])
+    @published_software = PublishedSoftware.find(params[:id])
     render partial: "show"
   end
 

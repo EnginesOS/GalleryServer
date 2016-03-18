@@ -1,4 +1,18 @@
 <div class='col-md-12'>
   <h1>Edit published software</h1>
-  <%= render partial: 'form' %>
 </div>
+
+  <%= render 'shared/show/labelled_text', label: 'Repository URL', value: @published_software.repository_url %>
+  <%= form_for @published_software do |f| %>
+    <%= render 'shared/form/errors', f: f %>
+    <%= render 'shared/form/default_fields', f: f, attributes: [:title, :detail, :featured_software, :publish] %>
+
+    <%= render 'shared/form/legend', text: "Payment" %>
+    <%= render 'shared/form/default_fields', f: f, attributes: [{name: :fees_comment, label: "Comment"}, {name: :fees_button_url, label: "URL to payment"}, {name: :fees_button_label, comment: "Deafult is 'Donate'."} ] %>
+
+    <%= render 'shared/form/nested_fields_for', association: :mobile_apps, attributes: [:name, :description, :url, {name: :image, attribute_type: :image_field}], f: f %>
+    <%= render 'shared/form/nested_fields_for', association: :videos, f: f %>
+    <%= render 'shared/form/nested_fields_for', association: :screenshots, attributes: [{name: :image, attribute_type: :image_field}], f: f %>
+
+    <%= render 'shared/form/cancel_and_submit_buttons', f: f  %>
+  <% end %>

@@ -1,7 +1,17 @@
+<% if @published_software.screenshots.present? %>
+
+<div class="top-gap col-sm-12">
+  <legend>Screenshots</legend>
+</div>
+
+<% end %>
+
 <% @published_software.screenshots.each do |screenshot| %>
 
-  <div class="top-gap text-center screenshot">
+<div class="col-sm-12">
+  <div class="top-gap screenshot text-center">
     <%= image_tag screenshot.image.url %>
   </div>
+</div>
 
 <% end %>

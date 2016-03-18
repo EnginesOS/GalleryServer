@@ -67,3 +67,7 @@ hr {
 .panel.panel-default .panel-heading {
   background-color: #FFFFFF;
 }
+
+.show-labelled-text-value {
+  margin-bottom: 15px;
+}

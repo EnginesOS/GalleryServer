@@ -9,17 +9,17 @@
   </div>
 </div>
 
+<% if !@published_software.publish %>
+  <div class="col-sm-10 col-sm-offset-2 unpublished-software">
+    <h3>Unpublished</h3>
+  </div>
+<% end %>
+
+
 <%= render 'published_softwares/software_icon_title_detail', published_software: @published_software %>
-
-<div class="col-sm-12">
-  <%= render 'published_softwares/tags', published_software: @published_software,
-          search: params[:search], page: params[:page], tags: params[:tags]  %>
-</div>
-
-<div class="col-sm-12 top-gap">
-    <%= render 'published_softwares/info', published_software: @published_software %>
-    <%= render 'published_softwares/fees', published_software: @published_software %>
-    <%= render 'published_softwares/reviews', published_software: @published_software %>
-    <%= render 'published_softwares/screenshots', published_software: @published_software %>
-    <%= render 'published_softwares/videos', published_software: @published_software %>
-</div>
+<%= render 'published_softwares/info', published_software: @published_software %>
+<%= render 'published_softwares/fees', published_software: @published_software %>
+<%= render 'published_softwares/mobile_apps', published_software: @published_software %>
+<%= render 'published_softwares/screenshots', published_software: @published_software %>
+<%= render 'published_softwares/videos', published_software: @published_software %>
+<%= render 'published_softwares/reviews', published_software: @published_software %>

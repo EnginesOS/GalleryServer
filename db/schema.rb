@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150822235015) do
+ActiveRecord::Schema.define(version: 20160308013014) do
 
   create_table "admins", force: :cascade do |t|
     t.string   "email",                  limit: 255, default: "", null: false
@@ -52,6 +52,17 @@ ActiveRecord::Schema.define(version: 20150822235015) do
   add_index "comments", ["commentable_id", "commentable_type"], name: "index_comments_on_commentable_id_and_commentable_type"
   add_index "comments", ["user_id"], name: "index_comments_on_user_id"
 
+  create_table "mobile_apps", force: :cascade do |t|
+    t.integer  "published_software_id"
+    t.string   "name"
+    t.text     "description"
+    t.string   "url"
+    t.string   "image_file_name"
+    t.string   "image_content_type"
+    t.integer  "image_file_size"
+    t.datetime "image_updated_at"
+  end
+
   create_table "published_softwares", force: :cascade do |t|
     t.string   "title",                              limit: 255
     t.text     "detail"
@@ -73,6 +84,7 @@ ActiveRecord::Schema.define(version: 20150822235015) do
     t.text     "fees_button_url"
     t.boolean  "featured_software"
     t.string   "fees_button_label"
+    t.boolean  "publish"
   end
 
   create_table "screenshots", force: :cascade do |t|

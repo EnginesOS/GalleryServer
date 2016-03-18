@@ -2,24 +2,32 @@
   margin: 5px;
 }
 
+.mobile_app img {
+  max-width: 100%;
+}
+
+.mobile_app {
+  margin-bottom: 30px;
+}
+
 .screenshot img {
   max-width: 100%;
-  border: 1px solid #ccc;
+  /*border: 1px solid #ccc;*/
+}
+
+.video {
+  max-width: 100%;
 }
 
 .index-view-action {
   margin-top: 10px;
 }
 
-.published-software-tags-holder {
-  margin-left: 10px;
-}
-
 .find_by_dropdown_submit_button{
   padding: 3px 20px;
   line-height: 1.42857;
   min-width: 100%;
-  text-align: left;  
+  text-align: left;
   border: none;
   border-radius: 0px;
   background-color: #FFF;
@@ -45,6 +53,10 @@
   vertical-align: top;
 }
 
+.unpublished-software h3 {
+  color: red;
+}
+
 
 
 .software-panel {
@@ -63,8 +75,12 @@
   margin-top: 10px;
   margin-bottom: 10px;
   height: 96px;
-  width: 100%;
+  max-width: 100%;
   text-align: center;
+}
+
+.software-panel.unpublished .btn{
+  border: 1px solid red;
 }
 
 .software-icon {
@@ -86,16 +102,15 @@
 }
 
 @media (max-width:991px) {
-  
+
   .software-name {
     height: 24px;
   }
-  
+
   .software-detail {
     height: 39px;
   }
 }
-
 
 .software-text small p {
   font-size: 0.8em;
@@ -103,30 +118,23 @@
   color: #666;
 }
 
-
-
-
 .published-software-description {
   font-size: 18px;
   overflow: hidden;
 }
 
 .published-software-details {
-  margin-left: 10px;
+  /*margin-left: 10px;*/
 }
 
 .published-software-title {
-  font-size: 28px;
+  font-size: 32px;
   overflow: hidden;
 }
 
 .published-software-icon-holder {
   vertical-align: top;
-  text-align: center;
   width: 200px;
-  display: block;
-  margin-left: auto;
-  margin-right: auto;
 }
 
 .published-software-icon {
@@ -142,4 +150,8 @@
   color: #FFD710;
   font-size: 16px;
   vertical-align: top;
+}
+
+#published_software_blueprint_modal .modal-dialog {
+  width: 95%;
 }

@@ -1,12 +1,16 @@
 <% published_softwares.each do |published_software| %>
 
-  <div class="col-md-3 software-panel">
+  <div class="col-md-3 software-panel <%= 'unpublished' if !published_software.publish %>">
       <a href="<%= published_software_path(published_software, tags: params[:tags], search: params[:search], page: params[:page]) %>" class="btn btn-noborder btn-lg trigger-response-modal" title="Install <%= published_software.title %>">
         <div class="software-icon-area">
-            <div class="helper-to-vertical-align-middle"></div><img src="<%= published_software.icon.url(:medium) %>" class="software-icon" alt="">
+            <% if published_software.icon.present? %>
+              <img src="<%= published_software.icon.url(:medium) %>" class="software-icon" alt="">
+            <% else %>
+              <%= image_tag "placeholder_for_missing_icon.jpg", class: "software-icon" %>
+            <% end %>
         </div>
         <% if published_software.title.present? %>
-            <div class="software-name"><%= published_software.title %></div>
+            <div class="software-name"><%= published_software.title %>  <%= (content_tag :div, (content_tag :i, nil, class: "fa fa-star", title: "Featured software!"), class: "featured_software_icon") if published_software.featured_software %></div>
         <% end %>
         <% if published_software.detail.present? %>
             <div class="software-detail"><%= published_software.detail %></div>

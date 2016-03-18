@@ -1,6 +1,7 @@
-class Screenshot < ActiveRecord::Base
+class MobileApp < ActiveRecord::Base
 
   belongs_to :published_software
+  # has_many :mobile_app_screenshots, dependent: :destroy
   has_attached_file :image, dependent: :destroy
 
   attr_accessor :delete_image

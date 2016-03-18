@@ -4,7 +4,7 @@
     association_label_method ||= nil
     value ||= text || (object.present? ? (SharedViews.resolve_value_for object, field, label_method: association_label_method) : '?')
     label ||= field.to_s.humanize.capitalize
-    offset ||= 4
+    offset ||= 2
     width ||= (12 - offset.to_i)
  %>
 

@@ -10,7 +10,7 @@ class PublishedSoftwaresController < ApplicationController
     @published_software = PublishedSoftware.new(published_software_params)
     if @published_software.valid?
       if @published_software.load_repository_data
-        if @published_software.load_icon_and_save
+        if @published_software.save
           redirect_to @published_software, notice: 'Software successfully published to gallery.'
         else
           redirect_to @published_software, alert: 'Unable to publish software.'
@@ -36,7 +36,23 @@ class PublishedSoftwaresController < ApplicationController
   end
 
   def index
-    @published_softwares = PublishedSoftware.search(params[:search])
+
+p params
+
+
+      if params[:search]
+        @published_softwares = PublishedSoftware.where('title LIKE ?', "%#{params[:search]}%")
+      else
+        @published_softwares = PublishedSoftware.all
+      end
+
+    if params[:expose].to_s == 'unpublished' || current_admin
+      @published_softwares = @published_softwares
+    elsif params[:expose].to_s ==  'unpublished_only'
+      @published_softwares = @published_softwares.scope_unpublished
+    else
+      @published_softwares = @published_softwares.scope_published
+    end
     params[:tags] = ( (params[:commit] == 'All' || params[:tags].blank?) ? 'All' : params[:tags] )
     if params[:tags] != 'All'
       @published_softwares = @published_softwares.tagged_with(params[:tags])
@@ -53,7 +69,6 @@ class PublishedSoftwaresController < ApplicationController
       format.json { render json: @published_softwares_json }
       format.html {}
     end
-
   end
 
   def edit
@@ -65,11 +80,12 @@ class PublishedSoftwaresController < ApplicationController
   end
 
   def update
+    # render text: params
     @published_software = PublishedSoftware.find(params[:id])
     if @published_software.update(published_software_params)
       redirect_to @published_software, notice: "Successfully updated."
     else
-      redirect_to edit_published_software_path(published_software_params)
+      render :edit
     end
   end
 
@@ -119,10 +135,6 @@ private
 
   def  published_software_params
     result = params.require(:published_software).permit! #(:title, :detail, :repository_url, videos_attributes: [:id])
-
-
-    # result[:screenshots_attributes]["0"]["_destroy"] = "1"
-    # result[:screenshots_attributes].permit!
     result
   end
 
